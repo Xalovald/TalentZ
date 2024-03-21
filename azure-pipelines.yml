@@ -9,9 +9,15 @@ trigger:
 pool: default
 
 steps:
-- script: echo Hello, world!
 - checkout: self
   fetchDepth: 0
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarCloud'
+    organization: 'talentz'
+    scannerMode: 'MSBuild'
+    projectKey: 'guilianbahno_TalentZ'
+    projectName: 'talentz'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
