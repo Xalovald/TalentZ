@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TalentZ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+6335e2841c325c47d7e6777e65a26806f8961436")]
 [assembly: System.Reflection.AssemblyProductAttribute("TalentZ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TalentZ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
