@@ -15,9 +15,9 @@ steps:
     command: 'test'
     projects: 'C:\Users\guili\source\repos\TalentZ\TestTalentZ'
   displayName: 'Run a one-line script'
-- task: SonarCloudPublish@1
+- task: SonarCloudAnalyze@1
   inputs:
-    pollingTimeoutSec: '300'
+    jdkversion: 'JAVA_HOME_17_X64'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
