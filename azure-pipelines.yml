@@ -10,6 +10,10 @@ pool: default
 
 steps:
 - script: echo Hello, world!
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'C:\Users\guili\source\repos\TalentZ\TestTalentZ'
   displayName: 'Run a one-line script'
 
 - script: |
