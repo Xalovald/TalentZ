@@ -25,5 +25,5 @@ steps:
 - task: PublishCodeCoverageResults@2
   inputs:
     summaryFileLocation: 'C:\Users\guili\source\repos\TalentZ\TestTalentZ'
-    pathToSources: 'C:\Users\guili\source\repos\TalentZ\TestTalentZ'
+    pathToSources: C:\Users\guili\agent-backend\_work\1\TestResults
     failIfCoverageEmpty: false
