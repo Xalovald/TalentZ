@@ -11,11 +11,19 @@ pool: default
 steps:
 - checkout: self
   fetchDepth: 0
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 7.0.x'
+  inputs:
+    version: 7.0.x
+    
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: 'C:\Users\guili\source\repos\TalentZ\TestTalentZ'
   displayName: 'Run a one-line script'
+
+
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
