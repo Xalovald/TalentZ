@@ -11,21 +11,6 @@ pool: default
 steps:
 - checkout: self
   fetchDepth: 0
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'sonarCloud'
-    organization: 'talentz'
-    scannerMode: 'MSBuild'
-    projectKey: 'guilianbahno_TalentZ'
-    projectName: 'talentz'
-  
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-
-- task: SonarCloudAnalyze@1
-  inputs:
-    jdkversion: 'JAVA_HOME_17_X64'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
