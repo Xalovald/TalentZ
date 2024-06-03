@@ -8,7 +8,7 @@ networks:
 
 services:
   mysql:
-    image: mysql:latest
+    image: mysql
     container_name: mysqlService
     restart: always
     tty: true
@@ -55,6 +55,12 @@ services:
     build: ./talentz_api
     depends_on:
       - mysql
+    environment:
+      - DATABASE=talentz_bdd
+      - MYSQL_PORT=3306
+      - USER=talentz_user
+      - PASSWORD=R3cRu73M3n!7
+      - SERVER=mysql
     ports:
       - "5212:5212"
     networks:

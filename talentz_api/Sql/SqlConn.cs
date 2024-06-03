@@ -22,10 +22,11 @@ namespace talentz_api.Sql
         private void Connect()
         {
             _conn = new MySqlConnection(
-                $"server={_server};" +
-                $"uid={_uid};" +
-                $"pwd={_pwd};" +
-                $"database={_database};"
+                $"Server={_server}; " +
+                "Port=3306; " +
+                $"Database={_database};" +
+                $"Uid={_uid}; " +
+                $"Pwd={_pwd}; "
             );
         }
     }

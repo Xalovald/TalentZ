@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\sql\\sqlconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\sqlconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,8 +19,28 @@
       "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\calendrierdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\controllers\\generalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\generalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\talentz_api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:talentz_api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\sql\\sqlquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\sqlquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\flutter gui\\talentz_api\\datarequests\\messageriedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,11 +69,93 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "GeneralController.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Controllers\\GeneralController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GeneralController.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Controllers\\GeneralController.cs",
+              "RelativeToolTip": "Controllers\\GeneralController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T12:50:01.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "talentz_api.http",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\talentz_api.http",
+              "RelativeDocumentMoniker": "talentz_api.http",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\talentz_api.http",
+              "RelativeToolTip": "talentz_api.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-06-03T12:49:49.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SqlConn.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Sql\\SqlConn.cs",
+              "RelativeDocumentMoniker": "Sql\\SqlConn.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Sql\\SqlConn.cs",
+              "RelativeToolTip": "Sql\\SqlConn.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBwAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T12:32:49.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABQAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-03T11:45:39.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T11:43:11.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SqlQuery.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Sql\\SqlQuery.cs",
+              "RelativeDocumentMoniker": "Sql\\SqlQuery.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Sql\\SqlQuery.cs",
+              "RelativeToolTip": "Sql\\SqlQuery.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwDIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T10:03:13.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "CalendrierData.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\DataRequests\\CalendrierData.cs",
               "RelativeDocumentMoniker": "DataRequests\\CalendrierData.cs",
@@ -62,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "UserData.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\DataRequests\\UserData.cs",
               "RelativeDocumentMoniker": "DataRequests\\UserData.cs",
@@ -75,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "MessagerieData.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\DataRequests\\MessagerieData.cs",
               "RelativeDocumentMoniker": "DataRequests\\MessagerieData.cs",
@@ -83,12 +189,11 @@
               "RelativeToolTip": "DataRequests\\MessagerieData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T11:52:34.508Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T11:52:34.508Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "LoginData.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\DataRequests\\LoginData.cs",
               "RelativeDocumentMoniker": "DataRequests\\LoginData.cs",
@@ -96,29 +201,24 @@
               "RelativeToolTip": "DataRequests\\LoginData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T11:52:31.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T11:52:31.584Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\.env",
               "RelativeDocumentMoniker": ".env",
               "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\.env",
               "RelativeToolTip": ".env",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-05-31T09:41:43.744Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "UpdateStatement.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Sql\\Statements\\UpdateStatement.cs",
               "RelativeDocumentMoniker": "Sql\\Statements\\UpdateStatement.cs",
@@ -126,12 +226,11 @@
               "RelativeToolTip": "Sql\\Statements\\UpdateStatement.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:53:19.739Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T14:53:19.739Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "UserControllerBase.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Controllers\\UserControllerBase.cs",
               "RelativeDocumentMoniker": "Controllers\\UserControllerBase.cs",
@@ -139,25 +238,24 @@
               "RelativeToolTip": "Controllers\\UserControllerBase.cs",
               "ViewState": "AQIAABwAAAAAAAAAAAAQwCIAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T12:33:41.677Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T12:33:41.677Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\crunc\\Documents\\flutter gui\\talentz_api\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAA8BAAAAAAAAAAAuwA0BAABiAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAQwDUAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-30T12:29:56.077Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "UserControllerTest.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\flutter gui\\TalentzTests\\UserControllerTest.cs",
               "RelativeDocumentMoniker": "..\\TalentzTests\\UserControllerTest.cs",
@@ -165,8 +263,7 @@
               "RelativeToolTip": "..\\TalentzTests\\UserControllerTest.cs",
               "ViewState": "AQIAAJ0AAAAAAAAAAAAAAJ8AAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T21:29:29.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T21:29:29.324Z"
             }
           ]
         }
