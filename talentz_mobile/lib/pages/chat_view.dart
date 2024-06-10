@@ -10,7 +10,7 @@ class ChatView extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        color: CustomColors.darkGrey,
+        color: CustomColors.red,
       )
     );
   }

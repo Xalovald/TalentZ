@@ -7,7 +7,7 @@ class UserView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: CustomColors.darkGrey,
+      color: CustomColors.red,
     );
   }
 }

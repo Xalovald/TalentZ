@@ -1,51 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:talentz_mobile/widgets/fab_icon.dart';
+import 'package:talentz_mobile/widgets/shadow_painter.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function() onClick;
   final bool isIcon;
-  final IconData icon;
+  final CustomFabIcon? icon;
   final String text;
   final String heroTag;
-  final Color color;
+  final Color? color;
   final double width;
   final double height;
-  final double iconSize;
+  final Decoration? decoration;
+  final ShadowPainter? shadowPainter;
+  final bool noAnimation;
 
   const CustomButton({
     super.key,
     required this.onClick,
     required this.isIcon,
-    this.icon = Icons.add,
+    this.decoration,
+    this.icon,
+    this.color,
     this.text = '',
+    this.shadowPainter,
     required this.heroTag,
-    required this.color,
     this.width = 50,
     this.height = 50,
-    this.iconSize = 24,
+    this.noAnimation = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: FloatingActionButton(
-        onPressed: onClick,
-        heroTag: heroTag,
-        backgroundColor: Colors.white,
-        shape: CircleBorder(side: BorderSide(width: 3, color: color)),
-        child: Center(
-          child: isIcon ? Icon(
-            icon,
-            color: color,
-            size: iconSize,
-          ) :
-          Text(
-            text,
-            style: TextStyle(color: color),
-          )
+    return Stack(children: [
+      shadowPainter != null
+          ? CustomPaint(
+              painter: shadowPainter,
+              child: SizedBox(
+                width: width,
+                height: height,
+              ),
+            )
+          : SizedBox(width: width, height: height,),
+      SizedBox(
+        width: width,
+        height: height,
+        child: Container(
+          decoration: decoration,
+          child: FloatingActionButton(
+            elevation: 0,
+            onPressed: onClick,
+            heroTag: heroTag,
+            focusColor: noAnimation ? Colors.transparent : null,
+            splashColor: noAnimation ? Colors.transparent : null,
+            hoverColor: noAnimation ? Colors.transparent : null,
+            highlightElevation: noAnimation ? 0 : null,
+            focusElevation: noAnimation ? 0 : null,
+            hoverElevation: noAnimation ? 0 : null,
+            disabledElevation: noAnimation ? 0 : null,
+            backgroundColor: Colors.transparent,
+            child: Center(
+                child: isIcon
+                    ? icon
+                    : Text(
+                        text,
+                        style: TextStyle(color: color),
+                      )),
+          ),
         ),
       )
-    );
+    ]);
   }
 }
