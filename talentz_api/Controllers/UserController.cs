@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Mysqlx.Prepare;
 using System.Data;
 using talentz_api.Accessing;
 using talentz_api.DataRequests;
@@ -92,6 +91,8 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
+                    Cerise = (int)row["cerise"],
+                    WhyCerise = (string)row["why_cerise"],
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
@@ -135,6 +136,8 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
+                    Cerise = ShowIfRoles(validRoles, (string)row["role"], (int)row["cerise"]),
+                    WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
@@ -179,6 +182,8 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
+                    Cerise = ShowIfRoles(validRoles, (string)row["role"], (int)row["cerise"]),
+                    WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
@@ -197,7 +202,7 @@ namespace talentz_api.Controllers
         public void CreateCandidatUser([FromBody] UserCandidatData data, bool execute = true)
         {
             List<SqlStatement> sqlStatements = [
-                new InsertStatement("users", ["nom", "prenom", "date_naissance", "telephone", "email", "ville", "adresse", "role", "password"]),
+                new InsertStatement("users", ["nom", "prenom", "date_naissance", "telephone", "email", "ville", "adresse", "role", "password", "cerise", "why_cerise"]),
                 new ValuesStatement([
                     "@lastName",
                     "@firstName",
@@ -207,7 +212,9 @@ namespace talentz_api.Controllers
                     "@city",
                     "@address",
                     new TypedValue<string>("candidat").ToString(),
-                    "md5(@password)"
+                    "md5(@password)",
+                    "@cerise",
+                    "@whyCerise"
                 ])
             ];
 
@@ -219,7 +226,9 @@ namespace talentz_api.Controllers
                 new PreparedParameter("@email", data.Email),
                 new PreparedParameter("@city", data.City),
                 new PreparedParameter("address", data.Address),
-                new PreparedParameter("@password", data.Password)
+                new PreparedParameter("@password", data.Password),
+                new PreparedParameter("@cerise", data.Cerise),
+                new PreparedParameter("@whyCerise", data.WhyCerise),
             ]);
 
             if(execute) sqlQuery.ExecuteNonQuery();

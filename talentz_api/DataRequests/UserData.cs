@@ -27,6 +27,12 @@ namespace talentz_api.JsonData
 
         [JsonProperty("password")]
         public required string Password { get; set; }
+
+        [JsonProperty("cerise")]
+        public required string Cerise { get; set; }
+
+        [JsonProperty("whyCerise")]
+        public required string WhyCerise { get; set; }
     }
 
     public class UserEntrepriseData
