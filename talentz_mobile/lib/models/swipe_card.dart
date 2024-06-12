@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/icons/icons.dart';
 import 'package:talentz_mobile/helpers/helpers.dart';
 import 'package:talentz_mobile/widgets/fab_icon.dart';
 import 'package:talentz_mobile/widgets/pill_content.dart';
@@ -48,7 +47,7 @@ class SwipeCard extends StatelessWidget {
                   height: height / 3,
                   width: width,
                   decoration: const BoxDecoration(
-                    color: CustomColors.pastelPink,
+                    color: CustomColors.lightYellow,
                     borderRadius: BorderRadiusDirectional.vertical(
                       top: Radius.circular(17.5),
                     ),
@@ -74,11 +73,16 @@ class SwipeCard extends StatelessWidget {
                 ),
                 Flexible(
                   child: Container(
-                    height: 2 * (height / 3),
+                    height: height / 2,
                     decoration: const BoxDecoration(
-                      color: CustomColors.semiWhite,
-                      borderRadius: BorderRadiusDirectional.vertical(
-                        bottom: Radius.circular(17.5),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          CustomColors.pinkish,
+                          CustomColors.orange,
+                          CustomColors.red
+                        ],
                       ),
                     ),
                     child: ListView(
@@ -88,7 +92,7 @@ class SwipeCard extends StatelessWidget {
                             children: [
                               Flexible(
                                 child: SizedBox(
-                                  height: 2 * (height / 3),
+                                  height: height / 2,
                                   child: Wrap(
                                     alignment: WrapAlignment.spaceEvenly,
                                     runAlignment: WrapAlignment.center,
@@ -126,65 +130,175 @@ class SwipeCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                )
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: height / 2.8,
-                  child: Center(
-                    child: PillContent(
-                      width: width * 0.8,
-                      height: 50,
-                      color: Colors.white,
-                      shadowPainter: RightShadowPainter(
-                        12,
-                        color: const Color(0x99999999),
-                        blurStrength: 0,
-                        radiusValue: 100,
-                      ),
-                      child: CustomProgressBar(
-                        startAt: 85,
-                        width: width * 0.8,
-                        height: 20,
-                      ),
-                    ),
-                  ),
                 ),
-                SingleChildBox(
-                  width: width * 0.8,
-                  height: 75,
-                  shadowPainter: RightShadowPainter(
-                    12,
-                    color: const Color(0x99999999),
-                    blurStrength: 0
-                  ),
-                  child: Row(
-                    children: [
-                      CustomFabIcon(
-                        imagePath: CustomIcons.cherries.elementAt(data["cerise"]),
-                        size: 20
-                      ),
-                      Column(
+                Row(
+                  children: [
+                    SingleChildBox(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          border: Border(
+                            top: BorderSide(width: 3),
+                            right: BorderSide(width: 3),
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(17.5),
+                          )),
+                      width: width / 3.2,
+                      height: height / 6,
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            CustomHelpers.cherriesNames.elementAt(data["cerise"]),
-                            style: const TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w900
+                            "10 ans",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
                             ),
                           ),
                           Text(
-                            data["whyCerise"],
+                            "D'expérience",
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
                           )
                         ],
+                      ),
+                    ),
+                    SingleChildBox(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        border: Border(
+                          top: BorderSide(width: 3),
+                          right: BorderSide(width: 3),
+                        ),
+                      ),
+                      width: width / 3.2,
+                      height: height / 6,
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "+ 50",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            "Salariés",
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SingleChildBox(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        border: Border(
+                          top: BorderSide(width: 3),
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(17.5),
+                        ),
+                      ),
+                      width: width / 3.131,
+                      height: height / 6,
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "100%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            "Satisfaction",
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: height / 3,
+              child: Center(
+                child: PillContent(
+                  width: width * 0.8,
+                  height: 50,
+                  color: Colors.white,
+                  shadowPainter: RightShadowPainter(
+                    10,
+                    color: const Color(0x99999999),
+                    blurStrength: 0,
+                    radiusValue: 100,
+                  ),
+                  child: CustomProgressBar(
+                    startAt: 85,
+                    width: width * 0.8,
+                    height: 20,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: width,
+              height: height / 1.52,
+              child: Center(
+                child: SingleChildBox(
+                  width: width * 0.8,
+                  height: 75,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 3)),
+                  shadowPainter: RightShadowPainter(
+                    10,
+                    color: const Color(0x99999999),
+                    blurStrength: 0,
+                    radiusValue: 10,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomFabIcon(
+                        imagePath: CustomHelpers.cherries
+                            .elementAt(data["cerise"])["icon"]
+                            .toString(),
+                        size: 40,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0, left: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              CustomHelpers.cherries
+                                  .elementAt(data["cerise"])["name"]
+                                  .toString(),
+                              style: const TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            Text(
+                              data["whyCerise"],
+                              softWrap: true,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            )
+              ),
+            ),
           ]),
         ),
       ),

@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/widgets/fab_icon.dart';
 import 'package:talentz_mobile/widgets/shadow_painter.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function() onClick;
-  final bool isIcon;
-  final CustomFabIcon? icon;
-  final String text;
   final String heroTag;
-  final Color? color;
   final double width;
   final double height;
   final Decoration? decoration;
   final ShadowPainter? shadowPainter;
   final bool noAnimation;
+  final Widget? child;
 
   const CustomButton({
     super.key,
     required this.onClick,
-    required this.isIcon,
+    this.child,
     this.decoration,
-    this.icon,
-    this.color,
-    this.text = '',
     this.shadowPainter,
     required this.heroTag,
     this.width = 50,
@@ -41,7 +34,10 @@ class CustomButton extends StatelessWidget {
                 height: height,
               ),
             )
-          : SizedBox(width: width, height: height,),
+          : SizedBox(
+              width: width,
+              height: height,
+            ),
       SizedBox(
         width: width,
         height: height,
@@ -59,16 +55,10 @@ class CustomButton extends StatelessWidget {
             hoverElevation: noAnimation ? 0 : null,
             disabledElevation: noAnimation ? 0 : null,
             backgroundColor: Colors.transparent,
-            child: Center(
-                child: isIcon
-                    ? icon
-                    : Text(
-                        text,
-                        style: TextStyle(color: color),
-                      )),
+            child: Center(child: child),
           ),
         ),
-      )
+      ),
     ]);
   }
 }

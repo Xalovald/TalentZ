@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:talentz_mobile/widgets/pill_content.dart';
 
@@ -7,12 +6,16 @@ class CustomProgressBar extends StatelessWidget {
   final double startAt;
   final double height;
   final double width;
+  final bool showPercentage;
+  final Color color;
 
   const CustomProgressBar({
     super.key,
     this.startAt = 0,
     this.height = 50,
     this.width = 100,
+    this.showPercentage = true,
+    this.color = Colors.transparent,
   });
 
   @override
@@ -23,11 +26,12 @@ class CustomProgressBar extends StatelessWidget {
         Stack(children: [
           PillContent(
             height: height,
-            width: width * 0.7,
+            width: width * (showPercentage ? 0.7 : 0.9),
+            color: color,
           ),
           Container(
             height: height,
-            width: (width * 0.7) * (startAt / 100),
+            width: (width * (showPercentage ? 0.7 : 0.9)) * (startAt / 100),
             decoration: BoxDecoration(
               borderRadius: startAt == 100
                   ? BorderRadius.circular(100)
@@ -43,10 +47,13 @@ class CustomProgressBar extends StatelessWidget {
             ),
           ),
         ]),
-        Text(
-          "${startAt.ceil()}%",
-          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
-        )
+        showPercentage
+            ? Text(
+                "${startAt.ceil()}%",
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
+              )
+            : const SizedBox()
       ],
     );
   }

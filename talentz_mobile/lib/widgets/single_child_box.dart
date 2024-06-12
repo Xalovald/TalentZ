@@ -32,6 +32,7 @@ class SingleChildBox extends StatelessWidget {
           width: width,
           height: height,
           decoration: decoration,
+          child: child,
         )
       ],
     );

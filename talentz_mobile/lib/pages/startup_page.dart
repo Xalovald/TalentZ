@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:talentz_mobile/pages/login_view.dart';
+import 'package:talentz_mobile/pages/signup/select_signup_view.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 
 class StartupPage extends StatelessWidget {
@@ -11,8 +12,8 @@ class StartupPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [CustomColors.pink, CustomColors.orange, CustomColors.red])),
+          color: CustomColors.pastelPink,
+        ),
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,16 +23,16 @@ class StartupPage extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                   color: Colors.black,
-                  borderRadius: BorderRadius.vertical(top: Radius.elliptical(150, 27))
-              ),
-              height: MediaQuery.of(context).size.height * 0.6,
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.elliptical(150, 27))),
+              height: MediaQuery.of(context).size.height * 0.596,
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius:  BorderRadius.vertical(top: Radius.elliptical(150, 30))
-                  ),
+                      borderRadius: BorderRadius.vertical(
+                          top: Radius.elliptical(150, 30))),
                   height: MediaQuery.of(context).size.height * 0.59,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -48,8 +49,7 @@ class StartupPage extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: Colors.black,
-                            fontSize: 14
-                        ),
+                            fontSize: 14),
                       ),
                       SizedBox.fromSize(
                         size: const Size.fromHeight(160),
@@ -59,47 +59,49 @@ class StartupPage extends StatelessWidget {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => LoginView()))
                         },
-                        isIcon: false,
                         decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: const BorderRadius.all(Radius.circular(100)),
-                          gradient: const LinearGradient(
-                            colors: [CustomColors.orange, CustomColors.red],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight
-                          ),
-                          border: Border.all(
-                            width: 3
-                          )
-                        ),
-                        text: "Se connecter",
+                            shape: BoxShape.rectangle,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(100)),
+                            gradient: const LinearGradient(
+                                colors: [CustomColors.orange, CustomColors.red],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight),
+                            border: Border.all(width: 3)),
                         heroTag: "connexionButton",
-                        color: Colors.white,
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: 50,
+                        child: const Text(
+                          "Se connecter",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                       SizedBox.fromSize(
                         size: const Size.fromHeight(40),
                       ),
                       CustomButton(
                         onClick: () => {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LoginView()))
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const SelectSignupView(),
+                            ),
+                          ),
                         },
-                        isIcon: false,
                         decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: const BorderRadius.all(Radius.circular(100)),
-                          color: CustomColors.lightPink,
-                          border: Border.all(
-                            width: 3
-                          )
-                        ),
-                        text: "S'inscrire",
+                            shape: BoxShape.rectangle,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(100)),
+                            color: const Color(0xFFFFF6F7),
+                            border: Border.all(width: 3)),
                         heroTag: "inscriptionButton",
-                        color: CustomColors.red,
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: 50,
+                        child: const Text(
+                          "S'inscrire",
+                          style: TextStyle(
+                            color: CustomColors.red,
+                          ),
+                        ),
                       ),
                     ],
                   ),

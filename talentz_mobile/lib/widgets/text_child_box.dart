@@ -25,14 +25,13 @@ class CustomTextChildBox extends StatelessWidget {
           painter: shadowPainter,
           child: IntrinsicWidth(
             child: SizedBox(
-              height: height,
-              child: IntrinsicWidth(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: child,
-                ),
-              )
-            ),
+                height: height,
+                child: IntrinsicWidth(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: child,
+                  ),
+                )),
           ),
         ),
         Container(
@@ -41,9 +40,7 @@ class CustomTextChildBox extends StatelessWidget {
           child: IntrinsicWidth(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Center(
-                child: child
-              ),
+              child: Center(child: child),
             ),
           ),
         )

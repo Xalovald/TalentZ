@@ -11,4 +11,7 @@ class CustomColors {
   static const red = Color(0xFFFF0013);
   static const purple = Color(0xFF9747FF);
   static const gold = Color(0xFFF4c470);
+  static const blue = Color(0xFFDBEAFE);
+  static const yellow = Color(0xFFFFECBC);
+  static const lightYellow = Color(0xFFFBF4E5);
 }

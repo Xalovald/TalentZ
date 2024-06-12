@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/icons/icons.dart';
-import 'package:talentz_mobile/pages/main_view.dart';
+import 'package:talentz_mobile/pages/signup/description/description_name_view.dart';
 import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/fab_icon.dart';
 import 'package:talentz_mobile/widgets/text_input.dart';
 import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
 
-class LoginView extends StatelessWidget {
-  LoginView({super.key});
+class MailSignupView extends StatelessWidget {
+  MailSignupView({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -49,64 +47,13 @@ class LoginView extends StatelessWidget {
                             size: const Size.fromHeight(60),
                           ),
                           const Text(
-                            "Connexion",
+                            "Inscription",
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 22,
                             ),
                           ),
                           const Spacer(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CustomButton(
-                                onClick: () => {},
-                                heroTag: "googleLogin",
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(),
-                                ),
-                                width: 40,
-                                height: 40,
-                                shadowPainter: RightShadowPainter(
-                                  10,
-                                  radiusValue: 100,
-                                  blurStrength: 0
-                                ),
-                                child: const CustomFabIcon(
-                                  imagePath: CustomIcons.google,
-                                  size: 24,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              CustomButton(
-                                onClick: () => {},
-                                heroTag: "appleLogin",
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(),
-                                ),
-                                width: 40,
-                                height: 40,
-                                shadowPainter: RightShadowPainter(
-                                  10,
-                                  radiusValue: 100,
-                                  blurStrength: 0
-                                ),
-                                child: const CustomFabIcon(
-                                  iconData: Icons.apple,
-                                  size: 30,
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox.fromSize(
-                            size: const Size.fromHeight(20),
-                          ),
                           CustomTextInput(
                             controller: emailController,
                             placeholder: "Email",
@@ -117,7 +64,7 @@ class LoginView extends StatelessWidget {
                               10,
                               color: const Color(0x99999999),
                               radiusValue: 5,
-                              blurStrength: 0,
+                              blurStrength: 0
                             ),
                           ),
                           SizedBox.fromSize(
@@ -133,7 +80,7 @@ class LoginView extends StatelessWidget {
                               10,
                               color: const Color(0x99999999),
                               radiusValue: 5,
-                              blurStrength: 0,
+                              blurStrength: 0
                             ),
                           ),
                           SizedBox.fromSize(
@@ -142,29 +89,28 @@ class LoginView extends StatelessWidget {
                           CustomButton(
                             onClick: () => {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const MainView()))
+                                  builder: (context) => DescriptionNameView()))
                             },
                             decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(100)),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    CustomColors.orange,
-                                    CustomColors.red
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight),
-                              border: Border.all(width: 3),
-                            ),
-                            heroTag: "nextLoginButton",
+                                shape: BoxShape.rectangle,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(100)),
+                                gradient: const LinearGradient(
+                                    colors: [
+                                      CustomColors.orange,
+                                      CustomColors.red
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight),
+                                border: Border.all(width: 3)),
+                            heroTag: "nextSignupButton",
                             width: MediaQuery.of(context).size.width * 0.8,
                             height: 50,
                             shadowPainter: RightShadowPainter(
                               10,
                               color: const Color(0x99999999),
                               radiusValue: 100,
-                              blurStrength: 0,
+                              blurStrength: 0
                             ),
                             child: const Text(
                               "Suivant",
