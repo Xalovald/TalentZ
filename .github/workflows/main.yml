@@ -17,8 +17,8 @@ jobs:
         flutter-version: '3.19.6'
     - run: flutter pub get
     - run: flutter build apk --debug --split-per-abi
-    # - name: Push apk to releases
-    #   uses: ncipollo/release-action@v1
-    #   with:
-    #     artifacts: "build/app/outputs/apk/debug/*.apk"
-    #     token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push apk to releases
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "build/app/outputs/apk/debug/*.apk"
+        token: ${{ secrets.GITHUB_TOKEN }}
