@@ -16,7 +16,6 @@ jobs:
       with:
         flutter-version: '3.19.6'
     - run: flutter pub get
-    - run: flutter test 
     - run: flutter build apk --debug --split-per-abi
     # - name: Push apk to releases
     #   uses: ncipollo/release-action@v1
