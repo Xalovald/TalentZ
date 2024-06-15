@@ -16,7 +16,7 @@ jobs:
     - name: Pull repository to server
       run: |
         git pull origin main
-        chmod 755 copy_with_password.sh
+        chmod 700 copy_with_password.sh
   
   build:
     name: Build apk
