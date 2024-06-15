@@ -71,7 +71,12 @@ jobs:
       env:
         ROOT_PRIVATE_KEY: ${{ secrets.ROOT_PRIVATE_KEY}}
       run: |
-        sudo rsync -av --delete TalentZ /root/TalentZ
+        expect << EOF
+        spawn sudo rsync -av --delete . /root/TalentZ
+        expect "ass"
+        send "$ROOT_PRIVATE_KEY"
+        expect eof
+        EOF
     - name: Run Docker Compose on maind distant server
       run: |
         cd /root/TalentZ
