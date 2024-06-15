@@ -31,10 +31,6 @@ jobs:
     - name: Pull repository to server
       run: |
         git pull origin main
-  copy:
-    runs-on: self-hosted
-
-    steps:
     - name: Checkout repository
       uses : actions/checkout@v2
     
