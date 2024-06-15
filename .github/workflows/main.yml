@@ -16,7 +16,6 @@ jobs:
     - name: Pull repository to server
       run: |
         git pull origin main
-        chmod 700 copy_with_password.sh
   
   build:
     name: Build apk
@@ -71,7 +70,7 @@ jobs:
     - name: Copy files to distant server
       env:
         ROOT_PRIVATE_KEY: ${{ secrets.ROOT_PRIVATE_KEY}}
-      run: ./copy_with_password.sh $ROOT_PRIVATE_KEY
+      run: echo "$ROOT_PRIVATE_KEY" | sudo rsync -av --delete . /root/TalentZ
     - name: Run Docker Compose on maind distant server
       run: |
         cd /root/TalentZ
