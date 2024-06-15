@@ -57,7 +57,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: build
-        path: TalentZ/talentz_mobile/build/app/outputs/flutter-apk
+        path: talentz_mobile/build/app/outputs/flutter-apk
   
   copy:
     runs-on: self-hosted
@@ -69,25 +69,11 @@ jobs:
     
     - name: Copy files to distant server
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
+        ROOT_PRIVATE_KEY: ${{ secrets.ROOT_PRIVATE_KEY}}
       run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-
-        SERVER_USER="root"
-        SERVER_IP="31.207.38.42"
-        SERVER_PATH="/root/TalentZ"
-
-        ssh-keyscan -H $SERVER_IP >> ~/.ssh/known-hosts
-
-        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "rm -rf $SERVER_PATH"
-
-        rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa" ./ $SERVER_USER@$SERVER_IP:$SERVER_PATH
+        sudo rsync -av --delete TalentZ /root/TalentZ
     - name: Run Docker Compose on maind distant server
       run: |
-        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << EOF
-          cd /root/TalentZ
-          docker compose down
-          docker compose up --build
-        EOF
+        cd /root/TalentZ
+        docker compose down
+        docker compose up --build
