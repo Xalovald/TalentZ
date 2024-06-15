@@ -43,7 +43,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: build
-        path: build/app/outputs/flutter-apk/
+        path: talentz_mobile/build/app/outputs/flutter-apk/
   
   retrieve:
     runs-on: self-hosted
@@ -57,7 +57,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: build
-        path: TalentZ/talentz-mobile/build/app/outputs/flutter-apk
+        path: TalentZ/talentz_mobile/build/app/outputs/flutter-apk
   
   copy:
     runs-on: self-hosted
