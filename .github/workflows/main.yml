@@ -43,7 +43,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: build
-        path: TalentZ/talentz-mobile/build/android
+        path: /build/android
   
   retrieve:
     runs-on: self-hosted
