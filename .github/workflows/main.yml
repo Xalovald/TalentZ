@@ -71,7 +71,7 @@ jobs:
       env:
         ROOT_PRIVATE_KEY: ${{ secrets.ROOT_PRIVATE_KEY}}
       run: |
-        expect << EOF
+        /usr/bin/expect << EOF
         spawn sudo rsync -av --delete . /root/TalentZ
         expect "ass"
         send "$ROOT_PRIVATE_KEY"
