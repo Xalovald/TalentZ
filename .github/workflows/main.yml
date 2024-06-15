@@ -70,7 +70,7 @@ jobs:
     - name: Copy files to distant server
       env:
         ROOT_PRIVATE_KEY: ${{ secrets.ROOT_PRIVATE_KEY}}
-      run: echo "$ROOT_PRIVATE_KEY" | sudo rsync -av --delete . /root/TalentZ
+      run: echo "$ROOT_PRIVATE_KEY" | sudo -S rsync -av --delete . /root/TalentZ
     - name: Run Docker Compose on maind distant server
       run: |
         cd /root/TalentZ
