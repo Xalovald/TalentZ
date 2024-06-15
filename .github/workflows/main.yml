@@ -43,7 +43,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: build
-        path: /build/android
+        path: build/app/outputs/flutter-apk/
   
   retrieve:
     runs-on: self-hosted
