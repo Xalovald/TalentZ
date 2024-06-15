@@ -21,11 +21,6 @@ jobs:
         flutter-version: '3.19.6'
     - run: flutter pub get
     - run: flutter build apk --debug --split-per-abi
-    # - name: Push apk to releases
-    #   uses: ncipollo/release-action@v1
-    #   with:
-    #     artifacts: "build/app/outputs/apk/debug/*.apk"
-    #     token: ${{ secrets.GITHUB_TOKEN }}
   pull:
     runs-on: self-hosted
 
@@ -36,3 +31,34 @@ jobs:
     - name: Pull repository to server
       run: |
         git pull origin main
+  copy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses : actions/checkout@v2
+    
+    - name: Copy files to distant server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
+        SERVER_USER="root"
+        SERVER_IP="31.207.38.42"
+        SERVER_PATH="/root/TalentZ"
+
+        ssh-keyscan -H $SERVER_IP >> ~/.ssh/known-hosts
+
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "rm -rf $SERVER_PATH"
+
+        rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa" ./ $SERVER_USER@$SERVER_IP:$SERVER_PATH
+    - name: Run Docker Compose on maind distant server
+      run: |
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << EOF
+          cd /root/TalentZ
+          docker compose down
+          docker compose up --build
+        EOF
