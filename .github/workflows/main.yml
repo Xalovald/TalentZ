@@ -73,6 +73,9 @@ jobs:
     
     - name: Move artifacts to correct directory
       run: |
+        mkdir talentz_mobile/build
+        mkdir talentz_mobile/build/app
+        mkdir talentz_mobile/build/app/outputs
         mkdir talentz_mobile/build/app/outputs/flutter-apk
         mv /tmp/artifacts/* talentz_mobile/build/app/outputs/flutter-apk
 
