@@ -70,7 +70,25 @@ jobs:
     - name: Copy files to distant server
       env:
         ROOT_PRIVATE_KEY: ${{ secrets.ROOT_PRIVATE_KEY}}
-      run: echo "$ROOT_PRIVATE_KEY" | sudo -S rsync -av --delete . /root/TalentZ
+      run: |
+        expect -d  << EOD
+        set timeout 420
+        spawn rsync -av --delete "ssh -i ~/.ssh/id_rsa". root@31.207.38.42/root/TalentZ
+        expect {
+          "root@31.207.38.42's password:" {
+            send "$ROOT_PRIVATE_KEY"
+          }
+          timeout {
+            puts "Timed out waiting for password prompt"
+            exit 1
+          }
+          eof {
+            puts "EOF reached unexpectedly"
+            exit 1
+          }
+        }
+        expect eof
+        EOD
     - name: Run Docker Compose on maind distant server
       run: |
         cd /root/TalentZ
