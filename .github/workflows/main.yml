@@ -90,11 +90,47 @@ jobs:
         EOD
     - name: Docker compose down
       run: |
-        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        expect -d  << EOD
+        set timeout 420
+        spawn ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        expect {
+          "root@31.207.38.42's password:" {
+            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
+          }
+          timeout {
+            puts "Timed out waiting for password prompt"
+            exit 1
+          }
+          eof {
+            puts "EOF reached unexpectedly"
+            exit 1
+          }
+          eof
+        }
         cd TalentZ
         docker compose down
+        expect eof
+        EOD
     - name: Docker compose up --build
       run: |
-        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        expect -d  << EOD
+        set timeout 420
+        spawn ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        expect {
+          "root@31.207.38.42's password:" {
+            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
+          }
+          timeout {
+            puts "Timed out waiting for password prompt"
+            exit 1
+          }
+          eof {
+            puts "EOF reached unexpectedly"
+            exit 1
+          }
+          eof
+        }
         cd TalentZ
         docker compose up --build
+        expect eof
+        EOD
