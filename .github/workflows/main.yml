@@ -107,7 +107,7 @@ jobs:
           }
           eof
         }
-        cd ~/TalentZ
+        cd /root/TalentZ
         docker compose down
         expect eof
         EOD
@@ -130,7 +130,7 @@ jobs:
           }
           eof
         }
-        cd ~/TalentZ
+        cd /root/TalentZ
         docker compose up --build
         expect eof
         EOD
