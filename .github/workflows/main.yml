@@ -72,7 +72,9 @@ jobs:
         fetch-depth: 0
     
     - name: Move artifacts to correct directory
-      run: mv /tmp/artifacts/* talentz_mobile/build/app/outputs/flutter-apk
+      run: |
+        mkdir talentz_mobile/build/app/outputs/flutter-apk
+        mv /tmp/artifacts/* talentz_mobile/build/app/outputs/flutter-apk
 
     - name: Debug remote directory before rsync
       run: |
