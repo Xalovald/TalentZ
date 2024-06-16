@@ -58,6 +58,8 @@ jobs:
       with:
         name: build
         path: talentz_mobile/build/app/outputs/flutter-apk
+    - name: List directory after download
+      run: ls -a talentz_mobile
   
   copy:
     runs-on: self-hosted
