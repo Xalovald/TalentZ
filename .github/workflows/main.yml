@@ -109,7 +109,7 @@ jobs:
         }
         expect eof
         EOD
-    - name: Docker compose up --build
+    - name: Docker compose up --detach --build
       run: |
         expect -d  << EOD
         set timeout 420
