@@ -86,17 +86,13 @@ jobs:
           }
           eof
         }
-        spawn ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
-        expect {
-          ">" {
-            send "cd /root/TalentZ\r"
-            send "docker compose down"
-            expect ">"
-            send "docker compose up -d --build\r"
-            expect ">"
-            send "exit\r"
-          }
-          eof
-        }
         expect eof
         EOD
+    - name: Docker compose down
+      run: |
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42:~/TalentZ
+        docker compose down
+    - name: Docker compose up --build
+      run: |
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42:~/TalentZ
+        docker compose up --build
