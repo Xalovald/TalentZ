@@ -87,26 +87,9 @@ jobs:
         }
         expect eof
         EOD
-    - name: Run Docker Compose on maind distant server
+    - name: Docker compose down
       run: |
-        expect -d  << EOD
-        set timeout 420
-        spawn cd root@31.207.38.42:~/TalentZ
-        expect {
-          "root@31.207.38.42's password:" {
-            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
-          }
-          timeout {
-            puts "Timed out waiting for password prompt"
-            exit 1
-          }
-          eof {
-            puts "EOF reached unexpectedly"
-            exit 1
-          }
-        }
-        expect eof
-        EOD
-        
-        docker compose down
-        docker compose up --build
+        ssh -i ~/.ssh/id_rsa -o StrictHostkeyChecking=no root@31.207.38.42 "cd /root/TalentZ && docker compose down"
+    - name: Docker compose up --build
+      run: |
+        ssh -i ~/.ssh/id_rsa -o StrictHostkeyChecking=no root@31.207.38.42 "cd /root/TalentZ && docker compose up --build"
