@@ -71,7 +71,7 @@ jobs:
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn rsync -av --delete "ssh -i ~/.ssh/id_rsa" . root@31.207.38.42:~/TalentZ
+        spawn rsync -av --delete --exclude:'build/' "ssh -i ~/.ssh/id_rsa" . root@31.207.38.42:~/TalentZ
         expect {
           "root@31.207.38.42's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
