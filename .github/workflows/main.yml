@@ -71,23 +71,13 @@ jobs:
 
     - name: Debug remote directory before rsync
       run: |
-        expect -d  << EOD
-        set timeout 420
-        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && ls -a talentz_mobile/"
-        expect {
-          "root@31.207.38.42's password:" {
-            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
-          }
-          eof
-        }
-        expect eof
-        EOD
+        ls -a talentz_mobile
     
     - name: Copy files to distant server
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn rsync -av "ssh -i ~/.ssh/id_rsa" . root@31.207.38.42:~/TalentZ
+        spawn rsync -av --delete --exclude=./build/ -e "ssh -i ~/.ssh/id_rsa" . root@31.207.38.42:~/TalentZ
         expect {
           "root@31.207.38.42's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
@@ -98,16 +88,7 @@ jobs:
         EOD
     - name: Debug remote directory after rsync
       run: |
-        expect -d  << EOD
-        set timeout 420
-        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && ls -a talentz_mobile/"
-        expect {
-          "root@31.207.38.42's password:" {
-            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
-          }
-        }
-        expect eof
-        EOD
+        ls -a talentz_mobile
     - name: Docker compose down
       run: |
         expect -d  << EOD
