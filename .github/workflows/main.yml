@@ -90,9 +90,11 @@ jobs:
         EOD
     - name: Docker compose down
       run: |
-        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42:~/TalentZ
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        cd TalentZ
         docker compose down
     - name: Docker compose up --build
       run: |
-        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42:~/TalentZ
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        cd TalentZ
         docker compose up --build
