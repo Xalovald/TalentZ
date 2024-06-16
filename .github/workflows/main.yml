@@ -92,7 +92,7 @@ jobs:
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42
         expect {
           "root@31.207.38.42's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
@@ -115,7 +115,7 @@ jobs:
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@31.207.38.42
+        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42
         expect {
           "root@31.207.38.42's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
