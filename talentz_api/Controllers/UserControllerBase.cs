@@ -11,8 +11,8 @@ namespace talentz_api.Controllers
         {
             List<SqlStatement> queryStatementQualites = [
                     new SelectStatement("qualites", ["qualites.id","qualites.nom", new AsStatement("users.id","user_id").ToString()]),
-                    new JoinStatement("users_qualites", "left", new OnStatement("qualites.id", "=", "users_qualites.id_qualite")),
-                    new JoinStatement("users", "inner", new OnStatement("users_qualites.id_user", "=", "users.id")),
+                    new JoinStatement("inverted_index", "left", new OnStatement("qualites.id", "=", "inverted_index.qualite_id")),
+                    new JoinStatement("users", "inner", new OnStatement("inverted_index.user_id", "=", "users.id")),
                     new WhereStatement(statements: ["users.id","=",((int)row["id"]).ToString()])
                 ];
             SqlQuery sqlQuery = new(conn, queryStatementQualites, "qualites");
@@ -31,6 +31,7 @@ namespace talentz_api.Controllers
             }
             return dataQualites;
         }
+
 
         public List<int> GetIds()
         {

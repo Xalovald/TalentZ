@@ -3,6 +3,7 @@ using System.Data;
 using talentz_api.Models;
 using talentz_api.Sql.Statements;
 using talentz_api.Sql;
+using Xunit.Abstractions;
 
 namespace talentz_api.Controllers
 {
@@ -36,6 +37,33 @@ namespace talentz_api.Controllers
             }
 
             return qualites;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Qualite>))]
+        public Qualite GetOne(string term)
+        {
+            List<SqlStatement> sqlStatements = [
+                new SelectStatement("qualites", ["*"]),
+                new WhereStatement(["qualites.nom", "=", term]),
+            ];
+
+            SqlQuery query = new(conn, sqlStatements, "qualites");
+
+            query.ExecuteGet();
+
+            List<Qualite> qualites = [];
+
+            foreach (DataRow row in query.GetTable().Rows)
+            {
+                qualites.Add(new Qualite()
+                {
+                    Id = (int)row["id"],
+                    Nom = (string)row["nom"]
+                });
+            }
+
+            return qualites[0];
         }
 
     }

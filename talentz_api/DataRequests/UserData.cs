@@ -33,6 +33,9 @@ namespace talentz_api.JsonData
 
         [JsonProperty("whyCerise")]
         public required string WhyCerise { get; set; }
+
+        [JsonProperty("qualites")]
+        public required List<string> Qualites {  get; set; }
     }
 
     public class UserEntrepriseData
@@ -54,5 +57,8 @@ namespace talentz_api.JsonData
 
         [JsonProperty("password")]
         public required string Password { get; set; }
+
+        [JsonProperty("qualites")]
+        public required List<string> Qualites { get; set; }
     }
 }

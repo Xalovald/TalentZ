@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Diagnostics;
 using talentz_api.Accessing;
 using talentz_api.DataRequests;
 using talentz_api.Helpers;
@@ -218,6 +219,7 @@ namespace talentz_api.Controllers
                 ])
             ];
 
+
             SqlQuery sqlQuery = new(conn, sqlStatements, "users", [
                 new PreparedParameter("@lastName", data.LastName),
                 new PreparedParameter("@firstName", data.FirstName),
@@ -232,6 +234,56 @@ namespace talentz_api.Controllers
             ]);
 
             if(execute) sqlQuery.ExecuteNonQuery();
+
+            List<SqlStatement> insertStatements = [];
+            List<PreparedParameter> preparedParameters = [];
+            QualitesController qualitesController = new QualitesController();
+            int insertId = 0;
+            foreach(string _qualite in data.Qualites)
+            {
+                if(insertId == 0)
+                {
+                    insertStatements.Add(
+                        new ValuesStatement([
+                            "@userId",
+                            "@qualiteId"
+                        ])
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@userId", GetIds().Last())
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@qualiteId", qualitesController.GetOne(new TypedValue<string>(_qualite).ToString()).Id)
+                    );
+                }
+                else
+                {
+                    insertStatements.Add(
+                        new InsertComma([
+                            "@userId"+insertId,
+                            "@qualiteId"+insertId
+                        ])
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@userId"+insertId, GetIds().Last())
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@qualiteId"+insertId, qualitesController.GetOne(new TypedValue<string>(_qualite).ToString()).Id)
+                    );;
+
+                }
+                insertId++;
+            }
+            List<SqlStatement> sqlInvIdStatements = [
+                new InsertStatement("inverted_index", ["user_id", "qualite_id"]),
+                ..insertStatements
+            ];
+
+
+
+            SqlQuery sqlQueryInvId = new(conn, sqlInvIdStatements, "inverted_index", preparedParameters);
+
+            if (execute) sqlQueryInvId.ExecuteNonQuery();
 
             Response.StatusCode = StatusCodes.Status201Created;
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().Last() + 1}";
