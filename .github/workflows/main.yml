@@ -106,7 +106,7 @@ jobs:
         set timeout 420
         spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && docker compose up --detach --build"
         expect {
-          "root@31.207.38.42's password:" {
+          "root@213.156.132.78's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
           }
           eof
