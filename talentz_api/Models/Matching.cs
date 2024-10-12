@@ -3,11 +3,9 @@
     public class Matching : SqlModel
     {
         public override int Id { get; set; }
-
         public int? IdEntreprise { get; set; }
-
+        public List<Qualite>? CommonQualites { get; set; }
+        public int? Score { get; set; }
         public int? IdCandidat { get; set; }
-
-        public DateTime? Date { get; set; }
     }
 }

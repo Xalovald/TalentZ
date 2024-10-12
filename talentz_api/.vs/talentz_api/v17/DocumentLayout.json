@@ -3,52 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\calendriercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\calendriercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\generalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\generalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\messageriecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\messageriecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\sql\\sqlquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\sqlquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\qualitescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\qualitescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\usercontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\usercontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\sql\\statements\\wherestatement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\statements\\wherestatement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\sql\\statements\\typedvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\statements\\typedvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\sql\\statements\\valuesstatement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\statements\\valuesstatement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\sql\\statements\\insertcomma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\statements\\insertcomma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\datarequests\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\guili\\onedrive\\bureau\\talentz\\talentz_api\\controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,148 +50,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LoginData.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\DataRequests\\LoginData.cs",
-              "RelativeDocumentMoniker": "DataRequests\\LoginData.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\DataRequests\\LoginData.cs",
-              "RelativeToolTip": "DataRequests\\LoginData.cs",
+              "DocumentIndex": 0,
+              "Title": "CalendrierController.cs",
+              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\CalendrierController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CalendrierController.cs",
+              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\CalendrierController.cs",
+              "RelativeToolTip": "Controllers\\CalendrierController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T21:25:21.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserControllerBase.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\UserControllerBase.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserControllerBase.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\UserControllerBase.cs",
-              "RelativeToolTip": "Controllers\\UserControllerBase.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T19:06:48.405Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\.env",
-              "RelativeDocumentMoniker": ".env",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\.env",
-              "RelativeToolTip": ".env",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-07T19:03:57.203Z"
+              "WhenOpened": "2024-10-12T16:12:32.117Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SqlQuery.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\SqlQuery.cs",
-              "RelativeDocumentMoniker": "Sql\\SqlQuery.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\SqlQuery.cs",
-              "RelativeToolTip": "Sql\\SqlQuery.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAlwD8AAAAaAAAA",
+              "Title": "ContactController.cs",
+              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\ContactController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContactController.cs",
+              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\ContactController.cs",
+              "RelativeToolTip": "Controllers\\ContactController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T19:02:12.26Z"
+              "WhenOpened": "2024-10-12T16:12:28.881Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "QualitesController.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\QualitesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\QualitesController.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\QualitesController.cs",
-              "RelativeToolTip": "Controllers\\QualitesController.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAYwC8AAABAAAAA",
+              "Title": "GeneralController.cs",
+              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\GeneralController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GeneralController.cs",
+              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\GeneralController.cs",
+              "RelativeToolTip": "Controllers\\GeneralController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T18:40:51.766Z"
+              "WhenOpened": "2024-10-12T16:12:26.213Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserData.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\DataRequests\\UserData.cs",
-              "RelativeDocumentMoniker": "DataRequests\\UserData.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\DataRequests\\UserData.cs",
-              "RelativeToolTip": "DataRequests\\UserData.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAgwCQAAAAgAAAA",
+              "DocumentIndex": 3,
+              "Title": "MessagerieController.cs",
+              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\MessagerieController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessagerieController.cs",
+              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\MessagerieController.cs",
+              "RelativeToolTip": "Controllers\\MessagerieController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T16:53:43.106Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ValuesStatement.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\ValuesStatement.cs",
-              "RelativeDocumentMoniker": "Sql\\Statements\\ValuesStatement.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\ValuesStatement.cs",
-              "RelativeToolTip": "Sql\\Statements\\ValuesStatement.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAgwAwAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T16:27:26.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "InsertComma.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\InsertComma.cs",
-              "RelativeDocumentMoniker": "Sql\\Statements\\InsertComma.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\InsertComma.cs",
-              "RelativeToolTip": "Sql\\Statements\\InsertComma.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAQwAIAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T16:25:45.885Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAGkBAAAAAAAAAAAQwHMBAABoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T12:29:56.077Z",
+              "WhenOpened": "2024-10-12T16:12:21.65Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAALsAAAAAAAAAAAAQwMMAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T21:25:29.364Z"
+              "WhenOpened": "2024-10-12T16:03:18.819Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "WhereStatement.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\WhereStatement.cs",
-              "RelativeDocumentMoniker": "Sql\\Statements\\WhereStatement.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\WhereStatement.cs",
-              "RelativeToolTip": "Sql\\Statements\\WhereStatement.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwAsAAAAZAAAA",
+              "Title": "MatchingController.cs",
+              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\MatchingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MatchingController.cs",
+              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Controllers\\MatchingController.cs",
+              "RelativeToolTip": "Controllers\\MatchingController.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAQwEQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T21:33:24.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TypedValue.cs",
-              "DocumentMoniker": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\TypedValue.cs",
-              "RelativeDocumentMoniker": "Sql\\Statements\\TypedValue.cs",
-              "ToolTip": "C:\\Users\\guili\\OneDrive\\Bureau\\TalentZ\\talentz_api\\Sql\\Statements\\TypedValue.cs",
-              "RelativeToolTip": "Sql\\Statements\\TypedValue.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T21:41:37.84Z"
+              "WhenOpened": "2024-10-12T15:21:39.986Z",
+              "EditorCaption": ""
             }
           ]
         },
