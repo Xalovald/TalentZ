@@ -289,6 +289,48 @@ namespace talentz_api.Controllers
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().Last() + 1}";
         }
 
+        //Get candidat
+        [HttpGet("candidats")]
+        public User GetCandidats()
+        {
+            List<SqlStatement> queryStatementsUsers = [
+                new SelectStatement("users", ["*"]),
+        new WhereStatement(["users.role", "=", new TypedValue<string>("candidat").ToString()]),
+        new LimitStatement(1)
+            ];
+
+            SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users");
+
+            sqlQueryUsers.ExecuteGet();
+
+            List<User> dataUser = [];
+
+            foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
+            {
+                List<Qualite> dataQualites = GetQualites(row);
+                List<string> validRoles = ["candidat", "admin", "superadmin"];
+                dataUser.Add(new User()
+                {
+                    Id = (int)row["id"],
+                    LastName = ShowIfRoles(validRoles, (string)row["role"], (string)row["nom"]),
+                    FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
+                    CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
+                    DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
+                    Cerise = ShowIfRoles(validRoles, (string)row["role"], (int)row["cerise"]),
+                    WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
+                    Telephone = (string)row["telephone"],
+                    Email = (string)row["email"],
+                    City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
+                    Address = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["adresse"])!),
+                    Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
+                    Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
+                    Role = (string)row["role"],
+                    Qualites = dataQualites
+                });
+            }
+            return dataUser[0];
+        }
+
         [HttpPost("entreprises")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
         public void CreateEntrepriseUser([FromBody] UserEntrepriseData data, bool execute = true)
@@ -320,6 +362,48 @@ namespace talentz_api.Controllers
 
             Response.StatusCode = StatusCodes.Status201Created;
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().Last() + 1}";
+        }
+
+        //Get entreprise
+        [HttpGet("entreprises")]
+        public User GetEntreprises()
+        {
+            List<SqlStatement> queryStatementsUsers = [
+                new SelectStatement("users", ["*"]),
+                new WhereStatement(["users.role", "=", new TypedValue<string>("entreprise").ToString()]),
+                new LimitStatement(1)
+            ];
+
+            SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users");
+
+            sqlQueryUsers.ExecuteGet();
+
+            List<User> dataUser = [];
+
+            foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
+            {
+                List<Qualite> dataQualites = GetQualites(row);
+                List<string> validRoles = ["entreprise", "admin", "superadmin"];
+                dataUser.Add(new User()
+                {
+                    Id = (int)row["id"],
+                    LastName = ShowIfRoles(validRoles, (string)row["role"], (string)row["nom"]),
+                    FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
+                    CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
+                    DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
+                    Cerise = ShowIfRoles(validRoles, (string)row["role"], (int)row["cerise"]),
+                    WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
+                    Telephone = (string)row["telephone"],
+                    Email = (string)row["email"],
+                    City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
+                    Address = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["adresse"])!),
+                    Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
+                    Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
+                    Role = (string)row["role"],
+                    Qualites = dataQualites
+                });
+            }
+            return dataUser[0];
         }
 
         [HttpPatch("{Id}")]
