@@ -158,17 +158,7 @@ namespace talentz_api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public User? GetOne(int userId)
         {
-            List<SqlStatement> queryStatementsUsers = [
-                new SelectStatement("users", ["*"]),
-                new WhereStatement(["users.id", "=", "@userId"]),
-                new LimitStatement(1)
-            ];
-
-            SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users", [
-                new PreparedParameter("@userId", userId)
-            ]);
-
-            sqlQueryUsers.ExecuteGet();
+            SqlQuery sqlQueryUsers = CustomQueries.QueryOneUser(userId, conn);
 
             User? dataUser = null;
 
@@ -293,14 +283,7 @@ namespace talentz_api.Controllers
         [HttpGet("candidats")]
         public List<User> GetCandidats()
         {
-            List<SqlStatement> queryStatementsUsers = [
-                new SelectStatement("users", ["*"]),
-                new WhereStatement(["users.role", "=", new TypedValue<string>("candidat").ToString()])
-            ];
-
-            SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users");
-
-            sqlQueryUsers.ExecuteGet();
+            SqlQuery sqlQueryUsers = CustomQueries.QueryRoleUser("candidat", conn);
 
             List<User> dataUser = [];
 
@@ -367,14 +350,7 @@ namespace talentz_api.Controllers
         [HttpGet("entreprises")]
         public List<User> GetEntreprises()
         {
-            List<SqlStatement> queryStatementsUsers = [
-                new SelectStatement("users", ["*"]),
-                new WhereStatement(["users.role", "=", new TypedValue<string>("entreprise").ToString()])
-            ];
-
-            SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users");
-
-            sqlQueryUsers.ExecuteGet();
+            SqlQuery sqlQueryUsers = CustomQueries.QueryRoleUser("entreprise", conn);
 
             List<User> dataUser = [];
 

@@ -14,25 +14,28 @@ namespace talentz_api.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [Route("/api/matching")]
-    public class MatchingController : GeneralController
+    public class MatchingController : UserControllerBase
     {
         [HttpGet]
         public List<Matching> MatchUserWithEnterprises(int user_id)
         {
             var results = new List<Matching>();
 
-            var userController = new UserController();
+            SqlQuery sqlQueryUsers = CustomQueries.QueryOneUser(user_id, conn);
 
-            var user = userController.GetOne(user_id);
+            DataRow row = sqlQueryUsers.GetTable().Rows[0];
 
-            if(user.Role == "candidat")
+            List<Qualite> dataQualites = GetQualites(row);
+
+            if (row["role"] == "candidat")
             {
-                var entreprises = userController.GetEntreprises();
+                var entreprises = CustomQueries.QueryRoleUser("entreprise", conn);
 
-                foreach (var enterprise in entreprises)
+                foreach (DataRow row_entreprise in entreprises.GetTable().Rows)
                 {
+                    List<Qualite> dataQualitesEntreprise = GetQualites(row_entreprise);
                     // Find common qualities
-                    var commonQualities = user.Qualites!.Intersect(enterprise.Qualites!).ToList();
+                    var commonQualities = dataQualites.Intersect(dataQualitesEntreprise).ToList();
 
                     // Calculate the score (number of common qualities)
                     var score = commonQualities.Count;
@@ -40,20 +43,21 @@ namespace talentz_api.Controllers
                     // Add the result to the list
                     results.Add(new Matching
                     {
-                        IdEntreprise = enterprise.Id,
+                        IdEntreprise = (int)row_entreprise["id"],
                         Score = score,
                         CommonQualites = commonQualities
                     });
                 }
             }
-            else if(user.Role == "entreprise")
+            else if (row["role"] == "entreprise")
             {
-                var candidats = userController.GetCandidats();
+                var candidats = CustomQueries.QueryRoleUser("candidat", conn);
 
-                foreach (var candidat in candidats)
+                foreach (DataRow row_candidat in candidats.GetTable().Rows)
                 {
+                    List<Qualite> dataQualitesCandidat = GetQualites(row_candidat);
                     // Find common qualities
-                    var commonQualities = user.Qualites!.Intersect(candidat.Qualites!).ToList();
+                    var commonQualities = dataQualites.Intersect(dataQualitesCandidat).ToList();
 
                     // Calculate the score (number of common qualities)
                     var score = commonQualities.Count;
@@ -61,7 +65,7 @@ namespace talentz_api.Controllers
                     // Add the result to the list
                     results.Add(new Matching
                     {
-                        IdCandidat = candidat.Id,
+                        IdCandidat = (int)row_candidat["id"],
                         Score = score,
                         CommonQualites = commonQualities
                     });
