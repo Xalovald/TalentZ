@@ -156,7 +156,7 @@ namespace talentz_api.Controllers
         [HttpGet("{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public User GetOne(int userId)
+        public User? GetOne(int userId)
         {
             List<SqlStatement> queryStatementsUsers = [
                 new SelectStatement("users", ["*"]),
@@ -170,13 +170,13 @@ namespace talentz_api.Controllers
 
             sqlQueryUsers.ExecuteGet();
 
-            List<User> dataUser = [];
+            User? dataUser = null;
 
             foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
             {
                 List<Qualite> dataQualites = GetQualites(row);
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
-                dataUser.Add(new User()
+                dataUser = new User()
                 {
                     Id = (int)row["id"],
                     LastName = ShowIfRoles(validRoles, (string)row["role"], (string)row["nom"]),
@@ -193,9 +193,9 @@ namespace talentz_api.Controllers
                     Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
                     Role = (string)row["role"],
                     Qualites = dataQualites
-                });
+                };
             }
-            return dataUser[0];
+            return dataUser;
         }
 
         [HttpPost("candidats")]
