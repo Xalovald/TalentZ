@@ -295,8 +295,7 @@ namespace talentz_api.Controllers
         {
             List<SqlStatement> queryStatementsUsers = [
                 new SelectStatement("users", ["*"]),
-        new WhereStatement(["users.role", "=", new TypedValue<string>("candidat").ToString()]),
-        new LimitStatement(1)
+                new WhereStatement(["users.role", "=", new TypedValue<string>("candidat").ToString()])
             ];
 
             SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users");
@@ -370,8 +369,7 @@ namespace talentz_api.Controllers
         {
             List<SqlStatement> queryStatementsUsers = [
                 new SelectStatement("users", ["*"]),
-                new WhereStatement(["users.role", "=", new TypedValue<string>("entreprise").ToString()]),
-                new LimitStatement(1)
+                new WhereStatement(["users.role", "=", new TypedValue<string>("entreprise").ToString()])
             ];
 
             SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users");
