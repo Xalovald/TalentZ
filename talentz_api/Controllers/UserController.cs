@@ -291,7 +291,7 @@ namespace talentz_api.Controllers
 
         //Get candidat
         [HttpGet("candidats")]
-        public User GetCandidats()
+        public List<User> GetCandidats()
         {
             List<SqlStatement> queryStatementsUsers = [
                 new SelectStatement("users", ["*"]),
@@ -328,7 +328,7 @@ namespace talentz_api.Controllers
                     Qualites = dataQualites
                 });
             }
-            return dataUser[0];
+            return dataUser;
         }
 
         [HttpPost("entreprises")]
@@ -366,7 +366,7 @@ namespace talentz_api.Controllers
 
         //Get entreprise
         [HttpGet("entreprises")]
-        public User GetEntreprises()
+        public List<User> GetEntreprises()
         {
             List<SqlStatement> queryStatementsUsers = [
                 new SelectStatement("users", ["*"]),
@@ -403,7 +403,7 @@ namespace talentz_api.Controllers
                     Qualites = dataQualites
                 });
             }
-            return dataUser[0];
+            return dataUser;
         }
 
         [HttpPatch("{Id}")]
