@@ -16,6 +16,7 @@ namespace talentz_api.Controllers
     [Route("/api/matching")]
     public class MatchingController : GeneralController
     {
+        [HttpGet]
         public List<Matching> MatchUserWithEnterprises(int user_id)
         {
             var results = new List<Matching>();
