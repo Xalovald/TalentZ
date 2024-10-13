@@ -17,17 +17,17 @@ namespace talentz_api.Controllers
     public class MatchingController : UserControllerBase
     {
         [HttpGet]
-        public List<Matching> MatchUserWithEnterprises(int user_id)
+        public List<Matching> MatchUserWithEnterprises(int userId)
         {
             var results = new List<Matching>();
 
-            SqlQuery sqlQueryUsers = CustomQueries.QueryOneUser(user_id, conn);
+            SqlQuery sqlQueryUsers = CustomQueries.QueryOneUser(userId, conn);
 
             DataRow row = sqlQueryUsers.GetTable().Rows[0];
 
             List<Qualite> dataQualites = GetQualites(row);
 
-            if (row["role"] == "candidat")
+            if ((string)row["role"] == "candidat")
             {
                 var entreprises = CustomQueries.QueryRoleUser("entreprise", conn);
 
@@ -49,7 +49,7 @@ namespace talentz_api.Controllers
                     });
                 }
             }
-            else if (row["role"] == "entreprise")
+            else if ((string)row["role"] == "entreprise")
             {
                 var candidats = CustomQueries.QueryRoleUser("candidat", conn);
 

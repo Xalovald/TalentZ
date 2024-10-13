@@ -8,7 +8,7 @@ namespace talentz_api.Helpers
 {
     public static class CustomQueries
     {
-        public static SqlQuery QueryOneUser(int user_id, MySqlConnection conn)
+        public static SqlQuery QueryOneUser(int userId, MySqlConnection conn)
         {
             List<SqlStatement> queryStatementsUsers = [
                 new SelectStatement("users", ["*"]),
@@ -17,7 +17,7 @@ namespace talentz_api.Helpers
             ];
 
             SqlQuery sqlQueryUsers = new(conn, queryStatementsUsers, "users", [
-                new PreparedParameter("@userId", user_id)
+                new PreparedParameter("@userId", userId)
             ]);
 
             sqlQueryUsers.ExecuteGet();
