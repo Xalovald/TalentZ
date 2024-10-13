@@ -17,7 +17,7 @@ namespace talentz_api.Controllers
     public class MatchingController : UserControllerBase
     {
         [HttpGet]
-        public List<Matching> MatchUserWithEnterprises(int userId)
+        public List<Matching> MatchUserWithEnterprises([FromBody] int userId)
         {
             var results = new List<Matching>();
 
