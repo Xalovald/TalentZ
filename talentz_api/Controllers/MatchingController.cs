@@ -17,11 +17,11 @@ namespace talentz_api.Controllers
     public class MatchingController : UserControllerBase
     {
         [HttpGet]
-        public List<Matching> MatchUserWithEnterprises([FromBody] int userId)
+        public List<Matching> MatchUserWithEnterprises([FromBody] MatchingData matchingData)
         {
             var results = new List<Matching>();
 
-            SqlQuery sqlQueryUsers = CustomQueries.QueryOneUser(userId, conn);
+            SqlQuery sqlQueryUsers = CustomQueries.QueryOneUser(matchingData.IdUser, conn);
 
             DataRow row = sqlQueryUsers.GetTable().Rows[0];
 
