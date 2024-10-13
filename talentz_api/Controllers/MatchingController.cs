@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Mysqlx.Expr;
 using System.Data;
 using talentz_api.Accessing;
 using talentz_api.DataRequests;
@@ -35,17 +36,26 @@ namespace talentz_api.Controllers
                 {
                     List<Qualite> dataQualitesEntreprise = GetQualites(row_entreprise);
                     // Find common qualities
-                    var commonQualities = dataQualites.Intersect(dataQualitesEntreprise).ToList();
+                    var commonQualites = new List<Qualite>();
+                    dataQualites.ConvertAll(new Converter<Qualite, Qualite>(
+                        qualite => {
+                            if (dataQualitesEntreprise.Exists(pre => pre.Id == qualite.Id))
+                            {
+                                commonQualites.Add(qualite);
+                            }
+                            return qualite;
+                            }
+                        ));
 
                     // Calculate the score (number of common qualities)
-                    var score = commonQualities.Count;
+                    var score = commonQualites.Count;
 
                     // Add the result to the list
                     results.Add(new Matching
                     {
                         IdEntreprise = (int)row_entreprise["id"],
                         Score = score,
-                        CommonQualites = commonQualities
+                        CommonQualites = commonQualites
                     });
                 }
             }
