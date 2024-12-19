@@ -40,7 +40,7 @@ class CustomProgressBar extends StatelessWidget {
                     ),
               gradient: const LinearGradient(
                 colors: [
-                  CustomColors.orange,
+                  CustomColors.peach,
                   CustomColors.red,
                 ],
               ),

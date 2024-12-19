@@ -33,7 +33,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Container(
-          decoration: const BoxDecoration(color: CustomColors.pastelPink),
+          decoration: const BoxDecoration(color: CustomColors.pink),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -109,7 +109,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
                                   heroTag: "CDIButton",
                                   decoration: BoxDecoration(
                                     color: activatedCDI
-                                        ? CustomColors.pastelPink
+                                        ? CustomColors.pink
                                         : Colors.white,
                                     border: Border.all(width: 3),
                                     borderRadius: BorderRadius.circular(5),
@@ -144,7 +144,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
                                   heroTag: "CDDButton",
                                   decoration: BoxDecoration(
                                     color: activatedCDD
-                                        ? CustomColors.pastelPink
+                                        ? CustomColors.pink
                                         : Colors.white,
                                     border: Border.all(width: 3),
                                     borderRadius: BorderRadius.circular(5),
@@ -180,7 +180,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
                                   heroTag: "ApprentissageButton",
                                   decoration: BoxDecoration(
                                     color: activatedApprentissage
-                                        ? CustomColors.pastelPink
+                                        ? CustomColors.pink
                                         : Colors.white,
                                     border: Border.all(width: 3),
                                     borderRadius: BorderRadius.circular(5),
@@ -215,7 +215,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
                                   heroTag: "TPartielButton",
                                   decoration: BoxDecoration(
                                     color: activatedTPartiel
-                                        ? CustomColors.pastelPink
+                                        ? CustomColors.pink
                                         : Colors.white,
                                     border: Border.all(width: 3),
                                     borderRadius: BorderRadius.circular(5),
@@ -254,7 +254,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
                                   ),
                                   gradient: const LinearGradient(
                                     colors: [
-                                      CustomColors.orange,
+                                      CustomColors.peach,
                                       CustomColors.red,
                                     ],
                                     begin: Alignment.topLeft,

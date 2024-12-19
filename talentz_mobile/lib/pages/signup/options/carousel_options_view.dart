@@ -108,9 +108,11 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
                       cherry = CustomHelpers.cherries.elementAt(index);
                       currentIndex = index;
                     }),
-                    slideIndicator: const CircularSlideIndicator(
-                      currentIndicatorColor: CustomColors.red,
-                      indicatorBackgroundColor: Color(0x66999999),
+                    slideIndicator: CircularSlideIndicator(
+                      slideIndicatorOptions: const SlideIndicatorOptions(
+                        currentIndicatorColor: CustomColors.palered,
+                        indicatorBackgroundColor: Color(0x66999999),
+                      ),
                     ),
                   ),
                 ),
@@ -137,7 +139,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
                         child: const CustomFabIcon(
                           iconData: Icons.chevron_left,
                           size: 20,
-                          color: CustomColors.gold,
+                          color: CustomColors.lightYellow,
                         ),
                       ),
                       CustomButton(
@@ -149,7 +151,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
                           borderRadius: BorderRadius.circular(100),
                           gradient: const LinearGradient(
                             colors: [
-                              CustomColors.orange,
+                              CustomColors.peach,
                               CustomColors.red,
                             ],
                           ),
@@ -185,7 +187,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
                   borderRadius: BorderRadius.circular(100),
                   gradient: const LinearGradient(
                     colors: [
-                      CustomColors.orange,
+                      CustomColors.peach,
                       CustomColors.red,
                     ],
                   ),

@@ -79,8 +79,8 @@ class SwipeCard extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          CustomColors.pinkish,
-                          CustomColors.orange,
+                          CustomColors.pink,
+                          CustomColors.peach,
                           CustomColors.red
                         ],
                       ),

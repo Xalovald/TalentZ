@@ -20,21 +20,21 @@ class MainView extends StatelessWidget {
                 color: Colors.transparent,
                 child: TabBar(
                     labelPadding: EdgeInsets.zero,
-                    indicatorColor: CustomColors.purple,
+                    indicatorColor: CustomColors.palered,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicatorPadding: const EdgeInsets.all(12),
                     indicator: UnderlineTabIndicator(
                         borderRadius: BorderRadius.circular(100.0),
                         borderSide: const BorderSide(
-                            width: 42.0,
-                            color: CustomColors.purple,
+                          width: 42.0,
+                          color: CustomColors.palered,
                         ),
                         insets: const EdgeInsets.only(bottom: -3)),
                     dividerColor: Colors.transparent,
                     overlayColor: MaterialStateProperty.all(Colors.transparent),
                     automaticIndicatorColorAdjustment: false,
                     labelColor: CustomColors.white,
-                    unselectedLabelColor: CustomColors.purple,
+                    unselectedLabelColor: CustomColors.palered,
                     tabs: CustomRoutes.routeIcons
                         .map((icon) => SizedBox(
                               width: double.infinity,

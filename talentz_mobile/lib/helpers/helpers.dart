@@ -5,7 +5,7 @@ class CustomHelpers {
     {
       "name": "Panier de cerises",
       "icon": "lib/assets/images/cherry_basket.png",
-      "color": CustomColors.pastelPink,
+      "color": CustomColors.pink,
     },
     {
       "name": "Cerise gelée",
@@ -15,7 +15,7 @@ class CustomHelpers {
     {
       "name": "Cerise explosive",
       "icon": "lib/assets/images/bomb_cherry.png",
-      "color": CustomColors.yellow,
+      "color": CustomColors.lightYellow,
     }
   ];
 }

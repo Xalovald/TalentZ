@@ -55,7 +55,7 @@ class _QualitesOptionsViewState extends State<QualitesOptionsView> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          color: CustomColors.pastelPink,
+          color: CustomColors.pink,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -86,10 +86,8 @@ class _QualitesOptionsViewState extends State<QualitesOptionsView> {
                     ),
                     const Text(
                       "Je suis capable de :",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 15
-                      ),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w900, fontSize: 15),
                     )
                   ],
                 ),
@@ -152,7 +150,7 @@ class _QualitesOptionsViewState extends State<QualitesOptionsView> {
                     shape: BoxShape.rectangle,
                     borderRadius: const BorderRadius.all(Radius.circular(100)),
                     gradient: const LinearGradient(
-                        colors: [CustomColors.orange, CustomColors.red],
+                        colors: [CustomColors.peach, CustomColors.red],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight),
                     border: Border.all(width: 3)),

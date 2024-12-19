@@ -39,7 +39,7 @@ class _WhyCherryOptionsViewState extends State<WhyCherryOptionsView> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
-            color: CustomColors.pastelPink,
+            color: CustomColors.pink,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -95,7 +95,7 @@ class _WhyCherryOptionsViewState extends State<WhyCherryOptionsView> {
                         width: 175,
                         height: 175,
                         decoration: BoxDecoration(
-                            color: CustomColors.pastelPink,
+                            color: CustomColors.pink,
                             border: Border.all(width: 3),
                             borderRadius: BorderRadius.circular(10)),
                         shadowPainter: RightShadowPainter(10,
@@ -136,7 +136,7 @@ class _WhyCherryOptionsViewState extends State<WhyCherryOptionsView> {
                     borderRadius: BorderRadius.circular(100),
                     gradient: const LinearGradient(
                       colors: [
-                        CustomColors.orange,
+                        CustomColors.peach,
                         CustomColors.red,
                       ],
                     ),

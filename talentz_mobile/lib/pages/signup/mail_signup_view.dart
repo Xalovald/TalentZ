@@ -16,7 +16,7 @@ class MailSignupView extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Container(
-          decoration: const BoxDecoration(color: CustomColors.pastelPink),
+          decoration: const BoxDecoration(color: CustomColors.pink),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -60,12 +60,10 @@ class MailSignupView extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.8,
                             height: 65,
                             textInputType: TextInputType.emailAddress,
-                            shadowPainter: RightShadowPainter(
-                              10,
-                              color: const Color(0x99999999),
-                              radiusValue: 5,
-                              blurStrength: 0
-                            ),
+                            shadowPainter: RightShadowPainter(10,
+                                color: const Color(0x99999999),
+                                radiusValue: 5,
+                                blurStrength: 0),
                           ),
                           SizedBox.fromSize(
                             size: const Size.fromHeight(20),
@@ -76,12 +74,10 @@ class MailSignupView extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.8,
                             height: 65,
                             obscureText: true,
-                            shadowPainter: RightShadowPainter(
-                              10,
-                              color: const Color(0x99999999),
-                              radiusValue: 5,
-                              blurStrength: 0
-                            ),
+                            shadowPainter: RightShadowPainter(10,
+                                color: const Color(0x99999999),
+                                radiusValue: 5,
+                                blurStrength: 0),
                           ),
                           SizedBox.fromSize(
                             size: const Size.fromHeight(20),
@@ -97,7 +93,7 @@ class MailSignupView extends StatelessWidget {
                                     Radius.circular(100)),
                                 gradient: const LinearGradient(
                                     colors: [
-                                      CustomColors.orange,
+                                      CustomColors.peach,
                                       CustomColors.red
                                     ],
                                     begin: Alignment.topLeft,
@@ -106,12 +102,10 @@ class MailSignupView extends StatelessWidget {
                             heroTag: "nextSignupButton",
                             width: MediaQuery.of(context).size.width * 0.8,
                             height: 50,
-                            shadowPainter: RightShadowPainter(
-                              10,
-                              color: const Color(0x99999999),
-                              radiusValue: 100,
-                              blurStrength: 0
-                            ),
+                            shadowPainter: RightShadowPainter(10,
+                                color: const Color(0x99999999),
+                                radiusValue: 100,
+                                blurStrength: 0),
                             child: const Text(
                               "Suivant",
                               style: TextStyle(color: Colors.white),

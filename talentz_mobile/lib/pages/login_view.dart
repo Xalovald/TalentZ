@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Container(
-          decoration: const BoxDecoration(color: CustomColors.pastelPink),
+          decoration: const BoxDecoration(color: CustomColors.pink),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -69,11 +69,8 @@ class LoginView extends StatelessWidget {
                                 ),
                                 width: 40,
                                 height: 40,
-                                shadowPainter: RightShadowPainter(
-                                  10,
-                                  radiusValue: 100,
-                                  blurStrength: 0
-                                ),
+                                shadowPainter: RightShadowPainter(10,
+                                    radiusValue: 100, blurStrength: 0),
                                 child: const CustomFabIcon(
                                   imagePath: CustomIcons.google,
                                   size: 24,
@@ -92,11 +89,8 @@ class LoginView extends StatelessWidget {
                                 ),
                                 width: 40,
                                 height: 40,
-                                shadowPainter: RightShadowPainter(
-                                  10,
-                                  radiusValue: 100,
-                                  blurStrength: 0
-                                ),
+                                shadowPainter: RightShadowPainter(10,
+                                    radiusValue: 100, blurStrength: 0),
                                 child: const CustomFabIcon(
                                   iconData: Icons.apple,
                                   size: 30,
@@ -150,7 +144,7 @@ class LoginView extends StatelessWidget {
                                   const BorderRadius.all(Radius.circular(100)),
                               gradient: const LinearGradient(
                                   colors: [
-                                    CustomColors.orange,
+                                    CustomColors.peach,
                                     CustomColors.red
                                   ],
                                   begin: Alignment.topLeft,

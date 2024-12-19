@@ -15,7 +15,7 @@ class SelectSignupView extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          color: CustomColors.pastelPink,
+          color: CustomColors.pink,
         ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,

@@ -12,7 +12,7 @@ class StartupPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          color: CustomColors.pastelPink,
+          color: CustomColors.pink,
         ),
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -64,7 +64,7 @@ class StartupPage extends StatelessWidget {
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(100)),
                             gradient: const LinearGradient(
-                                colors: [CustomColors.orange, CustomColors.red],
+                                colors: [CustomColors.peach, CustomColors.red],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight),
                             border: Border.all(width: 3)),

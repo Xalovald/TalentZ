@@ -16,14 +16,13 @@ class CustomTabIndicator extends StatelessWidget {
       height: 15,
       child: Container(
         decoration: BoxDecoration(
-          color: activated == false ? const Color(0x99999999) : null,
-          gradient: activated
-              ? const LinearGradient(
-                  colors: [CustomColors.orange, CustomColors.red],
-                )
-              : null,
-          borderRadius: BorderRadius.circular(100)
-        ),
+            color: activated == false ? const Color(0x99999999) : null,
+            gradient: activated
+                ? const LinearGradient(
+                    colors: [CustomColors.peach, CustomColors.red],
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(100)),
       ),
     );
   }

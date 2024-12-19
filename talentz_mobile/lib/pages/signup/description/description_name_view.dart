@@ -19,7 +19,7 @@ class DescriptionNameView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
-            color: CustomColors.pastelPink,
+            color: CustomColors.pink,
           ),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -118,7 +118,7 @@ class DescriptionNameView extends StatelessWidget {
                                           Radius.circular(100)),
                                       gradient: const LinearGradient(
                                           colors: [
-                                            CustomColors.orange,
+                                            CustomColors.peach,
                                             CustomColors.red
                                           ],
                                           begin: Alignment.topLeft,
