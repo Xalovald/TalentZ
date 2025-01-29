@@ -1,0 +1,208 @@
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz_mobile/helpers/helpers.dart';
+import 'package:talentz_mobile/pages/Form/company/form10.dart';
+import 'package:talentz_mobile/ui/typography.dart';
+import 'package:talentz_mobile/widgets/button.dart';
+import 'package:talentz_mobile/widgets/progress_bar.dart';
+import 'package:talentz_mobile/widgets/state_button.dart';
+
+class Form9Company extends StatefulWidget {
+  const Form9Company({super.key});
+
+  @override
+  State<Form9Company> createState() =>
+      _Form9CompanyState();
+}
+
+class _Form9CompanyState extends State<Form9Company> {
+  late bool showIcon;
+  late List<Map<String, dynamic>> newList;
+  final Logger logger = Logger();
+
+  @override
+  void initState() {
+    super.initState();
+    showIcon = true;
+    newList = [];
+  }
+
+  void handleButtonClick(int id) {
+    logger.i(id);
+  }
+
+  final textController = TextEditingController();
+  void onTextChange(content) {
+    setState(() {
+      if (content != '') {
+        showIcon = false;
+      } else {
+        showIcon = true;
+      }
+      newList = CustomHelpers.qualitesList
+          .where((Map<String, dynamic> e) => e["name"].contains(content))
+          .toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: CustomColors.white(), // Couleur de fond de l'AppBar
+        elevation: 0, // Supprimer l'ombre de l'AppBar
+        automaticallyImplyLeading:
+            false, // Supprimer le bouton de retour par défaut
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(8),
+          child: CustomProgressBar(
+            width: MediaQuery.of(context).size.width,
+            height: 7,
+            startAt: (((MediaQuery.of(context).size.width / 9) * 8) /
+                    MediaQuery.of(context).size.width) *
+                100,
+            color: CustomColors.lightGrey4(),
+          ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.65,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Choississez les traits de\npersonnalité importants",
+                          style: CustomTextStyles.title(
+                            color: CustomColors.black(),
+                            size: "smaller",
+                          ),
+                        ),
+                        Text(
+                          "Choisissez, recherchez ou ajoutez des qualités\nqui sont importantes pour collaborer.",
+                          style: CustomTextStyles.text(
+                            color: CustomColors.grey(),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: TextField(
+                        controller: textController,
+                        onChanged: onTextChange,
+                        cursorColor: CustomColors.black(),
+                        decoration: InputDecoration(
+                          hintText: "Esprit disruptif",
+                          hintStyle: TextStyle(color: CustomColors.lightGrey5()),
+                          prefixIcon: showIcon
+                              ? Icon(
+                                  Icons.search,
+                                  color: CustomColors.lightGrey5(),
+                                )
+                              : null,
+                          filled: true,
+                          fillColor: CustomColors.slateWhite(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: SingleChildScrollView(
+                        child: Wrap(
+                          children: (newList.isNotEmpty || textController.text.isNotEmpty
+                                  ? newList
+                                  : CustomHelpers.qualitesList)
+                              .map(
+                                (Map<String, dynamic> item) => StateButton(
+                                  id: item["id"],
+                                  onClicked: handleButtonClick,
+                                  child: Text(
+                                    item["name"],
+                                    style: CustomTextStyles.text(
+                                      color: CustomColors.black(),
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Expanded(child: SizedBox()),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Column(
+                children: [
+                  CustomButton(
+                    onClick: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Form10Company(),),),
+                    },
+                    width: 150,
+                    heroTag: "form9CompanyConfirmBtn",
+                    decoration: BoxDecoration(
+                        color: CustomColors.black(),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Text(
+                      "Confirmer",
+                      style: CustomTextStyles.text(
+                        color: CustomColors.white(),
+                        bold: true,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: CustomButton(
+                      onClick: () => {},
+                      width: 150,
+                      heroTag: "form9CompanySkipBtn",
+                      decoration: BoxDecoration(
+                          color: CustomColors.lightGrey3(),
+                          borderRadius: BorderRadius.circular(100)),
+                      child: Text(
+                        "Passer",
+                        style: CustomTextStyles.text(
+                          color: CustomColors.black(),
+                          bold: true,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

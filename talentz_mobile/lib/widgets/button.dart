@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:talentz_mobile/widgets/shadow_painter.dart';
 
 class CustomButton extends StatelessWidget {
-  final void Function() onClick;
+  final void Function()? onClick;
   final String heroTag;
   final double width;
   final double height;
@@ -43,19 +43,25 @@ class CustomButton extends StatelessWidget {
         height: height,
         child: Container(
           decoration: decoration,
-          child: FloatingActionButton(
-            elevation: 0,
-            onPressed: onClick,
-            heroTag: heroTag,
-            focusColor: noAnimation ? Colors.transparent : null,
-            splashColor: noAnimation ? Colors.transparent : null,
-            hoverColor: noAnimation ? Colors.transparent : null,
-            highlightElevation: noAnimation ? 0 : null,
-            focusElevation: noAnimation ? 0 : null,
-            hoverElevation: noAnimation ? 0 : null,
-            disabledElevation: noAnimation ? 0 : null,
-            backgroundColor: Colors.transparent,
-            child: Center(child: child),
+          child: Theme(
+            data: ThemeData(
+              highlightColor: noAnimation ? Colors.transparent : null,
+              splashColor: noAnimation ? Colors.transparent : null,
+            ),
+            child: FloatingActionButton(
+              elevation: 0,
+              onPressed: onClick,
+              heroTag: heroTag,
+              focusColor: noAnimation ? Colors.transparent : null,
+              splashColor: noAnimation ? Colors.transparent : null,
+              hoverColor: noAnimation ? Colors.transparent : null,
+              highlightElevation: noAnimation ? 0 : null,
+              focusElevation: noAnimation ? 0 : null,
+              hoverElevation: noAnimation ? 0 : null,
+              disabledElevation: noAnimation ? 0 : null,
+              backgroundColor: Colors.transparent,
+              child: Center(child: child),
+            ),
           ),
         ),
       ),

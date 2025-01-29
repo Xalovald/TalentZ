@@ -18,8 +18,8 @@ class CustomTabIndicator extends StatelessWidget {
         decoration: BoxDecoration(
             color: activated == false ? const Color(0x99999999) : null,
             gradient: activated
-                ? const LinearGradient(
-                    colors: [CustomColors.peach, CustomColors.red],
+                ? LinearGradient(
+                    colors: [CustomColors.peach(), CustomColors.red()],
                   )
                 : null,
             borderRadius: BorderRadius.circular(100)),

@@ -1,19 +1,76 @@
 import 'package:flutter/material.dart';
 
 class CustomColors {
-  static const red = Color(0xFF0013);
-  static const peach = Color(0xFF8966);
-  static const black = Color(0x282828);
-  static const pink = Color(0xFF9CE9);
-  static const lightblue = Color(0xDBEAFE);
-  static const lightYellow = Color(0xFFF0C9);
-  static const blue = Color(0x2F80ED);
-  static const green = Color(0x27AE60);
-  static const palered = Color(0xEB5757);
-  static const lightGrey1 = Color(0xF9F9F9);
-  static const lightGrey2 = Color(0xE7E7E7);
-  static const lightGrey3 = Color(0xF4F5F7);
-  static const lightGrey4 = Color(0xE7E7E7);
-  static const grey = Color(0x9B9B9B);
-  static const white = Color(0xFEFEFE);
+  static red({double opacity = 1}) { 
+    return  const Color(0xFFff0013).withOpacity(opacity);
+  }
+  static peach({double opacity = 1}) {
+    return  const Color(0xFFff8966).withOpacity(opacity);
+  }
+  static black({double opacity = 1}) {
+    return  const Color(0xFF282828).withOpacity(opacity);
+  }
+  static pink({double opacity = 1}) {
+    return  const Color(0xFFFF9CE9).withOpacity(opacity);
+  }
+  static lightPink({double opacity = 1}) {
+    return  const Color(0xFFFCD3D6).withOpacity(opacity);
+  }
+  static lightBlue({double opacity = 1}) {
+    return  const Color(0xFFDBEAFE).withOpacity(opacity);
+  }
+  static lighterBlue({double opacity = 1}) {
+    return  const Color(0xFFAFD1FF).withOpacity(opacity);
+  }
+  static lightYellow({double opacity = 1}) {
+    return  const Color(0xFFFFF0C9).withOpacity(opacity);
+  }
+  static lighterYellow({double opacity = 1}) {
+    return  const Color(0xFFF6D681).withOpacity(opacity);
+  }
+  static yellow({double opacity = 1}) {
+    return  const Color(0xFFF2D161).withOpacity(opacity);
+  }
+  static darkYellow({double opacity = 1}) {
+    return  const Color(0xFFF0BF59).withOpacity(opacity);
+  }
+  static blue({double opacity = 1}) {
+    return  const Color(0xFF2F80ED).withOpacity(opacity);
+  }
+  static green({double opacity = 1}) {
+    return  const Color(0xFF27AE60).withOpacity(opacity);
+  }
+  static palered({double opacity = 1}) {
+    return  const Color(0xFFEB5757).withOpacity(opacity);
+  }
+  static lightGrey1({double opacity = 1}) {
+    return  const Color(0xFFF9F9F9).withOpacity(opacity);
+  }
+  static lightGrey2({double opacity = 1}) {
+    return  const Color(0xFFE7E7E7).withOpacity(opacity);
+  }
+  static lightGrey3({double opacity = 1}) {
+    return  const Color(0xFFF4F5F7).withOpacity(opacity);
+  }
+  static lightGrey4({double opacity = 1}) {
+    return  const Color(0xFFE0E0E0).withOpacity(opacity);
+  }
+  static lightGrey5({double opacity = 1}) {
+    return  const Color(0xFFD1D1D1).withOpacity(opacity);
+  }
+  static lightGrey6({double opacity = 1}) {
+    return  const Color(0xFFF2F2F2).withOpacity(opacity);
+  }
+  static grey({double opacity = 1}) {
+    return  const Color(0xFF9B9B9B).withOpacity(opacity);
+  }
+  static white({double opacity = 1}) {
+    return  const Color(0xFFFEFEFE).withOpacity(opacity);
+  }
+  static slateWhite({double opacity = 1}) {
+    return  const Color(0xFFFAFAFA).withOpacity(opacity);
+  }
+  static lightGrey7({double opacity = 1}) {
+    return  const Color(0xFFF0F0F0).withOpacity(opacity);
+  }
 }

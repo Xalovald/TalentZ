@@ -46,12 +46,12 @@ class SwipeCard extends StatelessWidget {
                 Container(
                   height: height / 3,
                   width: width,
-                  decoration: const BoxDecoration(
-                    color: CustomColors.lightYellow,
-                    borderRadius: BorderRadiusDirectional.vertical(
+                  decoration: BoxDecoration(
+                    color: CustomColors.lightYellow(),
+                    borderRadius: const BorderRadiusDirectional.vertical(
                       top: Radius.circular(17.5),
                     ),
-                    border: BorderDirectional(
+                    border: const BorderDirectional(
                       bottom: BorderSide(color: Colors.black, width: 3),
                     ),
                   ),
@@ -74,14 +74,14 @@ class SwipeCard extends StatelessWidget {
                 Flexible(
                   child: Container(
                     height: height / 2,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          CustomColors.pink,
-                          CustomColors.peach,
-                          CustomColors.red
+                          CustomColors.pink(),
+                          CustomColors.peach(),
+                          CustomColors.red()
                         ],
                       ),
                     ),
