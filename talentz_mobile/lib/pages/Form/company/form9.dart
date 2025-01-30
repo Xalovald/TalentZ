@@ -1,7 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/company/form10.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button.dart';
@@ -18,18 +20,26 @@ class Form9Company extends StatefulWidget {
 
 class _Form9CompanyState extends State<Form9Company> {
   late bool showIcon;
-  late List<Map<String, dynamic>> newList;
+  late List<dynamic> newList;
   final Logger logger = Logger();
+  late List<dynamic> dataList = [];
+  late User user;
 
   @override
   void initState() {
     super.initState();
     showIcon = true;
     newList = [];
+    getHttp();
   }
 
-  void handleButtonClick(int id) {
-    logger.i(id);
+  void handleButtonClick(dynamic id) {
+    if(!user.personnalites.contains(id)) {
+      user.pushToPersonnalites(id);
+    } else {
+      user.removeFromPersonnalites(id);
+    }
+    logger.i(user.personnalites);
   }
 
   final textController = TextEditingController();
@@ -40,14 +50,32 @@ class _Form9CompanyState extends State<Form9Company> {
       } else {
         showIcon = true;
       }
-      newList = CustomHelpers.qualitesList
-          .where((Map<String, dynamic> e) => e["name"].contains(content))
+      newList = dataList
+          .where((dynamic e) => e["text"].contains(content))
           .toList();
     });
   }
 
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      Response response = await dio.get("/personnalites");
+      setState(() {
+        dataList = response.data;
+      });
+    } catch (e) {
+      logger.e('$e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -136,13 +164,13 @@ class _Form9CompanyState extends State<Form9Company> {
                         child: Wrap(
                           children: (newList.isNotEmpty || textController.text.isNotEmpty
                                   ? newList
-                                  : CustomHelpers.qualitesList)
+                                  : dataList)
                               .map(
-                                (Map<String, dynamic> item) => StateButton(
+                                (dynamic item) => StateButton(
                                   id: item["id"],
                                   onClicked: handleButtonClick,
                                   child: Text(
-                                    item["name"],
+                                    item["text"],
                                     style: CustomTextStyles.text(
                                       color: CustomColors.black(),
                                     ),

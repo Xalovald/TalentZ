@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/company/form3.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:talentz_mobile/widgets/progress_bar.dart';
@@ -12,15 +15,26 @@ class Form2Company extends StatefulWidget {
 
 class _Form2CompanyState extends State<Form2Company> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _companyNnameController = TextEditingController();
+  final TextEditingController _companyNameController = TextEditingController();
   final TextEditingController _adresseController = TextEditingController();
   String? _selectedSector;
   String? _selectedHeight;
+  late User user;
+  final Logger logger = Logger();
+
+  void handleButtonClick() {
+    user.setCompanyName(_companyNameController.text);
+    user.setAddress(_adresseController.text);
+    logger.i(user.companyName);
+    logger.i(user.address);
+  }
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: CustomColors.white(),
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: CustomColors.white(), // Couleur de fond de l'AppBar
         elevation: 0, // Supprimer l'ombre de l'AppBar
@@ -91,7 +105,7 @@ class _Form2CompanyState extends State<Form2Company> {
                             ),
                           ),
                           TextFormField(
-                            controller: _companyNnameController,
+                            controller: _companyNameController,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -371,6 +385,7 @@ class _Form2CompanyState extends State<Form2Company> {
             Center(
               child: CustomButton(
                 onClick: () => {
+                  handleButtonClick(),
                   Navigator.push(
                     context,
                     MaterialPageRoute(

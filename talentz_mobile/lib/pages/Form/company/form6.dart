@@ -1,6 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/company/form8.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button.dart';
@@ -21,6 +24,18 @@ class _Form6CompanyState extends State<Form6Company> {
       TextEditingController();
   final TextEditingController _carriereController = TextEditingController();
   final TextEditingController _avantagesController = TextEditingController();
+  final Logger logger = Logger();
+  late User user;
+  late List<dynamic> dataListApprentissages = [];
+  late List<dynamic> dataListValeursEthiques = [];
+  late List<dynamic> dataListCarrieres = [];
+  late List<dynamic> dataListAvantages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getHttp();
+  }
 
   final List<Map<String, dynamic>> _selectedChoices = [
     {
@@ -57,8 +72,67 @@ class _Form6CompanyState extends State<Form6Company> {
     });
   }
 
+  void _handleSubmit() {
+    _selectedChoices[0]["choices"].forEach((apprentissage) => {
+      if(!user.apprentissages.contains(apprentissage["id"])) {
+        user.pushToApprentissages(apprentissage["id"])
+      } else {
+        user.removeFromApprentissages(apprentissage["id"])
+      }
+    });
+    _selectedChoices[1]["choices"].forEach((valeurs) => {
+      if(!user.valeursEthiques.contains(valeurs["id"])) {
+        user.pushToValeursEthiques(valeurs["id"])
+      } else {
+        user.removeFromValeursEthiques(valeurs["id"])
+      }
+    });
+    _selectedChoices[2]["choices"].forEach((carriere) => {
+      if(!user.carrieres.contains(carriere["id"])) {
+        user.pushToCarrieres(carriere["id"])
+      } else {
+        user.removeFromCarrieres(carriere["id"])
+      }
+    });
+    _selectedChoices[3]["choices"].forEach((avantage) => {
+      if(!user.avantages.contains(avantage["id"])) {
+        user.pushToAvantages(avantage["id"])
+      } else {
+        user.removeFromAvantages(avantage["id"])
+      }
+    });
+    logger.i(user.apprentissages);
+    logger.i(user.valeursEthiques);
+    logger.i(user.carrieres);
+    logger.i(user.avantages);
+  }
+
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      Response responseApprentissages = await dio.get("/apprentissages");
+      Response responseValeursEthiques = await dio.get("/valeurs_ethiques");
+      Response responseCarrieres = await dio.get("/carrieres");
+      Response responseAvantages = await dio.get("/avantages");
+      setState(() {
+        dataListApprentissages = responseApprentissages.data;
+        dataListValeursEthiques = responseValeursEthiques.data;
+        dataListCarrieres = responseCarrieres.data;
+        dataListAvantages = responseAvantages.data;
+      });
+    } catch (e) {
+      logger.e('$e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: CustomColors.white(),
       appBar: AppBar(
@@ -119,7 +193,7 @@ class _Form6CompanyState extends State<Form6Company> {
                         Icons.lightbulb_outline,
                         'Qu’allez-vous pouvoir apprendre ou consolider ?',
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                        CustomHelpers.learninglist),
+                        dataListApprentissages),
                     _buildSectionButton(
                         'Valeurs & éthique',
                         _valeursEthiqueController,
@@ -127,7 +201,7 @@ class _Form6CompanyState extends State<Form6Company> {
                         Icons.favorite_border_outlined,
                         'Quelles sont vos valeurs et votre éthique ?',
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                        CustomHelpers.valueList),
+                        dataListValeursEthiques),
                     _buildSectionButton(
                         'Carrière',
                         _carriereController,
@@ -135,7 +209,7 @@ class _Form6CompanyState extends State<Form6Company> {
                         Icons.work_outline,
                         'Quelle perspective de carrière offrez-vous ?',
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                        CustomHelpers.carrerlist),
+                        dataListCarrieres),
                     _buildSectionButton(
                         'Avantages',
                         _avantagesController,
@@ -143,7 +217,7 @@ class _Form6CompanyState extends State<Form6Company> {
                         Icons.percent,
                         'Quels avantages proposez-vous ?',
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                        CustomHelpers.benefitList),
+                        dataListAvantages),
                   ],
                 ),
               ),
@@ -153,6 +227,7 @@ class _Form6CompanyState extends State<Form6Company> {
                 children: [
                   CustomButton(
                     onClick: () => {
+                      _handleSubmit(),
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -216,7 +291,7 @@ class _Form6CompanyState extends State<Form6Company> {
       IconData trailingIcon,
       String modalTitle,
       String modalSubTitle,
-      List<Map<String, dynamic>> modalContent) {
+      List<dynamic> modalContent) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -295,9 +370,9 @@ class _Form6CompanyState extends State<Form6Company> {
       TextEditingController controller,
       String modalTitle,
       String modalSubTitle,
-      List<Map<String, dynamic>> modalContent) {
+      List<dynamic> modalContent) {
     TextEditingController searchController = TextEditingController();
-    List<Map<String, dynamic>> filteredContent = modalContent;
+    List<dynamic> filteredContent = modalContent;
     setState(() {
       _selectedChoices
           .where((elem) => elem["type"] == title.toLowerCase().split(" ").first)
@@ -381,14 +456,14 @@ class _Form6CompanyState extends State<Form6Company> {
                           alignment: WrapAlignment.start,
                           children: filteredContent
                               .map(
-                                (Map<String, dynamic> item) => StateButton(
+                                (dynamic item) => StateButton(
                                   id: item["id"],
                                   onClicked: (id) => handleButtonClick(
                                       id,
-                                      item["name"],
+                                      item["text"],
                                       title.toLowerCase().split(" ")[0]),
                                   child: Text(
-                                    item["name"],
+                                    item["text"],
                                     style: CustomTextStyles.text(
                                       size: "larger",
                                       color: CustomColors.black(),

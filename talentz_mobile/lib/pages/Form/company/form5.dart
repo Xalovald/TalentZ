@@ -1,7 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/Company/form6.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button.dart';
@@ -18,15 +20,23 @@ class Form5Company extends StatefulWidget {
 class _Form5CompanyState extends State<Form5Company> {
   late bool showIcon;
   final Logger logger = Logger();
+  late List<dynamic> dataList = [];
+  late User user;
 
   @override
   void initState() {
     super.initState();
     showIcon = true;
+    getHttp();
   }
 
-  void handleButtonClick(int id) {
-    logger.i(id);
+  void handleButtonClick(dynamic id) {
+    if(!user.missions.contains(id)) {
+      user.pushToMissions(id);
+    } else {
+      user.removeFromMissions(id);
+    }
+    logger.i(user.missions);
   }
 
   final textController = TextEditingController();
@@ -40,8 +50,26 @@ class _Form5CompanyState extends State<Form5Company> {
     });
   }
 
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      Response response = await dio.get("/missions");
+      setState(() {
+        dataList = response.data;
+      });
+    } catch (e) {
+      logger.e('$e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -51,7 +79,8 @@ class _Form5CompanyState extends State<Form5Company> {
         automaticallyImplyLeading:
             false, // Supprimer le bouton de retour par défaut
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(8.0), // Hauteur de la barre de progression
+          preferredSize:
+              const Size.fromHeight(8.0), // Hauteur de la barre de progression
           child: CustomProgressBar(
             width: MediaQuery.of(context).size.width,
             height: 7,
@@ -131,13 +160,13 @@ class _Form5CompanyState extends State<Form5Company> {
                         child: SingleChildScrollView(
                           child: Wrap(
                             spacing: 5,
-                            children: CustomHelpers.missionslist
+                            children: dataList
                                 .map(
-                                  (Map<String, dynamic> item) => StateButton(
+                                  (dynamic item) => StateButton(
                                     id: item["id"],
                                     onClicked: handleButtonClick,
                                     child: Text(
-                                      item["name"],
+                                      item["text"],
                                       style: CustomTextStyles.text(
                                         size: "larger",
                                         color: CustomColors.black(),

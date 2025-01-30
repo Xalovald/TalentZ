@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/talentz_mobile.dart';
 
 void main() async {
@@ -11,5 +13,10 @@ void main() async {
       DeviceOrientation.portraitUp,
     ],
   );
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => User(),
+      child: const MyApp(),
+    ),
+  );
 }

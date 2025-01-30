@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:talentz_mobile/assets/images/images.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:talentz_mobile/widgets/pill_content.dart';
@@ -20,6 +23,13 @@ class _Form10CompanyState extends State<Form10Company> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   bool isHintVisible = true;
+  final Logger logger = Logger();
+  late User user;
+
+  void handleButtonClick() {
+    logger.i(user.toJson());
+  }
+
   final Map<String, Map<String, dynamic>> buttonInfos = {
     "buttonCupcake": {
       "id": 1,
@@ -314,6 +324,7 @@ class _Form10CompanyState extends State<Form10Company> {
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -465,7 +476,9 @@ class _Form10CompanyState extends State<Form10Company> {
                   Visibility(
                     visible: buttonInfos.entries.map((button) => button.value["showIcon"]).contains(true),
                     child: CustomButton(
-                      onClick: () => {},
+                      onClick: () => {
+                        handleButtonClick()
+                      },
                       width: 150,
                       heroTag: "form10CompanyConfirmBtn",
                       decoration: BoxDecoration(
