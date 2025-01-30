@@ -2,7 +2,7 @@
 {
     public class Calendrier : SqlModel
     {
-        public override int Id { get; set; }
+        public override int? Id { get; set; }
 
         public DateTime? Date { get; set; }
 

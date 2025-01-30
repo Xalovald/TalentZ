@@ -2,7 +2,7 @@
 {
     public class Contact : SqlModel
     {
-        public override int Id { get; set; }
+        public override int? Id { get; set; }
 
         public DateTime? Date { get; set; }
 

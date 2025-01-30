@@ -2,7 +2,7 @@ namespace talentz_api.Models
 {
     public class User : SqlModel
     {
-        public override int Id { get; set; }
+        public override int? Id { get; set; }
 
         public string? LastName { get; set; }
 
@@ -26,7 +26,19 @@ namespace talentz_api.Models
 
         public string? Role { get; set; }
 
-        public List<Qualite>? Qualites { get; set; }
+        public List<Apprentissage>? Apprentissages { get; set; }
+
+        public List<Avantage>? Avantages { get; set; }
+
+        public List<Carriere>? Carrieres { get; set; }
+
+        public List<Competence>? Competences { get; set; }
+
+        public List<Mission>? Missions { get; set; }
+
+        public List<Personnalite>? Personnalites { get; set; }
+
+        public List<ValeurEthique>? ValeursEthiques { get; set; }
 
         public string? Password { get; set; }
 

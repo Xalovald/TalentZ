@@ -34,8 +34,26 @@ namespace talentz_api.JsonData
         [JsonProperty("whyCerise")]
         public required string WhyCerise { get; set; }
 
-        [JsonProperty("qualites")]
-        public required List<string> Qualites {  get; set; }
+        [JsonProperty("apprentissages")]
+        public required List<int> Apprentissages {  get; set; }
+
+        [JsonProperty("avantages")]
+        public required List<int> Avantages { get; set; }
+
+        [JsonProperty("carrieres")]
+        public required List<int> Carrieres { get; set; }
+
+        [JsonProperty("competences")]
+        public required List<int> Competences { get; set; }
+
+        [JsonProperty("missions")]
+        public required List<int> Missions { get; set; }
+
+        [JsonProperty("personnalites")]
+        public required List<int> Personnalites { get; set; }
+
+        [JsonProperty("valeursEthiques")]
+        public required List<int> ValeursEthiques { get; set; }
     }
 
     public class UserEntrepriseData
@@ -58,7 +76,31 @@ namespace talentz_api.JsonData
         [JsonProperty("password")]
         public required string Password { get; set; }
 
-        [JsonProperty("qualites")]
-        public required List<string> Qualites { get; set; }
+        [JsonProperty("cerise")]
+        public required string Cerise { get; set; }
+
+        [JsonProperty("whyCerise")]
+        public required string WhyCerise { get; set; }
+
+        [JsonProperty("apprentissages")]
+        public required List<int> Apprentissages { get; set; }
+
+        [JsonProperty("avantages")]
+        public required List<int> Avantages { get; set; }
+
+        [JsonProperty("carrieres")]
+        public required List<int> Carrieres { get; set; }
+
+        [JsonProperty("competences")]
+        public required List<int> Competences { get; set; }
+
+        [JsonProperty("missions")]
+        public required List<int> Missions { get; set; }
+
+        [JsonProperty("personnalites")]
+        public required List<int> Personnalites { get; set; }
+
+        [JsonProperty("valeursEthiques")]
+        public required List<int> ValeursEthiques { get; set; }
     }
 }

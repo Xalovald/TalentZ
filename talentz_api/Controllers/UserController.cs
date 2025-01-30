@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using talentz_api.Accessing;
@@ -83,7 +84,13 @@ namespace talentz_api.Controllers
             foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
             {
 
-                List<Qualite> dataQualites = GetQualites(row);
+                List<Apprentissage> dataApprentissages = GetTableFromInvIdx<Apprentissage>(row, "invidx_apprentissages", "apprentissages");
+                List<Avantage> dataAvantages = GetTableFromInvIdx<Avantage>(row, "invidx_avantages", "avantages");
+                List<Carriere> dataCarrieres = GetTableFromInvIdx<Carriere>(row, "invidx_carrieres", "carrieres");
+                List<Competence> dataCompetences = GetTableFromInvIdx<Competence>(row, "invidx_competences", "competences");
+                List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
+                List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
+                List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -101,7 +108,13 @@ namespace talentz_api.Controllers
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
                     Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
                     Role = (string)row["role"],
-                    Qualites = dataQualites
+                    Apprentissages = dataApprentissages,
+                    Avantages = dataAvantages,
+                    Carrieres = dataCarrieres,
+                    Competences = dataCompetences,
+                    Missions = dataMissions,
+                    Personnalites = dataPersonnalites,
+                    ValeursEthiques = dataValeursEthiques,
                 });
             };
 
@@ -128,7 +141,14 @@ namespace talentz_api.Controllers
 
             foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
             {
-                List<Qualite> dataQualites = GetQualites(row);
+                List<Apprentissage> dataApprentissages = GetTableFromInvIdx<Apprentissage>(row, "invidx_apprentissages", "apprentissages");
+                List<Avantage> dataAvantages = GetTableFromInvIdx<Avantage>(row, "invidx_avantages", "avantages");
+                List<Carriere> dataCarrieres = GetTableFromInvIdx<Carriere>(row, "invidx_carrieres", "carrieres");
+                List<Competence> dataCompetences = GetTableFromInvIdx<Competence>(row, "invidx_competences", "competences");
+                List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
+                List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
+                List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -146,7 +166,13 @@ namespace talentz_api.Controllers
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
                     Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
                     Role = (string)row["role"],
-                    Qualites = dataQualites
+                    Apprentissages = dataApprentissages,
+                    Avantages = dataAvantages,
+                    Carrieres = dataCarrieres,
+                    Competences = dataCompetences,
+                    Missions = dataMissions,
+                    Personnalites = dataPersonnalites,
+                    ValeursEthiques = dataValeursEthiques,
                 });
             }
 
@@ -164,7 +190,13 @@ namespace talentz_api.Controllers
 
             foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
             {
-                List<Qualite> dataQualites = GetQualites(row);
+                List<Apprentissage> dataApprentissages = GetTableFromInvIdx<Apprentissage>(row, "invidx_apprentissages", "apprentissages");
+                List<Avantage> dataAvantages = GetTableFromInvIdx<Avantage>(row, "invidx_avantages", "avantages");
+                List<Carriere> dataCarrieres = GetTableFromInvIdx<Carriere>(row, "invidx_carrieres", "carrieres");
+                List<Competence> dataCompetences = GetTableFromInvIdx<Competence>(row, "invidx_competences", "competences");
+                List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
+                List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
+                List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser = new User()
                 {
@@ -182,7 +214,13 @@ namespace talentz_api.Controllers
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
                     Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
                     Role = (string)row["role"],
-                    Qualites = dataQualites
+                    Apprentissages = dataApprentissages,
+                    Avantages = dataAvantages,
+                    Carrieres = dataCarrieres,
+                    Competences = dataCompetences,
+                    Missions = dataMissions,
+                    Personnalites = dataPersonnalites,
+                    ValeursEthiques = dataValeursEthiques,
                 };
             }
             return dataUser;
@@ -225,55 +263,14 @@ namespace talentz_api.Controllers
 
             if(execute) sqlQuery.ExecuteNonQuery();
 
-            List<SqlStatement> insertStatements = [];
-            List<PreparedParameter> preparedParameters = [];
-            QualitesController qualitesController = new QualitesController();
-            int insertId = 0;
-            foreach(string _qualite in data.Qualites)
-            {
-                if(insertId == 0)
-                {
-                    insertStatements.Add(
-                        new ValuesStatement([
-                            "@userId",
-                            "@qualiteId"
-                        ])
-                    );
-                    preparedParameters.Add(
-                        new PreparedParameter("@userId", GetIds().Last())
-                    );
-                    preparedParameters.Add(
-                        new PreparedParameter("@qualiteId", qualitesController.GetOne(new TypedValue<string>(_qualite).ToString()).Id)
-                    );
-                }
-                else
-                {
-                    insertStatements.Add(
-                        new InsertComma([
-                            "@userId"+insertId,
-                            "@qualiteId"+insertId
-                        ])
-                    );
-                    preparedParameters.Add(
-                        new PreparedParameter("@userId"+insertId, GetIds().Last())
-                    );
-                    preparedParameters.Add(
-                        new PreparedParameter("@qualiteId"+insertId, qualitesController.GetOne(new TypedValue<string>(_qualite).ToString()).Id)
-                    );;
+            InsertInInvIdx("invidx_apprentissages", execute, data.Apprentissages);
+            InsertInInvIdx("invidx_avantages", execute, data.Avantages);
+            InsertInInvIdx("invidx_carrieres", execute, data.Carrieres);
+            InsertInInvIdx("invidx_competences", execute, data.Competences);
+            InsertInInvIdx("invidx_missions", execute, data.Missions);
+            InsertInInvIdx("invidx_personnalites", execute, data.Personnalites);
+            InsertInInvIdx("invidx_valeurs_ethiques", execute, data.ValeursEthiques);
 
-                }
-                insertId++;
-            }
-            List<SqlStatement> sqlInvIdStatements = [
-                new InsertStatement("inverted_index", ["user_id", "qualite_id"]),
-                ..insertStatements
-            ];
-
-
-
-            SqlQuery sqlQueryInvId = new(conn, sqlInvIdStatements, "inverted_index", preparedParameters);
-
-            if (execute) sqlQueryInvId.ExecuteNonQuery();
 
             Response.StatusCode = StatusCodes.Status201Created;
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().Last() + 1}";
@@ -289,7 +286,13 @@ namespace talentz_api.Controllers
 
             foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
             {
-                List<Qualite> dataQualites = GetQualites(row);
+                List<Apprentissage> dataApprentissages = GetTableFromInvIdx<Apprentissage>(row, "invidx_apprentissages", "apprentissages");
+                List<Avantage> dataAvantages = GetTableFromInvIdx<Avantage>(row, "invidx_avantages", "avantages");
+                List<Carriere> dataCarrieres = GetTableFromInvIdx<Carriere>(row, "invidx_carrieres", "carrieres");
+                List<Competence> dataCompetences = GetTableFromInvIdx<Competence>(row, "invidx_competences", "competences");
+                List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
+                List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
+                List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -307,7 +310,13 @@ namespace talentz_api.Controllers
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
                     Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
                     Role = (string)row["role"],
-                    Qualites = dataQualites
+                    Apprentissages = dataApprentissages,
+                    Avantages = dataAvantages,
+                    Carrieres = dataCarrieres,
+                    Competences = dataCompetences,
+                    Missions = dataMissions,
+                    Personnalites = dataPersonnalites,
+                    ValeursEthiques = dataValeursEthiques,
                 });
             }
             return dataUser;
@@ -318,15 +327,17 @@ namespace talentz_api.Controllers
         public void CreateEntrepriseUser([FromBody] UserEntrepriseData data, bool execute = true)
         {
             List<SqlStatement> sqlStatements = [
-                new InsertStatement("users", ["nom", "telephone", "email", "siret", "location", "password", "role"]),
+                new InsertStatement("users", ["nom", "telephone", "email", "siret", "location", "password", "role", "cerise", "why_cerise"]),
                 new ValuesStatement([
                     "@companyName",
                     "@telephone",
                     "@email",
-                    "@location",
                     "@siret",
+                    "@location",
                     "md5(@password)",
-                    new TypedValue<string>("entreprise").ToString()
+                    new TypedValue<string>("entreprise").ToString(),
+                    "@cerise",
+                    "@whyCerise"
                 ])
 
             ];
@@ -337,10 +348,20 @@ namespace talentz_api.Controllers
                 new PreparedParameter("@email", data.Email),
                 new PreparedParameter("@location", data.Location),
                 new PreparedParameter("@siret", data.Siret),
-                new PreparedParameter("@password", data.Password)
+                new PreparedParameter("@password", data.Password),
+                new PreparedParameter("@cerise", data.Cerise),
+                new PreparedParameter("@whyCerise", data.WhyCerise),
             ]); ;
 
             if (execute) sqlQuery.ExecuteNonQuery();
+
+            InsertInInvIdx("invidx_apprentissages", execute, data.Apprentissages);
+            InsertInInvIdx("invidx_avantages", execute, data.Avantages);
+            InsertInInvIdx("invidx_carrieres", execute, data.Carrieres);
+            InsertInInvIdx("invidx_competences", execute, data.Competences);
+            InsertInInvIdx("invidx_missions", execute, data.Missions);
+            InsertInInvIdx("invidx_personnalites", execute, data.Personnalites);
+            InsertInInvIdx("invidx_valeurs_ethiques", execute, data.ValeursEthiques);
 
             Response.StatusCode = StatusCodes.Status201Created;
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().Last() + 1}";
@@ -356,7 +377,13 @@ namespace talentz_api.Controllers
 
             foreach (DataRow row in sqlQueryUsers.GetTable().Rows)
             {
-                List<Qualite> dataQualites = GetQualites(row);
+                List<Apprentissage> dataApprentissages = GetTableFromInvIdx<Apprentissage>(row, "invidx_apprentissages", "apprentissages");
+                List<Avantage> dataAvantages = GetTableFromInvIdx<Avantage>(row, "invidx_avantages", "avantages");
+                List<Carriere> dataCarrieres = GetTableFromInvIdx<Carriere>(row, "invidx_carrieres", "carrieres");
+                List<Competence> dataCompetences = GetTableFromInvIdx<Competence>(row, "invidx_competences", "competences");
+                List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
+                List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
+                List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
                 List<string> validRoles = ["entreprise", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -374,7 +401,13 @@ namespace talentz_api.Controllers
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
                     Location = ShowIfRoles(["entreprise"], (string)row["role"], ConvertFromDBVal<string>(row["location"])!),
                     Role = (string)row["role"],
-                    Qualites = dataQualites
+                    Apprentissages = dataApprentissages,
+                    Avantages = dataAvantages,
+                    Carrieres = dataCarrieres,
+                    Competences = dataCompetences,
+                    Missions = dataMissions,
+                    Personnalites = dataPersonnalites,
+                    ValeursEthiques = dataValeursEthiques,
                 });
             }
             return dataUser;

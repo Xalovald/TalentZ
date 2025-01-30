@@ -1,37 +1,105 @@
-﻿using System.Data;
-using talentz_api.Models;
+﻿using Mysqlx.Crud;
+using Mysqlx.Prepare;
+using System.Data;
+using System.Linq;
+using System.Reflection;
 using talentz_api.Sql;
 using talentz_api.Sql.Statements;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace talentz_api.Controllers
 {
     public class UserControllerBase : GeneralController
     {
-        protected List<Qualite> GetQualites(DataRow row)
+        protected List<T> GetTableFromInvIdx<T>(DataRow row, string invidx_table, string target_table) where T : new()
         {
-            List<SqlStatement> queryStatementQualites = [
-                    new SelectStatement("qualites", ["qualites.id","qualites.nom", new AsStatement("users.id","user_id").ToString()]),
-                    new JoinStatement("inverted_index", "left", new OnStatement("qualites.id", "=", "inverted_index.qualite_id")),
-                    new JoinStatement("users", "inner", new OnStatement("inverted_index.user_id", "=", "users.id")),
+            List<SqlStatement> queryStatement = [
+                    new SelectStatement(target_table, [target_table + ".id",target_table + ".text", new AsStatement("users.id","id_user").ToString()]),
+                    new JoinStatement(invidx_table, "left", new OnStatement(target_table + ".id", "=", invidx_table + ".id_" + target_table.Remove(target_table.Length - 1))),
+                    new JoinStatement("users", "inner", new OnStatement(invidx_table + ".id_user", "=", "users.id")),
                     new WhereStatement(statements: ["users.id","=",((int)row["id"]).ToString()])
                 ];
-            SqlQuery sqlQuery = new(conn, queryStatementQualites, "qualites");
+            SqlQuery sqlQuery = new(conn, queryStatement, target_table);
 
             sqlQuery.ExecuteGet();
 
-            List<Qualite> dataQualites = [];
+            List<T> data = [];
 
-            foreach (DataRow row_qualite in sqlQuery.GetTable().Rows)
+            foreach (DataRow innerRow in sqlQuery.GetTable().Rows)
             {
-                dataQualites.Add(new Qualite()
+                T instance = new();
+                PropertyInfo[] properties = typeof(T).GetProperties();
+                foreach (PropertyInfo property in properties)
                 {
-                    Id = (int)row_qualite["id"],
-                    Nom = (string)row_qualite["nom"]
-                });
+                    var val = innerRow[property.Name.ToLower()];
+                    if (property.CanWrite)
+                    {
+                        property.SetValue(instance, val);
+                    }
+                }
+                data.Add(instance);
             }
-            return dataQualites;
+            return data;
         }
 
+        protected (List<SqlStatement>, List<PreparedParameter>) InsertStatementFromParamList(List<int> dataList)
+        {
+            List<SqlStatement> insertStatements = [];
+            List<PreparedParameter> preparedParameters = [];
+            int insertId = 0;
+            foreach(int _obj in dataList)
+            {
+                if (insertId == 0)
+                {
+                    insertStatements.Add(
+                        new ValuesStatement([
+                            "@userId",
+                            "@objId"
+                        ])
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@userId", GetIds().Last())
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@objId", _obj)
+                    );
+                }
+                else
+                {
+                    insertStatements.Add(
+                    new InsertComma([
+                            "@userId"+insertId,
+                            "@objId"+insertId
+                    ])
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@userId" + insertId, GetIds().Last())
+                    );
+                    preparedParameters.Add(
+                        new PreparedParameter("@objId" + insertId, _obj)
+                    ); ;
+
+                }
+                insertId++;
+            }
+            return (insertStatements, preparedParameters);
+        }
+
+        protected void InsertInInvIdx(string table, bool execute, List<int> dataList)
+        {
+            if (dataList.Count > 0) {
+                List<string> tableSplitted = [.. table.Split("_")];
+                tableSplitted.RemoveAt(0);
+                var reformTable = string.Join("_", tableSplitted);
+                (List<SqlStatement> insertStatements, List<PreparedParameter> preparedParameters) = InsertStatementFromParamList(dataList);
+                List<SqlStatement> sqlInvIdStatements = [
+                    new InsertStatement(table, ["id_user", "id_" + reformTable.Remove(reformTable.Length - 1)]),
+                    ..insertStatements
+                ];
+                SqlQuery sqlQueryInvId = new(conn, sqlInvIdStatements, table, preparedParameters);
+                if (execute) sqlQueryInvId.ExecuteNonQuery();
+            }
+        }
 
         public List<int> GetIds()
         {

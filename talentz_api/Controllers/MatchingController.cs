@@ -26,7 +26,7 @@ namespace talentz_api.Controllers
 
             DataRow row = sqlQueryUsers.GetTable().Rows[0];
 
-            List<Qualite> dataQualites = GetQualites(row);
+            List<Apprentissage> dataApprentissages = GetTableFromInvIdx<Apprentissage>(row, "invidx_apprentissages", "apprentissages");
 
             if ((string)row["role"] == "candidat")
             {
@@ -34,12 +34,12 @@ namespace talentz_api.Controllers
 
                 foreach (DataRow row_entreprise in entreprises.GetTable().Rows)
                 {
-                    List<Qualite> dataQualitesEntreprise = GetQualites(row_entreprise);
+                    List<Apprentissage> dataApprentissagesEntreprise = GetTableFromInvIdx<Apprentissage>(row_entreprise, "invidx_apprentissages", "apprentissages");
                     // Find common qualities
-                    var commonQualites = new List<Qualite>();
-                    dataQualites.ConvertAll(new Converter<Qualite, Qualite>(
+                    var commonQualites = new List<Apprentissage>();
+                    dataApprentissages.ConvertAll(new Converter<Apprentissage, Apprentissage>(
                         qualite => {
-                            if (dataQualitesEntreprise.Exists(pre => pre.Id == qualite.Id))
+                            if (dataApprentissagesEntreprise.Exists(pre => pre.Id == qualite.Id))
                             {
                                 commonQualites.Add(qualite);
                             }
@@ -65,19 +65,19 @@ namespace talentz_api.Controllers
 
                 foreach (DataRow row_candidat in candidats.GetTable().Rows)
                 {
-                    List<Qualite> dataQualitesCandidat = GetQualites(row_candidat);
+                    List<Apprentissage> dataApprentissagesCandidat = GetTableFromInvIdx<Apprentissage>(row_candidat, "invidx_apprentissages", "apprentissages");
                     // Find common qualities
-                    var commonQualities = dataQualites.Intersect(dataQualitesCandidat).ToList();
+                    var commonApprentissages = dataApprentissages.Intersect(dataApprentissagesCandidat).ToList();
 
                     // Calculate the score (number of common qualities)
-                    var score = commonQualities.Count;
+                    var score = commonApprentissages.Count;
 
                     // Add the result to the list
                     results.Add(new Matching
                     {
                         IdCandidat = (int)row_candidat["id"],
                         Score = score,
-                        CommonQualites = commonQualities
+                        CommonQualites = commonApprentissages
                     });
                 }
             }

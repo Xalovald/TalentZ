@@ -2,6 +2,6 @@
 {
     public abstract class SqlModel
     {
-        public abstract int Id { get; set; }
+        public abstract int? Id { get; set; }
     }
 }

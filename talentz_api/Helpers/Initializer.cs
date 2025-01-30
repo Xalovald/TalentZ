@@ -6,7 +6,7 @@ namespace talentz_api.Helpers
     {
         private readonly T _instance = instance;
         private readonly Dictionary<string, object> _propertyValues = new();
-        private readonly string Message;
+        private readonly string? Message;
 
         public Initializer<T> SetProperty<TValue>(Expression<Func<T, TValue>> propertyExpression, TValue value)
         {

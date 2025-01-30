@@ -2,7 +2,7 @@
 {
     public class Messagerie : SqlModel
     {
-        public override int Id { get; set; }
+        public override int? Id { get; set; }
 
         public int? IdDestinataire { get; set; }
 
