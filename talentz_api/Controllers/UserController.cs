@@ -91,6 +91,9 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
+                SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
+                TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -103,6 +106,10 @@ namespace talentz_api.Controllers
                     WhyCerise = (string)row["why_cerise"],
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
+                    SecteurActivite = NotDefaultOrNull<SecteurActivite>(dataSecteurActivite),
+                    CompanySize = NotDefaultOrNull<CompanySize>(dataCompanySize),
+                    TypePoste = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["type_poste"])),
+                    TypeContrat = dataTypeContrat,
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
                     Address = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["adresse"])!),
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
@@ -148,7 +155,9 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
-
+                CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
+                SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
+                TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -161,6 +170,10 @@ namespace talentz_api.Controllers
                     WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
+                    SecteurActivite = NotDefaultOrNull<SecteurActivite>(dataSecteurActivite),
+                    CompanySize = NotDefaultOrNull<CompanySize>(dataCompanySize),
+                    TypePoste = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["type_poste"])),
+                    TypeContrat = NotDefaultOrNull<TypeContrat>(dataTypeContrat),
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
                     Address = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["adresse"])!),
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
@@ -197,6 +210,9 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
+                SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
+                TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser = new User()
                 {
@@ -209,6 +225,10 @@ namespace talentz_api.Controllers
                     WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
+                    SecteurActivite = NotDefaultOrNull<SecteurActivite>(dataSecteurActivite),
+                    CompanySize = NotDefaultOrNull<CompanySize>(dataCompanySize),
+                    TypePoste = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["type_poste"])),
+                    TypeContrat = NotDefaultOrNull<TypeContrat>(dataTypeContrat),
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
                     Address = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["adresse"])!),
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),
@@ -231,7 +251,7 @@ namespace talentz_api.Controllers
         public void CreateCandidatUser([FromBody] UserCandidatData data, bool execute = true)
         {
             List<SqlStatement> sqlStatements = [
-                new InsertStatement("users", ["nom", "prenom", "date_naissance", "telephone", "email", "ville", "adresse", "role", "password", "cerise", "why_cerise"]),
+                new InsertStatement("users", ["nom", "prenom", "date_naissance", "telephone", "email", "ville", "adresse", "role", "cerise", "why_cerise", "types_contrat"]),
                 new ValuesStatement([
                     "@lastName",
                     "@firstName",
@@ -241,9 +261,9 @@ namespace talentz_api.Controllers
                     "@city",
                     "@address",
                     new TypedValue<string>("candidat").ToString(),
-                    "md5(@password)",
                     "@cerise",
-                    "@whyCerise"
+                    "@whyCerise",
+                    "@typeContrat"
                 ])
             ];
 
@@ -256,9 +276,9 @@ namespace talentz_api.Controllers
                 new PreparedParameter("@email", data.Email),
                 new PreparedParameter("@city", data.City),
                 new PreparedParameter("address", data.Address),
-                new PreparedParameter("@password", data.Password),
                 new PreparedParameter("@cerise", data.Cerise),
                 new PreparedParameter("@whyCerise", data.WhyCerise),
+                new PreparedParameter("@typeContrat", data.TypeContrat),
             ]);
 
             if(execute) sqlQuery.ExecuteNonQuery();
@@ -327,17 +347,20 @@ namespace talentz_api.Controllers
         public void CreateEntrepriseUser([FromBody] UserEntrepriseData data, bool execute = true)
         {
             List<SqlStatement> sqlStatements = [
-                new InsertStatement("users", ["nom", "telephone", "email", "siret", "location", "password", "role", "cerise", "why_cerise"]),
+                new InsertStatement("users", ["nom", "telephone", "email", "siret", "location", "role", "cerise", "why_cerise", "type_poste", "types_contrat", "company_size", "secteurs_activite"]),
                 new ValuesStatement([
                     "@companyName",
                     "@telephone",
                     "@email",
                     "@siret",
                     "@location",
-                    "md5(@password)",
                     new TypedValue<string>("entreprise").ToString(),
                     "@cerise",
-                    "@whyCerise"
+                    "@whyCerise",
+                    "@typePoste",
+                    "@typeContrat",
+                    "@companySize",
+                    "@secteurActivite"
                 ])
 
             ];
@@ -348,9 +371,13 @@ namespace talentz_api.Controllers
                 new PreparedParameter("@email", data.Email),
                 new PreparedParameter("@location", data.Location),
                 new PreparedParameter("@siret", data.Siret),
-                new PreparedParameter("@password", data.Password),
                 new PreparedParameter("@cerise", data.Cerise),
                 new PreparedParameter("@whyCerise", data.WhyCerise),
+                new PreparedParameter("@typePoste", data.TypePoste),
+                new PreparedParameter("@typeContrat", data.TypeContrat),
+                new PreparedParameter("@companySize", data.CompanySize),
+                new PreparedParameter("@secteurActivite", data.SecteurActivite),
+
             ]); ;
 
             if (execute) sqlQuery.ExecuteNonQuery();
@@ -384,6 +411,9 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
+                SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
+                TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
                 List<string> validRoles = ["entreprise", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -396,6 +426,10 @@ namespace talentz_api.Controllers
                     WhyCerise = ShowIfRoles(validRoles, (string)row["role"], (string)row["why_cerise"]),
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
+                    SecteurActivite = dataSecteurActivite,
+                    CompanySize = dataCompanySize,
+                    TypePoste = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["type_poste"])),
+                    TypeContrat = dataTypeContrat,
                     City = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["ville"])!),
                     Address = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<string>(row["adresse"])!),
                     Siret = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["siret"])),

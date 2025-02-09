@@ -19,14 +19,14 @@ namespace talentz_api.JsonData
         [JsonProperty("email")]
         public required string Email { get; set; }
 
+        [JsonProperty("typeContrat")]
+        public required int TypeContrat { get; set; }
+
         [JsonProperty("ville")]
         public required string City { get; set; }
 
         [JsonProperty("adresse")]
         public required string Address { get; set; }
-
-        [JsonProperty("password")]
-        public required string Password { get; set; }
 
         [JsonProperty("cerise")]
         public required string Cerise { get; set; }
@@ -67,14 +67,23 @@ namespace talentz_api.JsonData
         [JsonProperty("email")]
         public required string Email { get; set; }
 
+        [JsonProperty("secteurActivite")]
+        public required int SecteurActivite { get; set; }
+
+        [JsonProperty("companySize")]
+        public required int CompanySize { get; set; }
+
+        [JsonProperty("typePoste")]
+        public required string TypePoste { get; set; }
+
+        [JsonProperty("typeContrat")]
+        public required int TypeContrat { get; set; }
+
         [JsonProperty("location")]
         public required string Location { get; set; }
 
         [JsonProperty("siret")]
         public required string Siret { get; set; }
-
-        [JsonProperty("password")]
-        public required string Password { get; set; }
 
         [JsonProperty("cerise")]
         public required string Cerise { get; set; }

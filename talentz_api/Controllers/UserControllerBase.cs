@@ -1,5 +1,6 @@
 ﻿using Mysqlx.Crud;
 using Mysqlx.Prepare;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
@@ -42,6 +43,43 @@ namespace talentz_api.Controllers
             return data;
         }
 
+        protected T? GetLinkedTable<T>(DataRow row, string target_table, string original_table) where T : new()
+        {
+            List<SqlStatement> queryStatement = [
+                    new SelectStatement(target_table, [target_table + ".id",target_table + ".nom", original_table + "." + target_table.Remove(target_table.Length - 1)]),
+                    new JoinStatement(original_table, "inner", new OnStatement(target_table + ".id", "=", original_table + "." + target_table.Remove(target_table.Length - 1))),
+                    new WhereStatement(statements: [original_table + ".id", "=",((int)row["id"]).ToString()])
+                ];
+            SqlQuery sqlQuery = new(conn, queryStatement, target_table);
+
+            sqlQuery.ExecuteGet();
+
+            List<T> data = [];
+
+            if (sqlQuery.GetTable().Rows.Count > 0 )
+            {
+
+                foreach (DataRow innerRow in sqlQuery.GetTable().Rows)
+                {
+                    T instance = new();
+                    PropertyInfo[] properties = typeof(T).GetProperties();
+                    foreach (PropertyInfo property in properties)
+                    {
+                        var val = innerRow[property.Name.ToLower()];
+                        if (property.CanWrite)
+                        {
+                            property.SetValue(instance, val);
+                        }
+                    }
+                    data.Add(instance);
+                }
+                return data[0];
+            }
+            else
+            {
+                return default;
+            }
+        }
         protected (List<SqlStatement>, List<PreparedParameter>) InsertStatementFromParamList(List<int> dataList)
         {
             List<SqlStatement> insertStatements = [];

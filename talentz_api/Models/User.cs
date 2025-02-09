@@ -16,6 +16,14 @@ namespace talentz_api.Models
 
         public string? Email { get; set; }
 
+        public SecteurActivite? SecteurActivite { get; set; }
+
+        public CompanySize? CompanySize { get; set; }
+
+        public string? TypePoste { get; set; }
+
+        public TypeContrat? TypeContrat { get; set; }
+
         public string? City { get; set; }
 
         public string? Address { get; set; }
