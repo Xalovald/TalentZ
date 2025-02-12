@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace talentz_api.DataRequests
+namespace talentz_api.JsonData
 {
     public class MatchingData
     {
