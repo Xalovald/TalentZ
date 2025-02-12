@@ -170,7 +170,6 @@ namespace talentz_api.Controllers
             {
                 percentage = (double)commonFields.Count / compared.Count * 100;
             }
-            Console.WriteLine(percentage);
             return percentage;
         }
     }

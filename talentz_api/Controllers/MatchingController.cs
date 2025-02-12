@@ -47,8 +47,6 @@ namespace talentz_api.Controllers
                     List<Mission> dataMissionsEntreprise = GetTableFromInvIdx<Mission>(row_entreprise, "invidx_missions", "missions");
                     List<Personnalite> dataPersonnalitesEntreprise = GetTableFromInvIdx<Personnalite>(row_entreprise, "invidx_personnalites", "personnalites");
                     List<ValeurEthique> dataValeursEthiquesEntreprise = GetTableFromInvIdx<ValeurEthique>(row_entreprise, "invidx_valeurs_ethiques", "valeurs_ethiques");
-                    var testVal1 = row["types_contrat"];
-                    var testVal2 = row_entreprise["types_contrat"];
                     // Find common qualities
                     List<double> scores = [
                         FindCommonAsPercentage(dataApprentissages, dataApprentissagesEntreprise, new IdComparer<Apprentissage>()),
@@ -67,8 +65,8 @@ namespace talentz_api.Controllers
                     {
                         results.Add(new Matching
                         {
-                            IdEntreprise = (int)row_entreprise["id"],
-                            Score = Math.Round(score),
+                            IdUser = (int)row_entreprise["id"],
+                            Score = Math.Round(score, 1),
                         });
                     }
                 }
@@ -103,12 +101,11 @@ namespace talentz_api.Controllers
                     // Add the result to the list
                     results.Add(new Matching
                     {
-                        IdCandidat = (int)row_candidat["id"],
+                        IdUser = (int)row_candidat["id"],
                         Score = Math.Round(score, 1),
                     });
                 }
             }
-            
             return results;
         }
     }
