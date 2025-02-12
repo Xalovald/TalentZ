@@ -51,13 +51,13 @@ namespace talentz_api.Controllers
                     var testVal2 = row_entreprise["types_contrat"];
                     // Find common qualities
                     List<double> scores = [
-                        FindCommonAsPercentage(dataApprentissages, dataApprentissagesEntreprise, x => x.Id!),
-                        FindCommonAsPercentage(dataAvantages, dataAvantagesEntreprise, x => x.Id!),
-                        FindCommonAsPercentage(dataCarrieres, dataCarrieresEntreprise, x => x.Id!),
-                        FindCommonAsPercentage(dataCompetences, dataCompetencesEntreprise, x => x.Id!),
-                        FindCommonAsPercentage(dataMissions, dataMissionsEntreprise, x => x.Id!),
-                        FindCommonAsPercentage(dataPersonnalites, dataPersonnalitesEntreprise, x => x.Id!),
-                        FindCommonAsPercentage(dataValeursEthiques, dataValeursEthiquesEntreprise, x => x.Id!),
+                        FindCommonAsPercentage(dataApprentissages, dataApprentissagesEntreprise, new IdComparer<Apprentissage>()),
+                        FindCommonAsPercentage(dataAvantages, dataAvantagesEntreprise, new IdComparer<Avantage>()),
+                        FindCommonAsPercentage(dataCarrieres, dataCarrieresEntreprise, new IdComparer<Carriere>()),
+                        FindCommonAsPercentage(dataCompetences, dataCompetencesEntreprise, new IdComparer<Competence>()),
+                        FindCommonAsPercentage(dataMissions, dataMissionsEntreprise, new IdComparer<Mission>()),
+                        FindCommonAsPercentage(dataPersonnalites, dataPersonnalitesEntreprise, new IdComparer<Personnalite>()),
+                        FindCommonAsPercentage(dataValeursEthiques, dataValeursEthiquesEntreprise, new IdComparer<ValeurEthique>()),
                         row["types_contrat"].Equals(row_entreprise["types_contrat"]) ? 100 : 0
                     ];
                     double score;
@@ -89,13 +89,13 @@ namespace talentz_api.Controllers
 
                     // Find common qualities
                     List<double> scores = [
-                        FindCommonAsPercentage(dataApprentissages, dataApprentissagesCandidat, x => x.Id!),
-                        FindCommonAsPercentage(dataAvantages, dataAvantagesCandidat, x => x.Id!),
-                        FindCommonAsPercentage(dataCarrieres, dataCarrieresCandidat, x => x.Id!),
-                        FindCommonAsPercentage(dataCompetences, dataCompetencesCandidat, x => x.Id!),
-                        FindCommonAsPercentage(dataMissions, dataMissionsCandidat, x => x.Id!),
-                        FindCommonAsPercentage(dataPersonnalites, dataPersonnalitesCandidat, x => x.Id!),
-                        FindCommonAsPercentage(dataValeursEthiques, dataValeursEthiquesCandidat, x => x.Id!),
+                        FindCommonAsPercentage(dataApprentissages, dataApprentissagesCandidat, new IdComparer<Apprentissage>()),
+                        FindCommonAsPercentage(dataAvantages, dataAvantagesCandidat, new IdComparer<Avantage>()),
+                        FindCommonAsPercentage(dataCarrieres, dataCarrieresCandidat, new IdComparer<Carriere>()),
+                        FindCommonAsPercentage(dataCompetences, dataCompetencesCandidat, new IdComparer<Competence>()),
+                        FindCommonAsPercentage(dataMissions, dataMissionsCandidat, new IdComparer<Mission>()),
+                        FindCommonAsPercentage(dataPersonnalites, dataPersonnalitesCandidat, new IdComparer<Personnalite>()),
+                        FindCommonAsPercentage(dataValeursEthiques, dataValeursEthiquesCandidat, new IdComparer<ValeurEthique>()),
                         row["types_contrat"].Equals(row_candidat["types_contrat"]) ? 100 : 0
                     ];
                     double score;

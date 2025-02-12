@@ -14,4 +14,4 @@
 
 ## IMPORTANT
 
-La commande a effectuer pour lancer votre docker est la suivante: ```docker compose up --build```
+La commande a effectuer pour lancer votre docker est la suivante: ```docker compose up --build -d```

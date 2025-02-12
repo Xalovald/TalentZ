@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
+using talentz_api.Helpers;
 using talentz_api.Models;
 using talentz_api.Sql;
 using talentz_api.Sql.Statements;
@@ -161,24 +162,15 @@ namespace talentz_api.Controllers
             return dataIds;
         }
 
-        protected double FindCommonAsPercentage<T>(List<T> comparator, List<T> compared, Func<T, object> fieldSelector)
+        protected double FindCommonAsPercentage<T>(List<T> compared, List<T> comparator, Helpers.IComparer<T> comparer)
         {
             double percentage = 0;
-            var commonFields = new List<T>();
-            comparator.ConvertAll(new Converter<T, T>(
-                qualite => {
-                    if (compared.Exists(pre => fieldSelector(pre).Equals(fieldSelector(qualite))))
-                    {
-                        commonFields.Add(qualite);
-                    }
-                    return qualite;
-                }
-            ));
-            if (commonFields.Count > 0 && compared.Count > 0)
+            List<T> commonFields = compared.Intersect(comparator, comparer).ToList();
+            if (commonFields.Count > 0)
             {
-                percentage = commonFields.Count() / compared.Count() * 100;
+                percentage = (double)commonFields.Count / compared.Count * 100;
             }
-            Console.Write(percentage);
+            Console.WriteLine(percentage);
             return percentage;
         }
     }
