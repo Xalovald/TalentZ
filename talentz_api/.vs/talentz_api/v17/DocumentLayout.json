@@ -54,8 +54,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AQIAABcBAAAAAAAAAAAowA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T14:05:40.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T14:05:40.334Z"
             },
             {
               "$type": "Document",
@@ -101,7 +100,7 @@
               "RelativeDocumentMoniker": "Controllers\\UserControllerBase.cs",
               "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserControllerBase.cs",
               "RelativeToolTip": "Controllers\\UserControllerBase.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAmwJQAAAAvAAAA",
+              "ViewState": "AQIAAIsAAAAAAAAAAAAqwJQAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-12T00:03:41.716Z",
               "EditorCaption": ""
