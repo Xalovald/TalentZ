@@ -248,7 +248,7 @@ namespace talentz_api.Controllers
 
         [HttpPost("candidats")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(void))]
-        public User? CreateCandidatUser([FromBody] UserCandidatData data, bool execute = true)
+        public void CreateCandidatUser([FromBody] UserCandidatData data, bool execute = true)
         {
             List<SqlStatement> sqlStatements = [
                 new InsertStatement("users", ["nom", "prenom", "date_naissance", "telephone", "email", "ville", "adresse", "role", "cerise", "why_cerise", "types_contrat"]),
@@ -294,7 +294,6 @@ namespace talentz_api.Controllers
 
             Response.StatusCode = StatusCodes.Status201Created;
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().First()}";
-            return GetOne(GetIds().First());
         }
 
         //Get candidat
@@ -345,7 +344,7 @@ namespace talentz_api.Controllers
 
         [HttpPost("entreprises")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
-        public User? CreateEntrepriseUser([FromBody] UserEntrepriseData data, bool execute = true)
+        public void CreateEntrepriseUser([FromBody] UserEntrepriseData data, bool execute = true)
         {
             List<SqlStatement> sqlStatements = [
                 new InsertStatement("users", ["nom", "telephone", "email", "siret", "location", "role", "cerise", "why_cerise", "type_poste", "types_contrat", "company_size", "secteurs_activite"]),
@@ -393,7 +392,6 @@ namespace talentz_api.Controllers
 
             Response.StatusCode = StatusCodes.Status201Created;
             Response.Headers.Location = $"http://localhost:5212/api/users/{GetIds().Last()}";
-            return GetOne(GetIds().Last());
         }
 
         //Get entreprise
