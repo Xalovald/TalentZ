@@ -98,7 +98,7 @@ namespace talentz_api.Controllers
                         ])
                     );
                     preparedParameters.Add(
-                        new PreparedParameter("@userId", GetIds().First())
+                        new PreparedParameter("@userId", GetIds().Last())
                     );
                     preparedParameters.Add(
                         new PreparedParameter("@objId", _obj)
@@ -146,7 +146,7 @@ namespace talentz_api.Controllers
 
             List<SqlStatement> sqlStatements = [
                 new SelectStatement("users", ["id"]),
-                new OrderByStatement("id", "DESC")
+                new OrderByStatement("id", "ASC")
             ];
 
             SqlQuery query = new SqlQuery(conn, sqlStatements, "users");
