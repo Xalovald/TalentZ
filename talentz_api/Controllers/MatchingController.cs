@@ -30,7 +30,6 @@ namespace talentz_api.Controllers
             List<Avantage> dataAvantages = GetTableFromInvIdx<Avantage>(row, "invidx_avantages", "avantages");
             List<Carriere> dataCarrieres = GetTableFromInvIdx<Carriere>(row, "invidx_carrieres", "carrieres");
             List<Competence> dataCompetences = GetTableFromInvIdx<Competence>(row, "invidx_competences", "competences");
-            List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
             List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
             List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
 
@@ -44,7 +43,6 @@ namespace talentz_api.Controllers
                     List<Avantage> dataAvantagesEntreprise = GetTableFromInvIdx<Avantage>(row_entreprise, "invidx_avantages", "avantages");
                     List<Carriere> dataCarrieresEntreprise = GetTableFromInvIdx<Carriere>(row_entreprise, "invidx_carrieres", "carrieres");
                     List<Competence> dataCompetencesEntreprise = GetTableFromInvIdx<Competence>(row_entreprise, "invidx_competences", "competences");
-                    List<Mission> dataMissionsEntreprise = GetTableFromInvIdx<Mission>(row_entreprise, "invidx_missions", "missions");
                     List<Personnalite> dataPersonnalitesEntreprise = GetTableFromInvIdx<Personnalite>(row_entreprise, "invidx_personnalites", "personnalites");
                     List<ValeurEthique> dataValeursEthiquesEntreprise = GetTableFromInvIdx<ValeurEthique>(row_entreprise, "invidx_valeurs_ethiques", "valeurs_ethiques");
                     // Find common qualities
@@ -53,7 +51,6 @@ namespace talentz_api.Controllers
                         FindCommonAsPercentage(dataAvantages, dataAvantagesEntreprise, new IdComparer<Avantage>()),
                         FindCommonAsPercentage(dataCarrieres, dataCarrieresEntreprise, new IdComparer<Carriere>()),
                         FindCommonAsPercentage(dataCompetences, dataCompetencesEntreprise, new IdComparer<Competence>()),
-                        FindCommonAsPercentage(dataMissions, dataMissionsEntreprise, new IdComparer<Mission>()),
                         FindCommonAsPercentage(dataPersonnalites, dataPersonnalitesEntreprise, new IdComparer<Personnalite>()),
                         FindCommonAsPercentage(dataValeursEthiques, dataValeursEthiquesEntreprise, new IdComparer<ValeurEthique>()),
                         row["types_contrat"].Equals(row_entreprise["types_contrat"]) ? 100 : 0
@@ -81,7 +78,6 @@ namespace talentz_api.Controllers
                     List<Avantage> dataAvantagesCandidat = GetTableFromInvIdx<Avantage>(row_candidat, "invidx_avantages", "avantages");
                     List<Carriere> dataCarrieresCandidat = GetTableFromInvIdx<Carriere>(row_candidat, "invidx_carrieres", "carrieres");
                     List<Competence> dataCompetencesCandidat = GetTableFromInvIdx<Competence>(row_candidat, "invidx_competences", "competences");
-                    List<Mission> dataMissionsCandidat = GetTableFromInvIdx<Mission>(row_candidat, "invidx_missions", "missions");
                     List<Personnalite> dataPersonnalitesCandidat = GetTableFromInvIdx<Personnalite>(row_candidat, "invidx_personnalites", "personnalites");
                     List<ValeurEthique> dataValeursEthiquesCandidat = GetTableFromInvIdx<ValeurEthique>(row_candidat, "invidx_valeurs_ethiques", "valeurs_ethiques");
 
@@ -91,7 +87,6 @@ namespace talentz_api.Controllers
                         FindCommonAsPercentage(dataAvantages, dataAvantagesCandidat, new IdComparer<Avantage>()),
                         FindCommonAsPercentage(dataCarrieres, dataCarrieresCandidat, new IdComparer<Carriere>()),
                         FindCommonAsPercentage(dataCompetences, dataCompetencesCandidat, new IdComparer<Competence>()),
-                        FindCommonAsPercentage(dataMissions, dataMissionsCandidat, new IdComparer<Mission>()),
                         FindCommonAsPercentage(dataPersonnalites, dataPersonnalitesCandidat, new IdComparer<Personnalite>()),
                         FindCommonAsPercentage(dataValeursEthiques, dataValeursEthiquesCandidat, new IdComparer<ValeurEthique>()),
                         row["types_contrat"].Equals(row_candidat["types_contrat"]) ? 100 : 0
