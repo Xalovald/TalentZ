@@ -3,7 +3,7 @@
     public class Matching : SqlModel
     {
         public override int? Id { get; set; }
-        public int IdUser { get; set; }
+        public User User { get; set; }
         public double Score { get; set; }
     }
 }

@@ -62,7 +62,7 @@ namespace talentz_api.Controllers
                     {
                         results.Add(new Matching
                         {
-                            IdUser = (int)row_entreprise["id"],
+                            User = new UserController().GetOne((int)row_entreprise["id"])!,
                             Score = Math.Round(score, 1),
                         });
                     }
@@ -96,7 +96,7 @@ namespace talentz_api.Controllers
                     // Add the result to the list
                     results.Add(new Matching
                     {
-                        IdUser = (int)row_candidat["id"],
+                        User = new UserController().GetOne((int)row_candidat["id"])!,
                         Score = Math.Round(score, 1),
                     });
                 }

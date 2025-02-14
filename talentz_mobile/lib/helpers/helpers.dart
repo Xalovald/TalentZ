@@ -13,7 +13,7 @@ class CustomHelpers {
   }
   static Future<File> get _file async {
     final path = await _filePath;
-    return File("$path/Android/data/com.example.talentz_mobile/files/base.txt");
+    return File("$path/files/base.txt");
   }
   // Save number
   static Future<File> saveCurrentId(int number) async {

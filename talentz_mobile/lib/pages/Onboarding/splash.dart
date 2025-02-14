@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
     if(await CustomHelpers.getCurrentId() != null) {
       var response = await dio.get("/users/${await CustomHelpers.getCurrentId()}");
       if(!mounted) return;
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => response.data["role"] == "candidat" ? MatchingPageCandidat(): MatchingPageCompany()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => response.data["role"] == "candidat" ? const MatchingPageCandidat(): const MatchingPageCompany()));
     }
   }
   @override
