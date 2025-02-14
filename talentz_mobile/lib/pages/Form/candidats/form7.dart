@@ -1,7 +1,13 @@
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:talentz_mobile/assets/images/images.dart';
+import 'package:talentz_mobile/helpers/helpers.dart';
+import 'package:talentz_mobile/models/user.dart';
+import 'package:talentz_mobile/pages/matching/candidat/matching_page_1.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:talentz_mobile/widgets/pill_content.dart';
@@ -20,6 +26,30 @@ class _Form7CandidatState extends State<Form7Candidat> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   bool isHintVisible = true;
+  final Logger logger = Logger();
+  late User user;
+  late Response<void> response;
+  Dio dio = Dio(
+    BaseOptions(
+      baseUrl: "http://57.129.129.23:5212/api",
+      connectTimeout: const Duration(seconds: 90000),
+    ),
+  );
+
+  void handleButtonClick() async {
+    user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString());
+    user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]);
+    user.setAddress("");
+    user.setCity("");
+    logger.i(user.toJson());
+    try {
+      Response response = await dio.post("/users/candidats", data: user.toJson(), options: Options(contentType: "application/json"));
+      CustomHelpers.saveCurrentId(response.data);
+    } catch (e) {
+      logger.e('$e');
+    }
+  }
+
   final Map<String, Map<String, dynamic>> buttonInfos = {
     "buttonJuicy": {
       "id": 1,
@@ -373,6 +403,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -543,7 +574,15 @@ class _Form7CandidatState extends State<Form7Candidat> {
                         .map((button) => button.value["showIcon"])
                         .contains(true),
                     child: CustomButton(
-                      onClick: () => {},
+                      onClick: () => {
+                        handleButtonClick(),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MatchingPageCandidat(),
+                          ),
+                        ),
+                      },
                       width: 150,
                       heroTag: "form7CandidatConfirmBtn",
                       decoration: BoxDecoration(
@@ -565,7 +604,14 @@ class _Form7CandidatState extends State<Form7Candidat> {
                         ? const EdgeInsets.only(top: 16.0, bottom: 8)
                         : const EdgeInsets.all(0),
                     child: CustomButton(
-                      onClick: () => {},
+                      onClick: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MatchingPageCandidat(),
+                          ),
+                        ),
+                      },
                       width: 150,
                       heroTag: "form7CandidatSkipBtn",
                       decoration: BoxDecoration(

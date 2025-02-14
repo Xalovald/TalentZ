@@ -7,6 +7,7 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:talentz_mobile/globals/routes.dart';
 import 'package:talentz_mobile/models/swipe_card.dart';
+import 'package:talentz_mobile/widgets/button.dart';
 
 class SwipeView extends StatefulWidget {
   const SwipeView({super.key});
@@ -15,10 +16,19 @@ class SwipeView extends StatefulWidget {
   State<SwipeView> createState() => _SwipeViewState();
 }
 
-class _SwipeViewState extends State<SwipeView>
-    with SingleTickerProviderStateMixin {
+class _SwipeViewState extends State<SwipeView> with SingleTickerProviderStateMixin {
   final CardSwiperController controller = CardSwiperController();
-  late List<dynamic> dataList = [];
+  late List<dynamic> dataList = [
+    {
+      "qualites": [
+        {
+          "nom": "test"
+        }
+      ],
+      "cerise": 0,
+      "whyCerise": "panier"
+    }
+  ];
   late List<int> selectedList = [];
   late List<int> specialList = [];
   late List<int> disabledList = [];
@@ -99,6 +109,10 @@ class _SwipeViewState extends State<SwipeView>
                         const EdgeInsets.only(top: 24.0, left: 24, right: 24),
                   ),
                 ),
+                CustomButton(
+                  heroTag: "testButton",
+                  onClick: () => controller.swipe(CardSwiperDirection.right),
+                )
               ]),
             )
           : const Center(

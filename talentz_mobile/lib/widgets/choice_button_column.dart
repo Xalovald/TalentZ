@@ -50,7 +50,7 @@ class ChoiceButtonColumn extends StatelessWidget {
           spacing: 5,
           children: choices
               .map((choice) => ChoiceStateChip(
-                    label: choice['name'],
+                    label: choice['text'],
                   ))
               .toList(),
         ),

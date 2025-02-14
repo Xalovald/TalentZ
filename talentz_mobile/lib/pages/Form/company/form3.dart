@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/Company/form4.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:talentz_mobile/widgets/progress_bar.dart';
@@ -16,10 +19,21 @@ class _Form3CompanyState extends State<Form3Company> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _mailController = TextEditingController();
   String? _selectedRole;
+  late User user;
+  final Logger logger = Logger();
+
+  void handleButtonClick() {
+    user.setTelephone(_phoneController.text);
+    user.setEmail(_mailController.text);
+    logger.i(user.telephone);
+    logger.i(user.email);
+  }
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: CustomColors.white(),
       appBar: AppBar(
         backgroundColor: CustomColors.white(), // Couleur de fond de l'AppBar
@@ -300,6 +314,7 @@ class _Form3CompanyState extends State<Form3Company> {
             Center(
               child: CustomButton(
                 onClick: () => {
+                  handleButtonClick(),
                   Navigator.push(
                     context,
                     MaterialPageRoute(

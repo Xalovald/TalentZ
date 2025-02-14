@@ -1,17 +1,42 @@
 import 'dart:ui';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:talentz_mobile/assets/images/images.dart';
+import 'package:talentz_mobile/helpers/helpers.dart';
 import 'package:talentz_mobile/pages/Form/candidats/form1.dart';
 import 'package:talentz_mobile/pages/Onboarding/company/onboarding1.dart';
+import 'package:talentz_mobile/pages/matching/candidat/matching_page_1.dart';
+import 'package:talentz_mobile/pages/matching/company/matching_page_1.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:talentz_mobile/widgets/pill_content.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
 
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    _checkForFile();
+  }
+  void _checkForFile() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    if(await CustomHelpers.getCurrentId() != null) {
+      var response = await dio.get("/users/${await CustomHelpers.getCurrentId()}");
+      if(!mounted) return;
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => response.data["role"] == "candidat" ? MatchingPageCandidat(): MatchingPageCompany()));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

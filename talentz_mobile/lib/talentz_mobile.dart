@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:talentz_mobile/pages/Onboarding/splash.dart';
+//import 'package:talentz_mobile/test.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       home: const Directionality(
         textDirection: TextDirection.ltr,
         child: SplashPage(),
+        //child: TestPage(),
       ),
     );
   }

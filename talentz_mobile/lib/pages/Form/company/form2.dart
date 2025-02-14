@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -17,16 +18,49 @@ class _Form2CompanyState extends State<Form2Company> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _companyNameController = TextEditingController();
   final TextEditingController _adresseController = TextEditingController();
-  String? _selectedSector;
-  String? _selectedHeight;
+  int _selectedSector = 0;
+  int _selectedHeight = 0;
+  late List<dynamic> _sizeList;
+  late List<dynamic> _sectorList;
   late User user;
   final Logger logger = Logger();
 
+  @override
+  void initState() {
+    super.initState();
+    _sizeList = [];
+    _sectorList = [];
+    getHttp();
+  }
+
   void handleButtonClick() {
     user.setCompanyName(_companyNameController.text);
-    user.setAddress(_adresseController.text);
+    user.setLocation(_adresseController.text);
+    user.setCompanySize(_sizeList[_selectedHeight]["id"]);
+    user.setSecteurActivite(_sectorList[_selectedSector]["id"]);
     logger.i(user.companyName);
     logger.i(user.address);
+    logger.i(user.companySize);
+    logger.i(user.secteurActivite);
+  }
+
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      Response companySizesResponse = await dio.get("/company_sizes");
+      Response secteursActivitesResponse = await dio.get("/secteurs_activites");
+      setState(() {
+        _sizeList = companySizesResponse.data;
+        _sectorList = secteursActivitesResponse.data;
+      });
+    } catch (e) {
+      logger.e('$e');
+    }
   }
 
   @override
@@ -274,21 +308,20 @@ class _Form2CompanyState extends State<Form2Company> {
                                     .lightGrey2(), // Couleur de l'icône
                               ),
                             ),
-                            value: _selectedSector,
+                            value: _sectorList.isNotEmpty
+                                ? _sectorList[_selectedSector]["nom"]
+                                : "",
                             onChanged: (String? newValue) {
                               setState(() {
-                                _selectedSector = newValue;
+                                _selectedSector = _sectorList
+                                    .indexWhere((e) => e["nom"] == newValue!);
                               });
                             },
-                            items: <String>[
-                              'Couture',
-                              'Informatique',
-                              'Santé',
-                              'Éducation'
-                            ].map<DropdownMenuItem<String>>((String value) {
+                            items: _sectorList
+                                .map<DropdownMenuItem<String>>((dynamic value) {
                               return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
+                                value: value["nom"],
+                                child: Text(value["nom"]),
                               );
                             }).toList(),
                             validator: (value) {
@@ -355,17 +388,20 @@ class _Form2CompanyState extends State<Form2Company> {
                                     .lightGrey2(), // Couleur de l'icône
                               ),
                             ),
-                            value: _selectedHeight,
+                            value: _sizeList.isNotEmpty
+                                ? _sizeList[_selectedHeight]["nom"]
+                                : "",
                             onChanged: (String? newValue) {
                               setState(() {
-                                _selectedHeight = newValue;
+                                _selectedHeight = _sizeList
+                                    .indexWhere((e) => e["nom"] == newValue!);
                               });
                             },
-                            items: <String>['2-10', '11-99', '100-999', '1000+']
-                                .map<DropdownMenuItem<String>>((String value) {
+                            items: _sizeList
+                                .map<DropdownMenuItem<String>>((dynamic value) {
                               return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
+                                value: value["nom"],
+                                child: Text(value["nom"]),
                               );
                             }).toList(),
                             validator: (value) {

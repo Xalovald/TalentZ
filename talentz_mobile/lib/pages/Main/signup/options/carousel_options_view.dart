@@ -20,7 +20,7 @@ class CarouselOptionsView extends StatefulWidget {
 
 class _CarouselOptionsViewState extends State<CarouselOptionsView> {
   late dynamic cherry;
-  late CarouselControllerImpl carouselController;
+  late FlutterCarouselControllerImpl carouselController;
   late int currentIndex;
   @override
   void initState() {
@@ -28,7 +28,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
     cherry = CustomHelpers.cherries.firstWhere(
       (element) => element["name"].toString().contains("Panier"),
     );
-    carouselController = CarouselControllerImpl();
+    carouselController = FlutterCarouselControllerImpl();
     currentIndex = 0;
   }
 
@@ -98,7 +98,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
                         ),
                       )
                       .toList(),
-                  options: CarouselOptions(
+                  options: FlutterCarouselOptions(
                     height: 250,
                     viewportFraction: 0.6,
                     controller: carouselController,

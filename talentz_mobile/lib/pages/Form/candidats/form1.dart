@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/candidats/form2.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:flutter/services.dart';
@@ -19,8 +22,30 @@ class _Form1CandidatState extends State<Form1Candidat> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _mailController = TextEditingController();
 
+  late User user;
+  final Logger logger = Logger();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void handleButtonClick() {
+    user.setFirstName(_firstNameController.text);
+    user.setLastName(_lastNameController.text);
+    user.setEmail(_mailController.text);
+    user.setTelephone(_phoneController.text);
+    user.setDateNaissance(DateTime.now().subtract(Duration(days: int.parse(_ageController.text)*365)).toString().split(" ")[0]);
+    logger.i(user.firstName);
+    logger.i(user.lastName);
+    logger.i(user.email);
+    logger.i(user.telephone);
+    logger.i(user.dateNaissance);
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: CustomColors.white(),
@@ -420,6 +445,7 @@ class _Form1CandidatState extends State<Form1Candidat> {
             Center(
               child: CustomButton(
                 onClick: () => {
+                  handleButtonClick(),
                   Navigator.push(
                     context,
                     MaterialPageRoute(

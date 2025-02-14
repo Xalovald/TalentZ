@@ -1,307 +1,267 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
-import 'package:talentz_mobile/widgets/fab_icon.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
-import 'package:talentz_mobile/widgets/single_child_box.dart';
-import 'package:talentz_mobile/widgets/text_child_box.dart';
+import 'package:talentz_mobile/assets/images/images.dart';
+import 'package:talentz_mobile/ui/typography.dart';
+import 'package:talentz_mobile/widgets/state_button.dart';
 
-class SwipeCard extends StatelessWidget {
+class SwipeCard extends StatefulWidget {
   final Map data;
+
   const SwipeCard({
     super.key,
     required this.data,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height * 0.6;
-    final double width = MediaQuery.of(context).size.width * 0.9;
+  State<SwipeCard> createState() => _SwipeCardState();
+}
 
-    return Stack(children: [
-      CustomPaint(
-        painter: RightShadowPainter(
-          7,
-          color: const Color(0xFF999999),
-          blurStrength: 0.8,
-        ),
-        child: SizedBox(
-          height: height,
+class _SwipeCardState extends State<SwipeCard> {
+  final Logger logger = Logger();
+  @override
+  void initState() {
+    super.initState();
+    logger.i(widget.data);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Use the full width and height of the parent container
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+
+    return Stack(
+      children: [
+        // Main Card Content in Background
+        Container(
+          height: height - 120, // Adjust height to start below the circle
           width: width,
-        ),
-      ),
-      SizedBox(
-        height: height,
-        width: width,
-        child: Container(
+          margin:
+              const EdgeInsets.only(top: 80), // Adjust margin to avoid overlap
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 3),
+            color: Colors.white,
             borderRadius: BorderRadius.circular(20),
-          ),
-          child: Stack(children: [
-            Column(
-              children: [
-                Container(
-                  height: height / 3,
-                  width: width,
-                  decoration: BoxDecoration(
-                    color: CustomColors.lightYellow(),
-                    borderRadius: const BorderRadiusDirectional.vertical(
-                      top: Radius.circular(17.5),
-                    ),
-                    border: const BorderDirectional(
-                      bottom: BorderSide(color: Colors.black, width: 3),
-                    ),
-                  ),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0, left: 12.0),
-                        child: Text(
-                          "Score de matching",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    height: height / 2,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          CustomColors.pink(),
-                          CustomColors.peach(),
-                          CustomColors.red()
-                        ],
-                      ),
-                    ),
-                    child: ListView(
-                      children: [
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: SizedBox(
-                                  height: height / 2,
-                                  child: Wrap(
-                                    alignment: WrapAlignment.spaceEvenly,
-                                    runAlignment: WrapAlignment.center,
-                                    spacing: 20,
-                                    runSpacing: 20,
-                                    children: data["qualites"]
-                                        .map(
-                                          (e) => CustomTextChildBox(
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              border: Border.all(width: 2),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            shadowPainter: RightShadowPainter(
-                                              12,
-                                              color: const Color(0x99999999),
-                                              blurStrength: 0,
-                                              radiusValue: 10,
-                                            ),
-                                            child: Text(
-                                              e["nom"],
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w900),
-                                            ),
-                                          ),
-                                        )
-                                        .toList()
-                                        .cast<Widget>(),
-                                  ),
-                                ),
-                              ),
-                            ])
-                      ],
-                    ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    SingleChildBox(
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          border: Border(
-                            top: BorderSide(width: 3),
-                            right: BorderSide(width: 3),
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(17.5),
-                          )),
-                      width: width / 3.2,
-                      height: height / 6,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "10 ans",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          Text(
-                            "D'expérience",
-                            style: TextStyle(
-                              fontSize: 12,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SingleChildBox(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        border: Border(
-                          top: BorderSide(width: 3),
-                          right: BorderSide(width: 3),
-                        ),
-                      ),
-                      width: width / 3.2,
-                      height: height / 6,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "+ 50",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          Text(
-                            "Salariés",
-                            style: TextStyle(
-                              fontSize: 12,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SingleChildBox(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        border: Border(
-                          top: BorderSide(width: 3),
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(17.5),
-                        ),
-                      ),
-                      width: width / 3.131,
-                      height: height / 6,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "100%",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          Text(
-                            "Satisfaction",
-                            style: TextStyle(
-                              fontSize: 12,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            SizedBox(
-              height: height / 3,
-              child: Center(
-                child: PillContent(
-                  width: width * 0.8,
-                  height: 50,
-                  color: Colors.white,
-                  shadowPainter: RightShadowPainter(
-                    10,
-                    color: const Color(0x99999999),
-                    blurStrength: 0,
-                    radiusValue: 100,
-                  ),
-                  child: CustomProgressBar(
-                    startAt: 85,
-                    width: width * 0.8,
-                    height: 20,
-                  ),
-                ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withValues(alpha: 0.5),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 3), // Shadow direction
               ),
-            ),
-            SizedBox(
-              width: width,
-              height: height / 1.52,
-              child: Center(
-                child: SingleChildBox(
-                  width: width * 0.8,
-                  height: 75,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 3)),
-                  shadowPainter: RightShadowPainter(
-                    10,
-                    color: const Color(0x99999999),
-                    blurStrength: 0,
-                    radiusValue: 10,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CustomFabIcon(
-                        imagePath: CustomHelpers.cherries
-                            .elementAt(data["cerise"])["icon"]
-                            .toString(),
-                        size: 40,
+            ],
+          ),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header Section
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 70),
+                      child: Text(
+                        "À propos",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5.0, left: 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              CustomHelpers.cherries
-                                  .elementAt(data["cerise"])["name"]
-                                  .toString(),
-                              style: const TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                            Text(
-                              data["whyCerise"],
-                              softWrap: true,
-                            ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withValues(alpha: 0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5, // Ombre vers le haut
+                          ),
+                        ],
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            CustomColors.yellow1(),
+                            CustomColors.darkYellow1(),
                           ],
                         ),
                       ),
-                    ],
+                      child: Text(
+                        "90% Match",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: CustomColors.white(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                // Description
+                const Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet id metus elementum malesuada. Quisque fringilla ultricies orci mattis porttitor.",
+                  style: TextStyle(fontSize: 14),
+                ),
+                const SizedBox(height: 20),
+                // Badges Section
+                Text(
+                  "Collection de badges :",
+                  style: CustomTextStyles.text(
+                    size: "larger",
+                    color: CustomColors.black(),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        CustomImages.badgeReactif(height: 35, width: 36),
+                        Text(
+                          "Réponse sous 48H",
+                          style: CustomTextStyles.text(
+                            size: "smaller",
+                            color: CustomColors.grey(),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CustomImages.badgeFeedback(height: 35, width: 36),
+                        Text(
+                          "Toujours motivé",
+                          style: CustomTextStyles.text(
+                            size: "smaller",
+                            color: CustomColors.grey(),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CustomImages.badgeRecruteur(height: 35, width: 36),
+                        Text(
+                          "Candidat engagé",
+                          style: CustomTextStyles.text(
+                            size: "smaller",
+                            color: CustomColors.grey(),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                // Skills Section
+                const Text(
+                  "Compétences",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
-              ),
+                const SizedBox(height: 10),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: List<dynamic>.from(widget.data["competences"])
+                      .map(
+                        (dynamic item) => StateButton(
+                          id: item["id"],
+                          onClicked: (int integer) => {},
+                          child: Text(
+                            item["text"],
+                            style: CustomTextStyles.text(
+                              size: "larger",
+                              color: CustomColors.black(),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+                const SizedBox(height: 20),
+                // Soft Skills Section
+                const Text(
+                  "Softskills",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Wrap(
+                  children: List<dynamic>.from(widget.data["softskills"])
+                      .map(
+                        (dynamic item) => StateButton(
+                          id: item["id"],
+                          onClicked: (int integer) => {},
+                          child: Text(
+                            item["text"],
+                            style: CustomTextStyles.text(
+                              size: "larger",
+                              color: CustomColors.black(),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
             ),
-          ]),
+          ),
         ),
-      ),
-    ]);
+        // Circular Section in Foreground
+        Padding(
+          padding: const EdgeInsets.only(top: 25),
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              height: 100,
+              width: 100,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: CustomColors.slateWhite(), width: 5),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withValues(alpha: 0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5, // Ombre vers le haut
+                  ),
+                ],
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    CustomColors.lightBlue(),
+                    CustomColors.lighterBlue(),
+                  ],
+                ),
+              ),
+              child: LayoutBuilder(builder: (context, constraints) {
+                return Center(
+                  child: CustomImages.frozenCherry(
+                      width: constraints.maxWidth * 0.7,
+                      height: constraints.maxWidth * 0.7,
+                      fit: BoxFit.contain),
+                );
+              }),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

@@ -1,6 +1,39 @@
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:logger/logger.dart';
 
 class CustomHelpers {
+  //static const String _key = 'current_id';
+  static Future<String> get _filePath async {
+    final Logger logger = Logger();
+    final path = await getApplicationDocumentsDirectory();
+    logger.i(path.path);
+    return path.path;
+  }
+  static Future<File> get _file async {
+    final path = await _filePath;
+    return File("$path/Android/data/com.example.talentz_mobile/files/base.txt");
+  }
+  // Save number
+  static Future<File> saveCurrentId(int number) async {
+    final file = await _file;
+    return file.writeAsString(number.toString());
+  }
+
+  // Retrieve number
+  static Future<int?> getCurrentId() async {
+    try {
+      final file = await _file;
+
+      final contents = await file.readAsString();
+
+      return int.parse(contents);
+    }
+    catch (e) {
+      return null;
+     }
+  }
   static const cherries = [
     {
       "name": "Panier de cerises",

@@ -67,7 +67,7 @@ class _Form6CompanyState extends State<Form6Company> {
       if (currentChoices['choices'].contains(id)) {
         currentChoices["choices"].removeWhere((choice) => choice["id"] == id);
       } else {
-        currentChoices["choices"].add({'id': id, 'name': name});
+        currentChoices["choices"].add({'id': id, 'text': name});
       }
     });
   }
@@ -381,7 +381,7 @@ class _Form6CompanyState extends State<Form6Company> {
 
     void onSearchChanged() {
       filteredContent = modalContent
-          .where((item) => item["name"]
+          .where((item) => item["text"]
               .toLowerCase()
               .contains(searchController.text.toLowerCase()))
           .toList();

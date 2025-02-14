@@ -1,5 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/company/form5.dart';
 import 'package:talentz_mobile/widgets/button.dart';
 import 'package:talentz_mobile/widgets/progress_bar.dart';
@@ -12,11 +16,46 @@ class Form4Company extends StatefulWidget {
 
 class _Form4CompanyState extends State<Form4Company> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _phoneController = TextEditingController();
-  String? _selectedCountract;
+  final TextEditingController _typePosteController = TextEditingController();
+  int _selectedCountract = 0;
+  late User user;
+  final Logger logger = Logger();
+  late List<dynamic> contractList;
+
+  @override
+  void initState() {
+    super.initState();
+    contractList = [];
+    getHttp();
+  }
+
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      Response companySizesResponse = await dio.get("/types_contrats");
+      setState(() {
+        contractList = companySizesResponse.data;
+      });
+    } catch (e) {
+      logger.e('$e');
+    }
+  }
+
+  void handleButtonClick() {
+    user.setTypePoste(_typePosteController.text);
+    user.setTypeContrat(contractList[_selectedCountract]["id"]);
+    logger.i(user.typePoste);
+    logger.i(user.typeContrat);
+  }
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: CustomColors.white(),
       appBar: AppBar(
@@ -91,7 +130,7 @@ class _Form4CompanyState extends State<Form4Company> {
                             ),
                           ),
                           TextFormField(
-                            controller: _phoneController,
+                            controller: _typePosteController,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -196,17 +235,17 @@ class _Form4CompanyState extends State<Form4Company> {
                                     .lightGrey2(), // Couleur de l'icône
                               ),
                             ),
-                            value: _selectedCountract,
+                            value: contractList.isNotEmpty ? contractList[_selectedCountract]["nom"] : "",
                             onChanged: (String? newValue) {
                               setState(() {
-                                _selectedCountract = newValue;
+                                _selectedCountract = contractList.indexWhere((e) => e["nom"] == newValue!);
                               });
                             },
-                            items: <String>['CDI', 'CDD']
-                                .map<DropdownMenuItem<String>>((String value) {
+                            items: contractList
+                                .map<DropdownMenuItem<String>>((dynamic value) {
                               return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
+                                value: value["nom"],
+                                child: Text(value["nom"]),
                               );
                             }).toList(),
                             validator: (value) {
@@ -226,6 +265,7 @@ class _Form4CompanyState extends State<Form4Company> {
             Center(
               child: CustomButton(
                 onClick: () => {
+                  handleButtonClick(),
                   Navigator.push(
                     context,
                     MaterialPageRoute(

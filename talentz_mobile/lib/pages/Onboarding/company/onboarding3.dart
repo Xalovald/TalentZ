@@ -147,7 +147,9 @@ class Onboarding3Company extends StatelessWidget {
                                     return Center(
                                       child: CustomImages.frozenCherry(
                                           width: constraints.maxWidth * 0.7,
-                                          height: constraints.maxWidth * 0.7),
+                                          height: constraints.maxWidth * 0.7,
+                                          fit: BoxFit.contain,
+                                      ),
                                     );
                                   }),
                                 ),
@@ -185,7 +187,9 @@ class Onboarding3Company extends StatelessWidget {
                                     return Center(
                                       child: CustomImages.cake(
                                           width: constraints.maxWidth * 0.7,
-                                          height: constraints.maxWidth * 0.7),
+                                          height: constraints.maxWidth * 0.7,
+                                          fit: BoxFit.contain,
+                                      ),
                                     );
                                   }),
                                 ),

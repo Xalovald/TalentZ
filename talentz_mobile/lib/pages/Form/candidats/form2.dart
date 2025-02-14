@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz_mobile/models/user.dart';
 import 'package:talentz_mobile/pages/Form/candidats/form3.dart';
 import 'package:talentz_mobile/ui/typography.dart';
 import 'package:talentz_mobile/widgets/button_post.dart';
@@ -15,6 +17,7 @@ class Form2Candidat extends StatefulWidget {
 
 class _Form2CandidatState extends State<Form2Candidat> {
   late bool showIcon;
+  late User user;
   final Logger logger = Logger();
 
   @override
@@ -24,7 +27,8 @@ class _Form2CandidatState extends State<Form2Candidat> {
   }
 
   void handleButtonClick(int id) {
-    logger.i(id);
+    user.setTypeContrat(id);
+    logger.i(user.typeContrat);
   }
 
   final textController = TextEditingController();
@@ -41,6 +45,7 @@ class _Form2CandidatState extends State<Form2Candidat> {
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -106,6 +111,7 @@ class _Form2CandidatState extends State<Form2Candidat> {
                             children: [
                               CustomButtonPost(
                                 onClick: () {
+                                  handleButtonClick(1);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -135,6 +141,7 @@ class _Form2CandidatState extends State<Form2Candidat> {
                               const SizedBox(height: 10), // Ajouter un espace entre les boutons
                               CustomButtonPost(
                                 onClick: () {
+                                  handleButtonClick(2);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -164,6 +171,7 @@ class _Form2CandidatState extends State<Form2Candidat> {
                               const SizedBox(height: 10), // Ajouter un espace entre les boutons
                               CustomButtonPost(
                                 onClick: () {
+                                  handleButtonClick(3);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

@@ -7,12 +7,16 @@ class User with ChangeNotifier {
   String? dateNaissance;
   String telephone = "";
   String email = "";
+  int? secteurActivite;
+  int? companySize;
+  String? typePoste;
+  int typeContrat = 1;
   String? city;
   String? location;
   String? address;
   String? siret;
   String password = "";
-  String cerise = "";
+  String cerise = "0";
   String whyCerise = "";
   List<int> apprentissages = [];
   List<int> avantages = [];
@@ -59,6 +63,30 @@ class User with ChangeNotifier {
   void setEmail(String value) {
     if (value!= email) {
       email = value;
+      notifyListeners();
+    }
+  }
+  void setSecteurActivite(int value) {
+    if (value!= secteurActivite) {
+      secteurActivite = value;
+      notifyListeners();
+    }
+  }
+  void setCompanySize(int value) {
+    if (value!= companySize) {
+      companySize = value;
+      notifyListeners();
+    }
+  }
+  void setTypePoste(String? value) {
+    if (value!= typePoste) {
+      typePoste = value;
+      notifyListeners();
+    }
+  }
+  void setTypeContrat(int value) {
+    if (value!= typeContrat) {
+      typeContrat = value;
       notifyListeners();
     }
   }
@@ -211,6 +239,10 @@ class User with ChangeNotifier {
       "dateNaissance": dateNaissance,
       "telephone": telephone,
       "email": email,
+      "secteurActivite": secteurActivite,
+      "companySize": companySize,
+      "typePoste": typePoste,
+      "typeContrat": typeContrat,
       "city": city,
       "location": location,
       "address": address,

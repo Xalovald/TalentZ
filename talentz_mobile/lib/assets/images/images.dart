@@ -52,4 +52,13 @@ class CustomImages {
   static Image blankIPhone14({double height = 10, double width = 10}) {
     return Image.asset('lib/assets/images/blankiPhone14.png', height: height, width: width,);
   }
+  static Image badgeReactif({double height = 10, double width = 10}) {
+    return Image.asset('lib/assets/images/badge_reactif.png', height: height, width: width,);
+  }
+  static Image badgeFeedback({double height = 10, double width = 10}) {
+    return Image.asset('lib/assets/images/badge_feedback.png', height: height, width: width,);
+  }
+  static Image badgeRecruteur({double height = 10, double width = 10}) {
+    return Image.asset('lib/assets/images/badge_recruteur.png', height: height, width: width,);
+  }
 }
