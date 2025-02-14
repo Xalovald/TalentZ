@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\datarequests\\matchingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\matchingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\usercontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,24 +46,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T21:13:20.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAFMBAAAAAAAAAAAiwFsBAAASAAAA",
+              "ViewState": "AQIAAP4BAAAAAAAAAAAuwAcCAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-13T14:05:40.334Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "OrderByStatement.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Sql\\Statements\\OrderByStatement.cs",
               "RelativeDocumentMoniker": "Sql\\Statements\\OrderByStatement.cs",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Comparator.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Helpers\\Comparator.cs",
               "RelativeDocumentMoniker": "Helpers\\Comparator.cs",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MatchingData.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\MatchingData.cs",
               "RelativeDocumentMoniker": "DataRequests\\MatchingData.cs",
@@ -91,12 +108,11 @@
               "RelativeToolTip": "DataRequests\\MatchingData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T01:31:29.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T01:31:29.033Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserControllerBase.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserControllerBase.cs",
               "RelativeDocumentMoniker": "Controllers\\UserControllerBase.cs",
@@ -108,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MatchingController.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\MatchingController.cs",
               "RelativeDocumentMoniker": "Controllers\\MatchingController.cs",
@@ -121,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Matching.cs",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\Matching.cs",
               "RelativeDocumentMoniker": "Models\\Matching.cs",
@@ -129,12 +145,11 @@
               "RelativeToolTip": "Models\\Matching.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T23:58:08.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-11T23:58:08.499Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\.env",
               "RelativeDocumentMoniker": ".env",
