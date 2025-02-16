@@ -25,6 +25,7 @@ class User with ChangeNotifier {
   List<int> missions = [];
   List<int> personnalites = [];
   List<int> valeursEthiques = [];
+  Map<String, dynamic>? questionMystere;
 
   void setLastName(String? value) {
     if (value != lastName) {
@@ -87,6 +88,13 @@ class User with ChangeNotifier {
   void setTypeContrat(int value) {
     if (value!= typeContrat) {
       typeContrat = value;
+      notifyListeners();
+    }
+  }
+
+  void setQuestionMystere(Map<String, dynamic> value) {
+    if (value!= questionMystere) {
+      questionMystere = value;
       notifyListeners();
     }
   }
@@ -256,7 +264,8 @@ class User with ChangeNotifier {
       "competences": competences,
       "missions": missions,
       "personnalites": personnalites,
-      "valeursEthiques": valeursEthiques
+      "valeursEthiques": valeursEthiques,
+      "questionMystere": questionMystere,
     };
   }
 }

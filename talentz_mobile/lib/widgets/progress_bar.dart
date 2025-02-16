@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
+import 'package:talentz/widgets/pill_content.dart';
 
 class CustomProgressBar extends StatelessWidget {
   final double startAt;

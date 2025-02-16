@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/fab_icon.dart';
-import 'package:talentz_mobile/widgets/shadow_painter.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/fab_icon.dart';
+import 'package:talentz/widgets/shadow_painter.dart';
 
 class CustomTextInput extends StatefulWidget {
   final TextEditingController controller;

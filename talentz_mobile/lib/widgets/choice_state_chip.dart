@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/ui/typography.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/ui/typography.dart';
 
 class ChoiceStateChip extends StatefulWidget {
   final String label;

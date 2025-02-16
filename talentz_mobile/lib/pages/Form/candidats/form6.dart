@@ -2,14 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/models/user.dart';
-import 'package:talentz_mobile/pages/Form/candidats/form7.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/choice_button_column.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/widgets/state_button.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/models/user.dart';
+import 'package:talentz/pages/Form/candidats/form7.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/choice_button_column.dart';
+import 'package:talentz/widgets/progress_bar.dart';
+import 'package:talentz/widgets/state_button.dart';
 
 class Form6Candidat extends StatefulWidget {
   const Form6Candidat({super.key});

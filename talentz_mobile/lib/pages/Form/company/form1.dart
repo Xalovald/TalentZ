@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Form/company/form2.dart';
-import 'package:talentz_mobile/widgets/button.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Form/company/form2.dart';
+import 'package:talentz/widgets/button.dart';
 import 'package:flutter/services.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
+import 'package:talentz/widgets/progress_bar.dart';
 
 class Form1Company extends StatefulWidget {
   const Form1Company({super.key});

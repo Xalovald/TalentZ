@@ -1,56 +1,50 @@
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
 import 'package:logger/logger.dart';
 
 class CustomHelpers {
+  static final Logger _logger = Logger();
   //static const String _key = 'current_id';
+
+  // Get the path for the file inside the app's private documents directory
   static Future<String> get _filePath async {
-    final Logger logger = Logger();
-    final path = await getApplicationDocumentsDirectory();
-    logger.i(path.path);
-    return path.path;
-  }
-  static Future<File> get _file async {
-    final path = await _filePath;
-    return File("$path/files/base.txt");
-  }
-  // Save number
-  static Future<File> saveCurrentId(int number) async {
-    final file = await _file;
-    return file.writeAsString(number.toString());
+    final directory = await getApplicationDocumentsDirectory();
+    _logger.i(directory.path);
+    return directory.path;
   }
 
-  // Retrieve number
+  // Get the file reference inside the app's private directory
+  static Future<File> get _file async {
+    final path = await _filePath;
+    final file = File("$path/files/base.txt");
+
+    if (!await file.exists()) {
+      // If the file doesn't exist, check if data is stored in flutter_secure_storage
+      await file.create(recursive: true);
+    }
+
+    return file;
+  }
+
+  // Save the number to the file and flutter_secure_storage
+  static Future<void> saveCurrentId(int number) async {
+    final file = await _file;
+    
+    // Save data to the file
+    await file.writeAsString(number.toString(), mode: FileMode.write);
+  }
+
+  // Retrieve the number from the file or flutter_secure_storage
   static Future<int?> getCurrentId() async {
     try {
       final file = await _file;
-
       final contents = await file.readAsString();
-
-      return int.parse(contents);
-    }
-    catch (e) {
+      return int.tryParse(contents);
+    } catch (e) {
+      _logger.e("Error reading Id: $e");
       return null;
-     }
-  }
-  static const cherries = [
-    {
-      "name": "Panier de cerises",
-      "icon": "lib/assets/images/cherry_basket.png",
-      "color": CustomColors.pink,
-    },
-    {
-      "name": "Cerise gelée",
-      "icon": "lib/assets/images/frozen_cherry.png",
-      "color": CustomColors.blue,
-    },
-    {
-      "name": "Cerise explosive",
-      "icon": "lib/assets/images/bomb_cherry.png",
-      "color": CustomColors.lightYellow,
     }
-  ];
+  }
   static const competencesList = [
     {
       "id": 1,

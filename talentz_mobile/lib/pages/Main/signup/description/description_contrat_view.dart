@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Main/signup/options/carousel_options_view.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
-import 'package:talentz_mobile/widgets/tab_indicator.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Main/signup/options/carousel_options_view.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/right_shadow_painter.dart';
+import 'package:talentz/widgets/tab_indicator.dart';
 
 class DescriptionContratView extends StatefulWidget {
   const DescriptionContratView({super.key});
@@ -267,7 +267,7 @@ class _DescriptionContratViewState extends State<DescriptionContratView> {
                                 height: 50,
                                 shadowPainter: RightShadowPainter(
                                   5,
-                                  color: Colors.black.withValues(alpha: 0.4),
+                                  color: Colors.black.withOpacity(0.4),
                                   radiusValue: 100,
                                 ),
                                 child: const Text(

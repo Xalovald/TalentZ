@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Onboarding/splash.dart';
-//import 'package:talentz_mobile/test.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Onboarding/splash.dart';
+//import 'package:talentz/test.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

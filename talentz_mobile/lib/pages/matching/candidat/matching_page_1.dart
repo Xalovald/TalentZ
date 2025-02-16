@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/svgs/svg_images.dart';
-import 'package:talentz_mobile/models/swipe_card.dart';
-import 'package:talentz_mobile/ui/typography.dart';
+import 'package:logger/logger.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/images/svgs/svg_images.dart';
+import 'package:talentz/helpers/helpers.dart';
+import 'package:talentz/models/swipe_card.dart';
+import 'package:talentz/pages/Onboarding/splash.dart';
+import 'package:talentz/ui/typography.dart';
 
 class MatchingPageCandidat extends StatefulWidget {
   const MatchingPageCandidat({super.key});
@@ -18,51 +22,18 @@ class MatchingPageCandidat extends StatefulWidget {
 class _MatchingPageCandidatState extends State<MatchingPageCandidat>
     with SingleTickerProviderStateMixin {
   final CardSwiperController controller = CardSwiperController();
-  late List<dynamic> dataList = [
-    {
-      "qualites": [
-        {"nom": "test"}
-      ],
-      "cerise": 0,
-      "whyCerise": "panier",
-      "competences": [
-        {
-          "id": 1,
-          "text": "test",
-        }
-      ],
-      "softskills": [
-        {
-          "id": 1,
-          "text": "test",
-        }
-      ],
-    },
-    {
-      "qualites": [
-        {"nom": "test"}
-      ],
-      "cerise": 0,
-      "whyCerise": "panier",
-      "competences": [
-        {
-          "id": 2,
-          "text": "test2",
-        }
-      ],
-      "softskills": [
-        {
-          "id": 2,
-          "text": "test2",
-        }
-      ],
-    }
-  ];
+  late List<dynamic> dataList = [];
   int _selectedIndex = 2; // Index sélectionné par défaut pour 'Matching'
   late List<int> selectedList = [];
   late List<int> specialList = [];
   late List<int> disabledList = [];
   late bool special = false;
+  final Logger logger = Logger();
+
+  @override void initState() {
+    super.initState();
+    getHttp();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -70,11 +41,33 @@ class _MatchingPageCandidatState extends State<MatchingPageCandidat>
     });
   }
 
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      int? currId = await CustomHelpers.getCurrentId();
+      if(!mounted) return;
+      currId == null ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SplashPage())) : null;
+        Response response  = await dio.get("/matching", data: {"idUser": currId});
+        setState(() {
+          dataList = response.data;
+          logger.i(response.data.toString());
+        });
+    }
+    catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.white(),
-      body: Stack(
+      body: dataList.isNotEmpty ? Stack(
         children: [
           // Background Container with Blur
           Container(
@@ -119,7 +112,7 @@ class _MatchingPageCandidatState extends State<MatchingPageCandidat>
             ],
           ),
         ],
-      ),
+      ) : const Center(child: CircularProgressIndicator()),
       bottomNavigationBar: Container(
         height: 103,
         width: 390,
@@ -131,7 +124,7 @@ class _MatchingPageCandidatState extends State<MatchingPageCandidat>
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.5),
+              color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 5,
               offset: const Offset(0, -2), // Ombre vers le haut
@@ -222,11 +215,11 @@ class _MatchingPageCandidatState extends State<MatchingPageCandidat>
       int oldIndex, int? index, CardSwiperDirection direction) {
     if (direction == CardSwiperDirection.right) {
       setState(() {
-        selectedList.add(dataList.toList()[index!]["id"]);
+        selectedList.add(dataList[index!]["user"]["id"]);
       });
     } else if (direction == CardSwiperDirection.left) {
       setState(() {
-        disabledList.add(dataList.toList()[index!]["id"]);
+        disabledList.add(dataList[index!]["user"]["id"]);
       });
     }
     return true;

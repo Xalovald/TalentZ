@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/images.dart';
-import 'package:talentz_mobile/pages/Onboarding/company/onboarding2.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/pages/Onboarding/company/onboarding2.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/pill_content.dart';
 
 class Onboarding1Company extends StatelessWidget {
   const Onboarding1Company({super.key});

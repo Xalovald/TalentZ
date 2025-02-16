@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Main/login_view.dart';
-import 'package:talentz_mobile/pages/Main/signup/select_signup_view.dart';
-import 'package:talentz_mobile/widgets/button.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Main/login_view.dart';
+import 'package:talentz/pages/Main/signup/select_signup_view.dart';
+import 'package:talentz/widgets/button.dart';
 
 class StartupPage extends StatelessWidget {
   const StartupPage({super.key});

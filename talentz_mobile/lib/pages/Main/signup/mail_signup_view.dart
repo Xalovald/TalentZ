@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Main/signup/description/description_name_view.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/text_input.dart';
-import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Main/signup/description/description_name_view.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/text_input.dart';
+import 'package:talentz/widgets/right_shadow_painter.dart';
 
 class MailSignupView extends StatelessWidget {
   MailSignupView({super.key});

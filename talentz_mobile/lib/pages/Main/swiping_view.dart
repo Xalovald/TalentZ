@@ -5,9 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:talentz_mobile/globals/routes.dart';
-import 'package:talentz_mobile/models/swipe_card.dart';
-import 'package:talentz_mobile/widgets/button.dart';
+import 'package:talentz/globals/routes.dart';
+import 'package:talentz/models/swipe_card.dart';
+import 'package:talentz/widgets/button.dart';
 
 class SwipeView extends StatefulWidget {
   const SwipeView({super.key});

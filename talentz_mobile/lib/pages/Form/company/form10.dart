@@ -3,16 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/images.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
-import 'package:talentz_mobile/models/user.dart';
-import 'package:talentz_mobile/pages/matching/company/matching_page_1.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/assets/icons/icons.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/helpers/helpers.dart';
+import 'package:talentz/models/user.dart';
+import 'package:talentz/pages/matching/company/matching_page_1.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/pill_content.dart';
+import 'package:talentz/widgets/progress_bar.dart';
+import 'package:talentz/assets/icons/icons.dart';
 
 class Form10Company extends StatefulWidget {
   const Form10Company({super.key});
@@ -35,14 +35,14 @@ class _Form10CompanyState extends State<Form10Company> {
     ),
   );
 
-  void handleButtonClick() async {
+  Future<void> handleButtonClick() async {
     user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString());
     user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]);
     user.setSiret("");
     logger.i(user.toJson());
     try {
       Response response = await dio.post("/users/entreprises", data: user.toJson(), options: Options(contentType: "application/json"));
-      CustomHelpers.saveCurrentId(response.data);
+      await CustomHelpers.saveCurrentId(response.data);
     } catch (e) {
       logger.e('$e');
     }
@@ -50,35 +50,35 @@ class _Form10CompanyState extends State<Form10Company> {
 
   final Map<String, Map<String, dynamic>> buttonInfos = {
     "buttonCupcake": {
-      "id": 1,
+      "id": 5,
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cupcake(scale: 1.2),
+      "icon": CustomImages.cherry(5, scale: 1.2),
       "description": ""
     },
     "buttonCake": {
-      "id": 2,
+      "id": 6,
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cake(scale: 1.2),
+      "icon": CustomImages.cherry(6, scale: 1.2),
       "description": ""
     },
     "buttonMillefeuille": {
-      "id": 3,
+      "id": 7,
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.millefeuile(scale: 1.2),
+      "icon": CustomImages.cherry(7, scale: 1.2),
       "description": ""
     },
     "buttonPie": {
-      "id": 4,
+      "id": 8,
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.pie(scale: 1.2),
+      "icon": CustomImages.cherry(8, scale: 1.2),
       "description": ""
     },
   };
@@ -494,14 +494,15 @@ class _Form10CompanyState extends State<Form10Company> {
                   Visibility(
                     visible: buttonInfos.entries.map((button) => button.value["showIcon"]).contains(true),
                     child: CustomButton(
-                      onClick: () => {
-                        handleButtonClick(),
+                      onClick: () async {
+                        await handleButtonClick();
                         Navigator.push(
+                          // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
                             builder: (context) => const MatchingPageCompany(),
                           ),
-                        ),
+                        );
                       },
                       width: 150,
                       heroTag: "form10CompanyConfirmBtn",

@@ -1,8 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Form/candidats/form6.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/models/user.dart';
+import 'package:talentz/pages/Form/candidats/form6.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/progress_bar.dart';
 
 class Form5Candidat extends StatefulWidget {
   const Form5Candidat({super.key});
@@ -13,9 +17,46 @@ class Form5Candidat extends StatefulWidget {
 class _Form5CandidatState extends State<Form5Candidat> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
+  late Map<String, dynamic> dataList = {};
+  final Logger logger = Logger();
+  late User user;
+
+  @override
+  void initState() {
+    super.initState();
+    getHttp();
+  }
+
+  void handleButtonClick() {
+    if(_textController.text != "") {
+      user.setQuestionMystere({
+        "id": dataList["id"],
+        "reponse": _textController.text,
+      });
+    }
+    logger.i(user.questionMystere);
+  }
+
+  void getHttp() async {
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: "http://57.129.129.23:5212/api",
+        connectTimeout: const Duration(seconds: 90000),
+      ),
+    );
+    try {
+      Response response = await dio.get("/questions_mysteres/random");
+      setState(() {
+        dataList = response.data;
+      });
+    } catch (e) {
+      logger.e('$e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: CustomColors.white(),
@@ -41,6 +82,7 @@ class _Form5CandidatState extends State<Form5Candidat> {
         padding: const EdgeInsets.only(
           left: 20.0,
           right: 15.0,
+          top: 15.0,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -49,7 +91,7 @@ class _Form5CandidatState extends State<Form5Candidat> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Racontes-nous ta plus grande fierté ! ',
+                  dataList.isNotEmpty ? dataList["text"] : "",
                   style: TextStyle(
                     color: CustomColors.black(),
                     fontSize: 20,
@@ -114,6 +156,7 @@ class _Form5CandidatState extends State<Form5Candidat> {
               child: Center(
                 child: CustomButton(
                   onClick: () => {
+                    handleButtonClick(),
                     Navigator.push(
                       context,
                       MaterialPageRoute(

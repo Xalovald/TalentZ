@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/pages/Main/calendar_view.dart';
-import 'package:talentz_mobile/pages/Main/chat_view.dart';
-import 'package:talentz_mobile/pages/Main/favorites_view.dart';
-import 'package:talentz_mobile/pages/Main/swiping_view.dart';
-import 'package:talentz_mobile/pages/Main/user_view.dart';
+import 'package:talentz/pages/Main/calendar_view.dart';
+import 'package:talentz/pages/Main/chat_view.dart';
+import 'package:talentz/pages/Main/favorites_view.dart';
+import 'package:talentz/pages/Main/swiping_view.dart';
+import 'package:talentz/pages/Main/user_view.dart';
 
 class CustomRoutes {
   static const routes = [

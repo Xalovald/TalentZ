@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
-import 'package:talentz_mobile/pages/Main/signup/options/why_cherry_options_view.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/fab_icon.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
-import 'package:talentz_mobile/widgets/single_child_box.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Main/signup/options/why_cherry_options_view.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/fab_icon.dart';
+import 'package:talentz/widgets/progress_bar.dart';
+import 'package:talentz/widgets/right_shadow_painter.dart';
+import 'package:talentz/widgets/single_child_box.dart';
 
 class CarouselOptionsView extends StatefulWidget {
   const CarouselOptionsView({
@@ -25,7 +24,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
   @override
   void initState() {
     super.initState();
-    cherry = CustomHelpers.cherries.firstWhere(
+    cherry = [].firstWhere(
       (element) => element["name"].toString().contains("Panier"),
     );
     carouselController = CarouselControllerImpl();
@@ -72,7 +71,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 FlutterCarousel(
-                  items: CustomHelpers.cherries
+                  items: []
                       .map(
                         (e) => Builder(
                           builder: (context) {
@@ -104,7 +103,7 @@ class _CarouselOptionsViewState extends State<CarouselOptionsView> {
                     controller: carouselController,
                     enableInfiniteScroll: true,
                     onPageChanged: (index, reason) => setState(() {
-                      cherry = CustomHelpers.cherries.elementAt(index);
+                      cherry = [].elementAt(index);
                       currentIndex = index;
                     }),
                     slideIndicator: CircularSlideIndicator(

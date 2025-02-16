@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
-import 'package:talentz_mobile/pages/Main/signup/options/qualites_options_view.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/fab_icon.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
-import 'package:talentz_mobile/widgets/single_child_box.dart';
-import 'package:talentz_mobile/widgets/text_input.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Main/signup/options/qualites_options_view.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/fab_icon.dart';
+import 'package:talentz/widgets/progress_bar.dart';
+import 'package:talentz/widgets/right_shadow_painter.dart';
+import 'package:talentz/widgets/single_child_box.dart';
+import 'package:talentz/widgets/text_input.dart';
 
 class WhyCherryOptionsView extends StatefulWidget {
   final int selectedId;
@@ -103,7 +102,7 @@ class _WhyCherryOptionsViewState extends State<WhyCherryOptionsView> {
                             blurStrength: 0),
                         child: Center(
                           child: CustomFabIcon(
-                            imagePath: CustomHelpers.cherries
+                            imagePath: []
                                 .elementAt(selectedId)["icon"]
                                 .toString(),
                             size: 110,

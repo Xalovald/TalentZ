@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/widgets/shadow_painter.dart';
+import 'package:talentz/widgets/shadow_painter.dart';
 
 class RightShadowPainter extends ShadowPainter {
   final double elevation;
@@ -9,7 +9,7 @@ class RightShadowPainter extends ShadowPainter {
 
   RightShadowPainter(this.elevation,
       {Color? color, this.radiusValue = 20, this.blurStrength = 1})
-      : color = color ?? Colors.black.withValues(alpha: 0.25);
+      : color = color ?? Colors.black.withOpacity(0.25);
 
   @override
   void paint(Canvas canvas, Size size) {

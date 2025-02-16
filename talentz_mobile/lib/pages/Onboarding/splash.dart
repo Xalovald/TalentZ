@@ -1,16 +1,18 @@
+import 'dart:async';
 import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/images.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
-import 'package:talentz_mobile/pages/Form/candidats/form1.dart';
-import 'package:talentz_mobile/pages/Onboarding/company/onboarding1.dart';
-import 'package:talentz_mobile/pages/matching/candidat/matching_page_1.dart';
-import 'package:talentz_mobile/pages/matching/company/matching_page_1.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
+import 'package:logger/logger.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/helpers/helpers.dart';
+import 'package:talentz/pages/Form/candidats/form1.dart';
+import 'package:talentz/pages/Onboarding/company/onboarding1.dart';
+import 'package:talentz/pages/matching/candidat/matching_page_1.dart';
+import 'package:talentz/pages/matching/company/matching_page_1.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/pill_content.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -18,12 +20,30 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin {
+  late Animation<double> animation;
+  late AnimationController controller;
+  final Logger logger = Logger();
+
   @override
   void initState() {
     super.initState();
+    final double screenHeight = PlatformDispatcher.instance.views.first.physicalSize.height / PlatformDispatcher.instance.views.first.devicePixelRatio;
     _checkForFile();
+    controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    animation = Tween<double>(begin: screenHeight * 0.45, end: 0).animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+    animation.addListener(() {
+      setState(() {
+        // The state that has changed here is the animation object's value.
+      });
+    });
+    // Pour changer le temps d'attente avant l'animation
+    Timer(const Duration(milliseconds: 1500), controller.forward);
   }
+
   void _checkForFile() async {
     Dio dio = Dio(
       BaseOptions(
@@ -148,7 +168,8 @@ class _SplashPageState extends State<SplashPage> {
                         child: Center(
                           child: ImageFiltered(
                             imageFilter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                            child: CustomImages.cake(
+                            child: CustomImages.cherry(
+                                6,
                                 width: constraints.maxWidth * 0.7,
                                 height: constraints.maxWidth * 0.7),
                           ),
@@ -211,93 +232,96 @@ class _SplashPageState extends State<SplashPage> {
                     ),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.45,
-                  decoration: BoxDecoration(
-                      color: CustomColors.white(),
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30))),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Votre recherche commence ici,\nsaisissez l'opportunité",
-                              style: CustomTextStyles.title(
-                                color: CustomColors.black(),
-                                size: "smaller",
-                              ),
-                            ),
-                            Text(
-                              "Lorem ipsum dolor sit amet, consectetur\nadipliscing elit Lorem ipsum dolor sit amet,\nconsectetur adipliscing elit",
-                              style: CustomTextStyles.text(
-                                color: CustomColors.grey(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            CustomButton(
-                              onClick: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                      const Form1Candidat(),
-                                  ),
-                                ),
-                              },
-                              width: 150,
-                              heroTag: "candidateSplashBtn",
-                              decoration: BoxDecoration(
-                                  color: CustomColors.lightGrey3(),
-                                  borderRadius: BorderRadius.circular(100)),
-                              child: Text(
-                                "Je suis candidat",
-                                style: CustomTextStyles.text(
+                Transform.translate(
+                  offset: Offset(0, animation.value),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    decoration: BoxDecoration(
+                        color: CustomColors.white(),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30))),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Votre recherche commence ici,\nsaisissez l'opportunité",
+                                style: CustomTextStyles.title(
                                   color: CustomColors.black(),
-                                  bold: true,
+                                  size: "smaller",
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: CustomButton(
+                              Text(
+                                "Lorem ipsum dolor sit amet, consectetur\nadipliscing elit Lorem ipsum dolor sit amet,\nconsectetur adipliscing elit",
+                                style: CustomTextStyles.text(
+                                  color: CustomColors.grey(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              CustomButton(
                                 onClick: () => {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const Onboarding1Company(),
+                                        const Form1Candidat(),
                                     ),
                                   ),
                                 },
                                 width: 150,
-                                heroTag: "companySplashBtn",
+                                heroTag: "candidateSplashBtn",
                                 decoration: BoxDecoration(
-                                    color: CustomColors.black(),
+                                    color: CustomColors.lightGrey3(),
                                     borderRadius: BorderRadius.circular(100)),
                                 child: Text(
-                                  "Je suis recruteur",
+                                  "Je suis candidat",
                                   style: CustomTextStyles.text(
-                                    color: CustomColors.white(),
+                                    color: CustomColors.black(),
                                     bold: true,
                                   ),
                                 ),
                               ),
-                            )
-                          ],
-                        )
-                      ],
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16.0),
+                                child: CustomButton(
+                                  onClick: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Onboarding1Company(),
+                                      ),
+                                    ),
+                                  },
+                                  width: 150,
+                                  heroTag: "companySplashBtn",
+                                  decoration: BoxDecoration(
+                                      color: CustomColors.black(),
+                                      borderRadius: BorderRadius.circular(100)),
+                                  child: Text(
+                                    "Je suis recruteur",
+                                    style: CustomTextStyles.text(
+                                      color: CustomColors.white(),
+                                      bold: true,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -3,11 +3,11 @@ import 'dart:developer' as developer;
 import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/pages/Main/main_view.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/widgets/right_shadow_painter.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/pages/Main/main_view.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/progress_bar.dart';
+import 'package:talentz/widgets/right_shadow_painter.dart';
 
 class QualitesOptionsView extends StatefulWidget {
   const QualitesOptionsView({
@@ -158,7 +158,7 @@ class _QualitesOptionsViewState extends State<QualitesOptionsView> {
                 height: 50,
                 shadowPainter: RightShadowPainter(
                   5,
-                  color: Colors.black.withValues(alpha: 0.4),
+                  color: Colors.black.withOpacity(0.4),
                   radiusValue: 100,
                 ),
                 child: const Text(

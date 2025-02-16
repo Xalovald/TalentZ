@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
+import 'package:talentz/assets/colors/colors.dart';
 
 class StateButton extends StatefulWidget {
   final int id;
   final Widget child;
-  final ValueChanged<int> onClicked;
+  final ValueChanged<int>? onClicked;
 
   const StateButton(
       {super.key,
@@ -22,7 +22,7 @@ class _StateButtonState extends State<StateButton> {
     setState(() {
       isClicked =!isClicked;
     });
-    widget.onClicked(widget.id);
+    widget.onClicked!(widget.id);
   }
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _StateButtonState extends State<StateButton> {
   Widget build(BuildContext context) {
     return ClipRRect(
       child: TextButton(
-        onPressed: toggleColor,
+        onPressed: widget.onClicked != null? toggleColor : null,
         style: ButtonStyle(
           backgroundColor: WidgetStatePropertyAll(isClicked ? CustomColors.grey() : Colors.transparent),
           side: WidgetStatePropertyAll(

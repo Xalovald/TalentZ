@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/globals/routes.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/globals/routes.dart';
 import "dart:developer" as developer;
 
 class MainView extends StatelessWidget {

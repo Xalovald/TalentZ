@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/images.dart';
-import 'package:talentz_mobile/pages/Form/company/form1.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/pages/Form/company/form2.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/pill_content.dart';
 
 class Onboarding3Company extends StatelessWidget {
   const Onboarding3Company({super.key});
@@ -145,10 +145,11 @@ class Onboarding3Company extends StatelessWidget {
                                   child: LayoutBuilder(
                                       builder: (context, constraints) {
                                     return Center(
-                                      child: CustomImages.frozenCherry(
-                                          width: constraints.maxWidth * 0.7,
-                                          height: constraints.maxWidth * 0.7,
-                                          fit: BoxFit.contain,
+                                      child: CustomImages.cherry(
+                                        3,
+                                        width: constraints.maxWidth * 0.7,
+                                        height: constraints.maxWidth * 0.7,
+                                        fit: BoxFit.contain,
                                       ),
                                     );
                                   }),
@@ -185,10 +186,11 @@ class Onboarding3Company extends StatelessWidget {
                                   child: LayoutBuilder(
                                       builder: (context, constraints) {
                                     return Center(
-                                      child: CustomImages.cake(
-                                          width: constraints.maxWidth * 0.7,
-                                          height: constraints.maxWidth * 0.7,
-                                          fit: BoxFit.contain,
+                                      child: CustomImages.cherry(
+                                        6,
+                                        width: constraints.maxWidth * 0.7,
+                                        height: constraints.maxWidth * 0.7,
+                                        fit: BoxFit.contain,
                                       ),
                                     );
                                   }),
@@ -288,7 +290,7 @@ class Onboarding3Company extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                        const Form1Company(),
+                                        const Form2Company(),
                                     ),
                                   ),
                                 },

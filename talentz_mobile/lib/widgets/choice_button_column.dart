@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/widgets/choice_state_chip.dart';
-import 'package:talentz_mobile/widgets/button.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/widgets/choice_state_chip.dart';
+import 'package:talentz/widgets/button.dart';
 
 class ChoiceButtonColumn extends StatelessWidget {
   final List<dynamic> choices;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/images.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/state_button.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/icons/icons.dart';
+import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/state_button.dart';
 
 class SwipeCard extends StatefulWidget {
   final Map data;
@@ -19,11 +20,6 @@ class SwipeCard extends StatefulWidget {
 
 class _SwipeCardState extends State<SwipeCard> {
   final Logger logger = Logger();
-  @override
-  void initState() {
-    super.initState();
-    logger.i(widget.data);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +40,7 @@ class _SwipeCardState extends State<SwipeCard> {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withValues(alpha: 0.5),
+                color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
                 offset: const Offset(0, 3), // Shadow direction
@@ -77,7 +73,7 @@ class _SwipeCardState extends State<SwipeCard> {
                         borderRadius: BorderRadius.circular(25),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
+                            color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5, // Ombre vers le haut
                           ),
@@ -92,7 +88,7 @@ class _SwipeCardState extends State<SwipeCard> {
                         ),
                       ),
                       child: Text(
-                        "90% Match",
+                        "${widget.data['score']}% Match",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -104,120 +100,407 @@ class _SwipeCardState extends State<SwipeCard> {
                 ),
                 const SizedBox(height: 10),
                 // Description
-                const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet id metus elementum malesuada. Quisque fringilla ultricies orci mattis porttitor.",
-                  style: TextStyle(fontSize: 14),
+                Text(
+                  widget.data["user"]["whyCerise"],
+                  style: const TextStyle(fontSize: 14),
                 ),
                 const SizedBox(height: 20),
                 // Badges Section
-                Text(
-                  "Collection de badges :",
-                  style: CustomTextStyles.text(
-                    size: "larger",
-                    color: CustomColors.black(),
+                Visibility(
+                  visible: widget.data["user"]["role"] == "candidat",
+                  child: Text(
+                    "Collection de badges :",
+                    style: CustomTextStyles.text(
+                      size: "larger",
+                      color: CustomColors.black(),
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
+                ),
+                Visibility(
+                  visible: widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["role"] == "candidat",
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          CustomImages.badgeReactif(height: 35, width: 36),
+                          Text(
+                            "Réponse sous 48H",
+                            style: CustomTextStyles.text(
+                              size: "smaller",
+                              color: CustomColors.grey(),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          CustomImages.badgeFeedback(height: 35, width: 36),
+                          Text(
+                            "Toujours motivé",
+                            style: CustomTextStyles.text(
+                              size: "smaller",
+                              color: CustomColors.grey(),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          CustomImages.badgeRecruteur(height: 35, width: 36),
+                          Text(
+                            "Candidat engagé",
+                            style: CustomTextStyles.text(
+                              size: "smaller",
+                              color: CustomColors.grey(),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        CustomImages.badgeReactif(height: 35, width: 36),
-                        Text(
-                          "Réponse sous 48H",
-                          style: CustomTextStyles.text(
-                            size: "smaller",
-                            color: CustomColors.grey(),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        CustomImages.badgeFeedback(height: 35, width: 36),
-                        Text(
-                          "Toujours motivé",
-                          style: CustomTextStyles.text(
-                            size: "smaller",
-                            color: CustomColors.grey(),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        CustomImages.badgeRecruteur(height: 35, width: 36),
-                        Text(
-                          "Candidat engagé",
-                          style: CustomTextStyles.text(
-                            size: "smaller",
-                            color: CustomColors.grey(),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                const Divider(height: 1, color: Colors.grey),
                 const SizedBox(height: 20),
                 // Skills Section
-                const Text(
-                  "Compétences",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
+                Visibility(
+                  visible: widget.data["user"]["valeursEthiques"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const Text(
+                    "Valeurs et éthique",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: List<dynamic>.from(widget.data["competences"])
-                      .map(
-                        (dynamic item) => StateButton(
-                          id: item["id"],
-                          onClicked: (int integer) => {},
-                          child: Text(
-                            item["text"],
-                            style: CustomTextStyles.text(
-                              size: "larger",
-                              color: CustomColors.black(),
+                Visibility(
+                  visible: widget.data["user"]["valeursEthiques"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["valeursEthiques"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: List<dynamic>.from(widget.data["user"]["valeursEthiques"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                      .toList(),
+                        )
+                        .toList(),
+                  ),
                 ),
-                const SizedBox(height: 20),
+                Visibility(
+                  visible: widget.data["user"]["valeursEthiques"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["apprentissages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const Text(
+                    "Apprentissages",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["apprentissages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["apprentissages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: List<dynamic>.from(widget.data["user"]["apprentissages"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["apprentissages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["carrieres"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const Text(
+                    "Carriere",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["carrieres"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["carrieres"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: List<dynamic>.from(widget.data["user"]["carrieres"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["carrieres"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["avantages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const Text(
+                    "Avantages Salariaux",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["avantages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["avantages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: List<dynamic>.from(widget.data["user"]["avantages"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["avantages"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["missions"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const Divider(height: 1, color: Colors.grey),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["missions"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["missions"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const Text(
+                    "Tes missions",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["missions"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["missions"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: List<dynamic>.from(widget.data["user"]["missions"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["missions"].isNotEmpty && widget.data["user"]["role"] == "entreprise",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["competences"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: const Text(
+                    "Competences",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["competences"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["competences"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: Wrap(
+                    children: List<dynamic>.from(widget.data["user"]["competences"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["competences"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 20)
+                ),
                 // Soft Skills Section
-                const Text(
-                  "Softskills",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
+                Visibility(
+                  visible: widget.data["user"]["personnalites"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: const Text(
+                    "Softskills",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                Wrap(
-                  children: List<dynamic>.from(widget.data["softskills"])
-                      .map(
-                        (dynamic item) => StateButton(
-                          id: item["id"],
-                          onClicked: (int integer) => {},
-                          child: Text(
-                            item["text"],
-                            style: CustomTextStyles.text(
-                              size: "larger",
-                              color: CustomColors.black(),
+                Visibility(
+                  visible: widget.data["user"]["personnalites"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["personnalites"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: Wrap(
+                    children: List<dynamic>.from(widget.data["user"]["personnalites"])
+                        .map(
+                          (dynamic item) => StateButton(
+                            id: item["id"],
+                            onClicked: null,
+                            child: Text(
+                              item["text"],
+                              style: CustomTextStyles.text(
+                                size: "larger",
+                                color: CustomColors.black(),
+                              ),
                             ),
                           ),
+                        )
+                        .toList(),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["personnalites"].isNotEmpty && widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 20)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["questionMystere"] != null && widget.data["user"]["role"] == "candidat",
+                  child: const Text(
+                    "Question surprise",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.data["user"]["questionMystere"] != null && widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["questionMystere"] != null && widget.data["user"]["role"] == "candidat",
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: Icon(
+                          CustomIcons.cupcake,
+                          color: CustomColors.lightGrey5(),
+                          size: 1.2,
                         ),
+                      ),
+                      const SizedBox(width: 20,),
+                      Text(
+                        widget.data["user"]["questionMystere"] != null ? widget.data["user"]["questionMystere"]["text"] : "",
+                        style: CustomTextStyles.text(size: "smaller", color: CustomColors.lightGrey5()),
                       )
-                      .toList(),
+                    ]
+                  )
+                ),
+                Visibility(
+                  visible: widget.data["user"]["questionMystere"] != null && widget.data["user"]["role"] == "candidat",
+                  child: const SizedBox(height: 10)
+                ),
+                Visibility(
+                  visible: widget.data["user"]["questionMystere"] != null && widget.data["user"]["role"] == "candidat",
+                  child: Text(
+                    widget.data["user"]["questionMystere"] != null ? widget.data["user"]["questionMystere"]["reponse"] : "",
+                  )
                 ),
               ],
             ),
@@ -236,7 +519,7 @@ class _SwipeCardState extends State<SwipeCard> {
                 border: Border.all(color: CustomColors.slateWhite(), width: 5),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.5),
+                    color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5, // Ombre vers le haut
                   ),
@@ -252,10 +535,12 @@ class _SwipeCardState extends State<SwipeCard> {
               ),
               child: LayoutBuilder(builder: (context, constraints) {
                 return Center(
-                  child: CustomImages.frozenCherry(
-                      width: constraints.maxWidth * 0.7,
-                      height: constraints.maxWidth * 0.7,
-                      fit: BoxFit.contain),
+                  child: CustomImages.cherry(
+                    widget.data["user"]["cerise"]["id"],
+                    width: constraints.maxWidth * 0.7,
+                    height: constraints.maxWidth * 0.7,
+                    fit: BoxFit.contain
+                  ),
                 );
               }),
             ),

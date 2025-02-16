@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/models/user.dart';
-import 'package:talentz_mobile/pages/Form/candidats/form3.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button_post.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/models/user.dart';
+import 'package:talentz/pages/Form/candidats/form3.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button_post.dart';
+import 'package:talentz/widgets/progress_bar.dart';
 
 class Form2Candidat extends StatefulWidget {
   const Form2Candidat({super.key});

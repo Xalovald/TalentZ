@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
 
 class CustomImages {
+  static Image? cherry(int id, {double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
+    if(id == 1) {
+      return Image.asset('lib/assets/images/juicy_cherry.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 2) {
+      return Image.asset('lib/assets/images/cherry_basket.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 3) {
+      return Image.asset('lib/assets/images/frozen_cherry.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 4) {
+      return Image.asset('lib/assets/images/chewed_cherry.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 5) {
+      return Image.asset('lib/assets/images/cupcake.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 6) {
+      return Image.asset('lib/assets/images/cake.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 7) {
+      return Image.asset('lib/assets/images/millefeuille.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else if(id == 8) {
+      return Image.asset('lib/assets/images/pie.png', height: height, width: width, fit: fit, scale: scale);
+    }
+    else {
+      return null;
+    }
+  }
   static Image bombCherry({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
     return Image.asset('lib/assets/images/bomb_cherry.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image cherryBasket({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/cherry_basket.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image frozenCherry({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/frozen_cherry.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image juicyCherry({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/juicy_cherry.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image chewedCherry({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/chewed_cherry.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image cake({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/cake.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image cupcake({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/cupcake.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image pie({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/pie.png', height: height, width: width, fit: fit, scale: scale);
-  }
-  static Image millefeuile({double height = 10, double width = 10, BoxFit fit = BoxFit.none, double scale = 1}) {
-    return Image.asset('lib/assets/images/millefeuille.png', height: height, width: width, fit: fit, scale: scale);
   }
   static Image google({double height = 10, double width = 10}) {
     return Image.asset('lib/assets/images/google.png', height: height, width: width,);

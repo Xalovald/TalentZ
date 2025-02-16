@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/icons/icons.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/icons/icons.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -18,7 +18,7 @@ class TestPage extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.5),
+              color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 5,
               offset: const Offset(0, -2), // Ombre vers le haut

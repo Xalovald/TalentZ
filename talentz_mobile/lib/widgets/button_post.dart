@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talentz_mobile/widgets/shadow_painter.dart';
+import 'package:talentz/widgets/shadow_painter.dart';
 
 class CustomButtonPost extends StatelessWidget {
   final void Function()? onClick;

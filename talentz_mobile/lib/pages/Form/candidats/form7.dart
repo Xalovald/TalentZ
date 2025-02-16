@@ -3,16 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:talentz_mobile/assets/colors/colors.dart';
-import 'package:talentz_mobile/assets/images/images.dart';
-import 'package:talentz_mobile/helpers/helpers.dart';
-import 'package:talentz_mobile/models/user.dart';
-import 'package:talentz_mobile/pages/matching/candidat/matching_page_1.dart';
-import 'package:talentz_mobile/ui/typography.dart';
-import 'package:talentz_mobile/widgets/button.dart';
-import 'package:talentz_mobile/widgets/pill_content.dart';
-import 'package:talentz_mobile/widgets/progress_bar.dart';
-import 'package:talentz_mobile/assets/icons/icons.dart';
+import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/helpers/helpers.dart';
+import 'package:talentz/models/user.dart';
+import 'package:talentz/pages/matching/candidat/matching_page_1.dart';
+import 'package:talentz/ui/typography.dart';
+import 'package:talentz/widgets/button.dart';
+import 'package:talentz/widgets/pill_content.dart';
+import 'package:talentz/widgets/progress_bar.dart';
+import 'package:talentz/assets/icons/icons.dart';
 
 class Form7Candidat extends StatefulWidget {
   const Form7Candidat({super.key});
@@ -36,7 +36,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
     ),
   );
 
-  void handleButtonClick() async {
+  Future<void> handleButtonClick() async {
     user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString());
     user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]);
     user.setAddress("");
@@ -44,7 +44,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
     logger.i(user.toJson());
     try {
       Response response = await dio.post("/users/candidats", data: user.toJson(), options: Options(contentType: "application/json"));
-      CustomHelpers.saveCurrentId(response.data);
+      await CustomHelpers.saveCurrentId(response.data);
     } catch (e) {
       logger.e('$e');
     }
@@ -56,23 +56,23 @@ class _Form7CandidatState extends State<Form7Candidat> {
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.juicyCherry(scale: 1.2),
+      "icon": CustomImages.cherry(1, scale: 1.2),
       "description": ""
     },
     "buttonFrozen": {
-      "id": 2,
-      "border": CustomColors.lightGrey2(),
-      "showIcon": false,
-      "showText": false,
-      "icon": CustomImages.frozenCherry(scale: 1.2),
-      "description": ""
-    },
-    "buttonBasket": {
       "id": 3,
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cherryBasket(scale: 1.2),
+      "icon": CustomImages.cherry(3, scale: 1.2),
+      "description": ""
+    },
+    "buttonBasket": {
+      "id": 2,
+      "border": CustomColors.lightGrey2(),
+      "showIcon": false,
+      "showText": false,
+      "icon": CustomImages.cherry(2, scale: 1.2),
       "description": ""
     },
     "buttonChewd": {
@@ -80,7 +80,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.pie(scale: 1.2),
+      "icon": CustomImages.cherry(4, scale: 1.2),
       "description": ""
     },
   };
@@ -574,14 +574,15 @@ class _Form7CandidatState extends State<Form7Candidat> {
                         .map((button) => button.value["showIcon"])
                         .contains(true),
                     child: CustomButton(
-                      onClick: () => {
-                        handleButtonClick(),
+                      onClick: () async {
+                        await handleButtonClick();
                         Navigator.push(
+                          // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
                             builder: (context) => const MatchingPageCandidat(),
                           ),
-                        ),
+                        );
                       },
                       width: 150,
                       heroTag: "form7CandidatConfirmBtn",

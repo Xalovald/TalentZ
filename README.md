@@ -15,3 +15,43 @@
 ## IMPORTANT
 
 La commande a effectuer pour lancer votre docker est la suivante: ```docker compose up --build -d```
+
+## Concernant l'application
+
+### Étapes
+
+1. Lancer l'application en mode debug
+2. Attendre que l'application s'ouvre sur le téléphone
+3. Lancer un invite de commande
+4. Taper
+    ```bat
+    adb shell
+    ```
+5. Une fois rentrée, taper:
+    ```bat
+    run-as com.example.talentz
+    ```
+6. Puis faire:
+    ```bat
+    cd app_flutter
+    cd files
+    ```
+7. Vous devriez avoir un ficher nommé base.txt
+8. Pour le modifier:
+    - Créer ou Modifier le fichier base.txt:
+      ```bat
+      echo "{votre_id}" > base.txt
+      ```
+      Ou:
+      ```bat
+      echo > base.txt
+      ```
+    - Supprimer le fichier base.txt:
+      ```ps
+      rm -f base.txt
+      ```
+### Post-Scriptum
+
+Si vous lancez l'application mobile, rentrez absolument
+tous les champs de l'inscription pour l'instant, l'application n'est pas terminée.
+
