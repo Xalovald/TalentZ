@@ -94,11 +94,14 @@ namespace talentz_api.Controllers
                     double score;
                     score = scores.Sum() / scores.Count;
                     // Add the result to the list
-                    results.Add(new Matching
+                    if (score > 0)
                     {
-                        User = new UserController().GetOne((int)row_candidat["id"])!,
-                        Score = Math.Round(score, 1),
-                    });
+                        results.Add(new Matching
+                        {
+                            User = new UserController().GetOne((int)row_candidat["id"])!,
+                            Score = Math.Round(score, 1),
+                        });
+                    }
                 }
             }
             return results;
