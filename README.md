@@ -55,3 +55,5 @@ La commande a effectuer pour lancer votre docker est la suivante: ```docker comp
 Si vous lancez l'application mobile, rentrez absolument
 tous les champs de l'inscription pour l'instant, l'application n'est pas terminée.
 
+Si vous désinstallez l'application, vous devrez recommencer le processus, si vous vous êtes déjà créé un compte, allez dans adb shell et remettez votre id dans le fichier base.txt .
+
