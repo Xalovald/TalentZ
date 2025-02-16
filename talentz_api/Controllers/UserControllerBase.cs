@@ -1,4 +1,5 @@
-﻿using Mysqlx.Crud;
+﻿using Microsoft.IdentityModel.Tokens;
+using Mysqlx.Crud;
 using Mysqlx.Prepare;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +18,7 @@ namespace talentz_api.Controllers
         protected List<T> GetTableFromInvIdx<T>(DataRow row, string invidx_table, string target_table) where T : new()
         {
             List<SqlStatement> queryStatement = [
-                    new SelectStatement(target_table, [target_table + ".id",target_table + ".text", new AsStatement("users.id","id_user").ToString()]),
+                    new SelectStatement(target_table, ["*"]),
                     new JoinStatement(invidx_table, "left", new OnStatement(target_table + ".id", "=", invidx_table + ".id_" + target_table.Remove(target_table.Length - 1))),
                     new JoinStatement("users", "inner", new OnStatement(invidx_table + ".id_user", "=", "users.id")),
                     new WhereStatement(statements: ["users.id","=",((int)row["id"]).ToString()])
@@ -48,7 +49,7 @@ namespace talentz_api.Controllers
         protected T? GetLinkedTable<T>(DataRow row, string target_table, string original_table) where T : new()
         {
             List<SqlStatement> queryStatement = [
-                    new SelectStatement(target_table, [target_table + ".id",target_table + ".nom", original_table + "." + target_table.Remove(target_table.Length - 1)]),
+                    new SelectStatement(target_table, ["*"]),
                     new JoinStatement(original_table, "inner", new OnStatement(target_table + ".id", "=", original_table + "." + target_table.Remove(target_table.Length - 1))),
                     new WhereStatement(statements: [original_table + ".id", "=",((int)row["id"]).ToString()])
                 ];
@@ -82,19 +83,28 @@ namespace talentz_api.Controllers
                 return default;
             }
         }
-        protected (List<SqlStatement>, List<PreparedParameter>) InsertStatementFromParamList(List<int> dataList)
+        protected (List<SqlStatement>, List<PreparedParameter>) InsertStatementFromParamList(List<int?> dataList, List<Dictionary<string, dynamic>> additionalFields)
         {
             List<SqlStatement> insertStatements = [];
             List<PreparedParameter> preparedParameters = [];
             int insertId = 0;
-            foreach(int _obj in dataList)
+            foreach(int? _obj in dataList)
             {
+                List<string> additionalNames = [];
+                List<dynamic> additionalValues = [];
+                foreach(Dictionary<string, dynamic> _addObj in additionalFields)
+                {
+                    additionalNames = _addObj.Select(e => "@value"+e.Key).ToList();
+                    additionalValues = _addObj.Select(e => e.Value).ToList();
+                }
+                if(_obj == null) continue;
                 if (insertId == 0)
                 {
                     insertStatements.Add(
                         new ValuesStatement([
                             "@userId",
-                            "@objId"
+                            "@objId",
+                            !additionalFields.IsNullOrEmpty() ? additionalNames.First() : null
                         ])
                     );
                     preparedParameters.Add(
@@ -103,13 +113,19 @@ namespace talentz_api.Controllers
                     preparedParameters.Add(
                         new PreparedParameter("@objId", _obj)
                     );
+                    if(!additionalFields.IsNullOrEmpty()) {
+                        preparedParameters.Add(
+                            new PreparedParameter(additionalNames.First(), additionalValues.First())
+                        );
+                    };
                 }
                 else
                 {
                     insertStatements.Add(
                     new InsertComma([
                             "@userId"+insertId,
-                            "@objId"+insertId
+                            "@objId"+insertId,
+                            !additionalFields.IsNullOrEmpty() ? additionalNames.First() : null
                     ])
                     );
                     preparedParameters.Add(
@@ -117,7 +133,13 @@ namespace talentz_api.Controllers
                     );
                     preparedParameters.Add(
                         new PreparedParameter("@objId" + insertId, _obj)
-                    ); ;
+                    );
+                    if (!additionalFields.IsNullOrEmpty())
+                    {
+                        preparedParameters.Add(
+                            new PreparedParameter(additionalNames.First(), additionalValues.First())
+                        );
+                    };
 
                 }
                 insertId++;
@@ -125,16 +147,18 @@ namespace talentz_api.Controllers
             return (insertStatements, preparedParameters);
         }
 
-        protected void InsertInInvIdx(string table, bool execute, List<int> dataList)
+        protected void InsertInInvIdx(string table, bool execute, List<int?> dataList, List<Dictionary<string, dynamic>>? additionalFields = null)
         {
             if (dataList.Count > 0) {
                 List<string> tableSplitted = [.. table.Split("_")];
                 tableSplitted.RemoveAt(0);
                 var reformTable = string.Join("_", tableSplitted);
-                (List<SqlStatement> insertStatements, List<PreparedParameter> preparedParameters) = InsertStatementFromParamList(dataList);
+                additionalFields ??= [];
+                List<string> additionalNames = additionalFields.Select((e, id) => e.Keys.ToList()[id]).ToList();
+                (List<SqlStatement> insertStatements, List<PreparedParameter> preparedParameters) = InsertStatementFromParamList(dataList, additionalFields);
                 List<SqlStatement> sqlInvIdStatements = [
-                    new InsertStatement(table, ["id_user", "id_" + reformTable.Remove(reformTable.Length - 1)]),
-                    ..insertStatements
+                    new InsertStatement(table, ["id_user", "id_" + reformTable.Remove(reformTable.Length - 1), ..additionalNames]),
+                    ..insertStatements,
                 ];
                 SqlQuery sqlQueryInvId = new(conn, sqlInvIdStatements, table, preparedParameters);
                 if (execute) sqlQueryInvId.ExecuteNonQuery();

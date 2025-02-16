@@ -48,9 +48,11 @@ namespace talentz_api.Models
 
         public List<ValeurEthique>? ValeursEthiques { get; set; }
 
+        public QuestionMystere? QuestionMystere { get; set; }
+
         public string? Password { get; set; }
 
-        public int? Cerise { get; set; }
+        public Cerise? Cerise { get; set; }
 
         public string? WhyCerise { get; set; }
     }

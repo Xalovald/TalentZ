@@ -1,6 +1,6 @@
 ﻿namespace talentz_api.Sql.Statements
 {
-    public class InsertComma(params List<string>[] valuesArray) : SqlStatement
+    public class InsertComma(params List<string?>[] valuesArray) : SqlStatement
     {
         private readonly List<string>[] _valuesArray = valuesArray;
 
@@ -10,6 +10,7 @@
 
             foreach (var values in _valuesArray)
             {
+                values.RemoveAll(e => e == null);
                 _full += "(";
 
                 _full += string.Join(',', values);

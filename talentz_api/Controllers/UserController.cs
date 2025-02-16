@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -91,9 +92,11 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                List<QuestionMystere> dataQuestionsMysteres = GetTableFromInvIdx<QuestionMystere>(row, "invidx_questions_mysteres", "questions_mysteres");
                 CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
                 SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
                 TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
+                Cerise? dataCerise = GetLinkedTable<Cerise>(row, "cerises", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -102,7 +105,7 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
-                    Cerise = (int)row["cerise"],
+                    Cerise = dataCerise,
                     WhyCerise = (string)row["why_cerise"],
                     Email = (string)row["email"],
                     SecteurActivite = NotDefaultOrNull<SecteurActivite>(dataSecteurActivite),
@@ -121,6 +124,7 @@ namespace talentz_api.Controllers
                     Missions = dataMissions,
                     Personnalites = dataPersonnalites,
                     ValeursEthiques = dataValeursEthiques,
+                    QuestionMystere = dataQuestionsMysteres.IsNullOrEmpty() ? null : dataQuestionsMysteres.First(),
                 });
             };
 
@@ -154,9 +158,11 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                List<QuestionMystere> dataQuestionsMysteres = GetTableFromInvIdx<QuestionMystere>(row, "invidx_questions_mysteres", "questions_mysteres");
                 CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
                 SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
                 TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
+                Cerise? dataCerise = GetLinkedTable<Cerise>(row, "cerises", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -165,7 +171,7 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
-                    Cerise = (int)row["cerise"],
+                    Cerise = dataCerise,
                     WhyCerise = (string)row["why_cerise"],
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
@@ -185,6 +191,7 @@ namespace talentz_api.Controllers
                     Missions = dataMissions,
                     Personnalites = dataPersonnalites,
                     ValeursEthiques = dataValeursEthiques,
+                    QuestionMystere = dataQuestionsMysteres.IsNullOrEmpty() ? null : dataQuestionsMysteres.First(),
                 });
             }
 
@@ -209,9 +216,11 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                List<QuestionMystere> dataQuestionsMysteres = GetTableFromInvIdx<QuestionMystere>(row, "invidx_questions_mysteres", "questions_mysteres");
                 CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
                 SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
                 TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
+                Cerise? dataCerise = GetLinkedTable<Cerise>(row, "cerises", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser = new User()
                 {
@@ -220,7 +229,7 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
-                    Cerise = (int)row["cerise"],
+                    Cerise = dataCerise,
                     WhyCerise = (string)row["why_cerise"],
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
@@ -240,6 +249,7 @@ namespace talentz_api.Controllers
                     Missions = dataMissions,
                     Personnalites = dataPersonnalites,
                     ValeursEthiques = dataValeursEthiques,
+                    QuestionMystere = dataQuestionsMysteres.IsNullOrEmpty() ? null : dataQuestionsMysteres.First(),
                 };
             }
             return dataUser;
@@ -280,7 +290,7 @@ namespace talentz_api.Controllers
                 new PreparedParameter("@typeContrat", data.TypeContrat),
             ]);
 
-            if(execute) sqlQuery.ExecuteNonQuery();
+            if (execute) sqlQuery.ExecuteNonQuery();
 
             InsertInInvIdx("invidx_apprentissages", execute, data.Apprentissages);
             InsertInInvIdx("invidx_avantages", execute, data.Avantages);
@@ -289,6 +299,7 @@ namespace talentz_api.Controllers
             InsertInInvIdx("invidx_missions", execute, data.Missions);
             InsertInInvIdx("invidx_personnalites", execute, data.Personnalites);
             InsertInInvIdx("invidx_valeurs_ethiques", execute, data.ValeursEthiques);
+            if(data.QuestionMystere != null) InsertInInvIdx("invidx_questions_mysteres", execute, [(int?)data.QuestionMystere["id"].GetInt32()], [new Dictionary<string, dynamic>{{"reponse", data.QuestionMystere["reponse"].GetString() }}]);
 
 
             Response.StatusCode = StatusCodes.Status201Created;
@@ -313,6 +324,8 @@ namespace talentz_api.Controllers
                 List<Mission> dataMissions = GetTableFromInvIdx<Mission>(row, "invidx_missions", "missions");
                 List<Personnalite> dataPersonnalites = GetTableFromInvIdx<Personnalite>(row, "invidx_personnalites", "personnalites");
                 List<ValeurEthique> dataValeursEthiques = GetTableFromInvIdx<ValeurEthique>(row, "invidx_valeurs_ethiques", "valeurs_ethiques");
+                List<QuestionMystere> dataQuestionsMysteres = GetTableFromInvIdx<QuestionMystere>(row, "invidx_questions_mysteres", "questions_mysteres");
+                Cerise? dataCerise = GetLinkedTable<Cerise>(row, "cerises", "users");
                 List<string> validRoles = ["candidat", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -321,7 +334,7 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
-                    Cerise = (int)row["cerise"],
+                    Cerise = dataCerise,
                     WhyCerise = (string)row["why_cerise"],
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
@@ -337,6 +350,7 @@ namespace talentz_api.Controllers
                     Missions = dataMissions,
                     Personnalites = dataPersonnalites,
                     ValeursEthiques = dataValeursEthiques,
+                    QuestionMystere = dataQuestionsMysteres.IsNullOrEmpty() ? null : dataQuestionsMysteres.First(),
                 });
             }
             return dataUser;
@@ -415,6 +429,7 @@ namespace talentz_api.Controllers
                 CompanySize? dataCompanySize = GetLinkedTable<CompanySize>(row, "company_sizes", "users");
                 SecteurActivite? dataSecteurActivite = GetLinkedTable<SecteurActivite>(row, "secteurs_activites", "users");
                 TypeContrat? dataTypeContrat = GetLinkedTable<TypeContrat>(row, "types_contrats", "users");
+                Cerise? dataCerise = GetLinkedTable<Cerise>(row, "cerises", "users");
                 List<string> validRoles = ["entreprise", "admin", "superadmin"];
                 dataUser.Add(new User()
                 {
@@ -423,7 +438,7 @@ namespace talentz_api.Controllers
                     FirstName = NotDefaultOrNull<string>(ConvertFromDBVal<string>(row["prenom"])),
                     CompanyName = ShowIfRoles(["entreprise"], (string)row["role"], (string)row["nom"]),
                     DateNaissance = ShowIfRoles(validRoles, (string)row["role"], ConvertFromDBVal<DateTime>(row["date_naissance"])),
-                    Cerise = (int)row["cerise"],
+                    Cerise = dataCerise,
                     WhyCerise = (string)row["why_cerise"],
                     Telephone = (string)row["telephone"],
                     Email = (string)row["email"],
