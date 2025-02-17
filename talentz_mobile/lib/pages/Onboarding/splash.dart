@@ -35,11 +35,6 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       vsync: this,
     );
     animation = Tween<double>(begin: screenHeight * 0.45, end: 0).animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
-    animation.addListener(() {
-      setState(() {
-        // The state that has changed here is the animation object's value.
-      });
-    });
     // Pour changer le temps d'attente avant l'animation
     Timer(const Duration(milliseconds: 1500), controller.forward);
   }
@@ -232,8 +227,14 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                     ),
                   ),
                 ),
-                Transform.translate(
-                  offset: Offset(0, animation.value),
+                AnimatedBuilder(
+                  animation: animation,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(0, animation.value),
+                      child: child,
+                    );
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.45,
