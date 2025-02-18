@@ -61,7 +61,7 @@ namespace talentz_api.Controllers
                     Message = "Wrong credentials.",
                 });
             }
-            return Ok();
+            return Ok(new { Message = "Connexion réussie", Id = sqlQuery.GetTable().Rows[0]["id"] });
         }
 
         [HttpGet]
