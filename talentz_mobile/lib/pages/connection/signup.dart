@@ -8,7 +8,9 @@ import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/pages/Form/candidats/form1.dart';
 import 'package:talentz/pages/Onboarding/company/onboarding1.dart';
+import 'package:talentz/pages/connection/login.dart';
 import 'package:talentz/pages/main_pages/main_view.dart';
+import 'package:talentz/pages/onboarding/candidats/onboarding1.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -281,7 +283,7 @@ class _SignupPageState extends State<SignupPage> with TickerProviderStateMixin {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                        const Form1Candidat(),
+                                        const Onboarding1Candidats(),
                                     ),
                                   ),
                                 },
@@ -323,6 +325,25 @@ class _SignupPageState extends State<SignupPage> with TickerProviderStateMixin {
                                     ),
                                   ),
                                 ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16.0),
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const LogInPage(),
+                                      ),
+                                  )},
+                                  child: Text(
+                                    "Vous avez déjà un compte? Connectez-vous!",
+                                    style: CustomTextStyles.text(
+                                      color: CustomColors.black(),
+                                      underline: true,
+                                    ),
+                                  ),
+                                )
                               )
                             ],
                           )

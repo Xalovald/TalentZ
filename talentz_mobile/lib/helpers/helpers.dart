@@ -45,6 +45,11 @@ class CustomHelpers {
       return null;
     }
   }
+
+  static Future<void> deleteFile() async {
+    final file = await _file;
+    await file.delete();
+  }
   static const competencesList = [
     {
       "id": 1,

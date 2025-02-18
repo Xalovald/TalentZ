@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/pages/connection/signup.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class LogInPage extends StatefulWidget {
+  const LogInPage({super.key});
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<LogInPage> createState() => _LogInPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _LogInPageState extends State<LogInPage> {
   final Logger logger = Logger();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -275,6 +276,25 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                 ),
                               ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16.0),
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const SignupPage(),
+                                      ),
+                                  )},
+                                  child: Text(
+                                    "Pas encore de compte? Inscrivez-vous!",
+                                    style: CustomTextStyles.text(
+                                      color: CustomColors.black(),
+                                      underline: true,
+                                    ),
+                                  ),
+                                )
+                              )
                             ],
                           ),
                         ),

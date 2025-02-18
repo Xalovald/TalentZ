@@ -21,6 +21,7 @@ class _Form1CandidatState extends State<Form1Candidat> {
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _mailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   late User user;
   final Logger logger = Logger();
@@ -36,11 +37,13 @@ class _Form1CandidatState extends State<Form1Candidat> {
     user.setEmail(_mailController.text);
     user.setTelephone(_phoneController.text);
     user.setDateNaissance(DateTime.now().subtract(Duration(days: int.parse(_ageController.text)*365)).toString().split(" ")[0]);
+    user.setPassword(_passwordController.text);
     logger.i(user.firstName);
     logger.i(user.lastName);
     logger.i(user.email);
     logger.i(user.telephone);
     logger.i(user.dateNaissance);
+    logger.i(user.password);
   }
 
   @override
@@ -431,6 +434,70 @@ class _Form1CandidatState extends State<Form1Candidat> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Veuillez entrer votre adresse mail';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mot de passe',
+                            style: TextStyle(
+                              color: CustomColors.grey(), // Couleur du label
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              fontFamily:
+                                  "Montserrat", // Taille de la police du label
+                            ),
+                          ),
+                          TextFormField(
+                            controller: _passwordController,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .lightGrey2()), // Couleur de la bordure lorsque le champ est focalisé
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .grey()), // Couleur de la bordure lorsque le champ est focalisé
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .red()), // Couleur de la bordure en cas d'erreur
+                              ),
+                              disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .lightGrey2()), // Couleur de la bordure lorsque le champ est désactivé
+                              ),
+                              hintText:
+                                  '**********', // Ajoute un placeholder
+                              hintStyle: TextStyle(
+                                color: CustomColors
+                                    .black(), // Couleur du placeholder
+                                fontSize:
+                                    14, // Taille de la police du placeholder
+                              ),
+                              prefixIcon: Icon(
+                                Icons.alternate_email, // Icône à afficher
+                                color: CustomColors
+                                    .lightGrey2(), // Couleur de l'icône
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Veuillez entrer un mot de passe';
                               }
                               return null;
                             },

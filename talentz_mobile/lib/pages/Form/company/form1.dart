@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/models/user.dart';
 import 'package:talentz/pages/Form/company/form2.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:flutter/services.dart';
@@ -18,11 +21,20 @@ class _Form1CompanyState extends State<Form1Company> {
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _mailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  void handleButtonClick() {}
+  late User user;
+  final Logger logger = Logger();
+
+
+  void handleButtonClick() {
+    user.setPassword(_passwordController.text);
+    logger.i(user.password);
+  }
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: CustomColors.white(),
       resizeToAvoidBottomInset: false,

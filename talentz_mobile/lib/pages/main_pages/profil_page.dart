@@ -7,6 +7,7 @@ import 'package:talentz/assets/icons/icons.dart';
 import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/models/user.dart';
+import 'package:talentz/pages/connection/login.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 
@@ -43,6 +44,12 @@ class _ProfilPageState extends State<ProfilPage> {
     } catch (e) {
       logger.e('$e');
     }
+  }
+
+  void handleButtonClick() async {
+    await CustomHelpers.deleteFile();
+    if(!mounted) return;
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LogInPage()));
   }
 
   @override
@@ -210,7 +217,7 @@ class _ProfilPageState extends State<ProfilPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 25.0),
                       child: CustomButton(
-                        onClick: () => {},
+                        onClick: handleButtonClick,
                         width: 150,
                         heroTag: "profilPageLogoutBtn",
                         decoration: BoxDecoration(
