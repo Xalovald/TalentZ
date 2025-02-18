@@ -1,32 +1,49 @@
-import 'package:flutter/material.dart';
-import 'package:talentz/pages/Main/calendar_view.dart';
-import 'package:talentz/pages/Main/chat_view.dart';
-import 'package:talentz/pages/Main/favorites_view.dart';
-import 'package:talentz/pages/Main/swiping_view.dart';
-import 'package:talentz/pages/Main/user_view.dart';
+import 'package:talentz/assets/images/svgs/svg_images.dart';
+import 'package:talentz/pages/main_pages/candidat/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/company/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/profil_page.dart';
 
 class CustomRoutes {
-  static const routes = [
-    CalendarView(),
-    ChatView(),
-    SwipeView(),
-    FavoritesView(),
-    UserView(),
-  ];
+  static const routes = {
+      "candidat": [
+        MatchingPageCandidat(),
+        MatchingPageCandidat(),
+        MatchingPageCandidat(),
+        ProfilPage(),
+      ],
+      "entreprise": [
+        MatchingPageCompany(),
+        MatchingPageCompany(),
+        MatchingPageCompany(),
+        ProfilPage(),
+      ]
+    };
 
-  static const routeIcons = [
-    Icons.calendar_month_outlined,
-    Icons.chat,
-    Icons.swipe,
-    Icons.favorite,
-    Icons.person,
-  ];
+  static const routeIcons = {
+    "notifications": [
+      CustomSvgImages.notificationsNotSelected,
+      CustomSvgImages.notificationsSelected,
+    ],
+    "messages": [
+      CustomSvgImages.msgNotSelected,
+      CustomSvgImages.msgSelected,
+    ],
+    "matching": [
+      CustomSvgImages.matchingNotSelected,
+      CustomSvgImages.matchingSelected,
+    ],
+    "profil": [
+      CustomSvgImages.profilNotSelected,
+      CustomSvgImages.profilSelected,
+    ],
+  };
+
+  static String selectedRoute = "matching";
 
   static const routeNames = [
-    "CalendarView",
-    "ChatView",
-    "SwipingView",
-    "FavoritesView",
-    "UserView",
+    "Notifications",
+    "Echanges",
+    "Matching",
+    "Profil",
   ];
 }

@@ -8,19 +8,18 @@ import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/pages/Form/candidats/form1.dart';
 import 'package:talentz/pages/Onboarding/company/onboarding1.dart';
-import 'package:talentz/pages/matching/candidat/matching_page_1.dart';
-import 'package:talentz/pages/matching/company/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/main_view.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin {
+class _SignupPageState extends State<SignupPage> with TickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
   final Logger logger = Logger();
@@ -39,6 +38,12 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     Timer(const Duration(milliseconds: 1500), controller.forward);
   }
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   void _checkForFile() async {
     Dio dio = Dio(
       BaseOptions(
@@ -49,7 +54,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     if(await CustomHelpers.getCurrentId() != null) {
       var response = await dio.get("/users/${await CustomHelpers.getCurrentId()}");
       if(!mounted) return;
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => response.data["role"] == "candidat" ? const MatchingPageCandidat(): const MatchingPageCompany()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage(response.data["role"])));
     }
   }
   @override

@@ -7,7 +7,7 @@ import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/models/user.dart';
-import 'package:talentz/pages/matching/company/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/company/matching_page_1.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';

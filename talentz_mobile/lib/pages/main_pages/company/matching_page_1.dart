@@ -3,14 +3,11 @@ import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/logger.dart';
 import 'package:talentz/assets/colors/colors.dart';
-import 'package:talentz/assets/images/svgs/svg_images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/models/swipe_card.dart';
-import 'package:talentz/pages/Onboarding/splash.dart';
-import 'package:talentz/ui/typography.dart';
+import 'package:talentz/pages/connection/signup.dart';
 import 'package:talentz/widgets/button.dart';
 
 class MatchingPageCompany extends StatefulWidget {
@@ -24,7 +21,6 @@ class _MatchingPageCompanyState extends State<MatchingPageCompany>
     with SingleTickerProviderStateMixin {
   final CardSwiperController controller = CardSwiperController();
   late List<dynamic> dataList = [];
-  int _selectedIndex = 2; // Index sélectionné par défaut pour 'Matching'
   late List<int> selectedList = [];
   late List<int> specialList = [];
   late List<int> disabledList = [];
@@ -37,12 +33,6 @@ class _MatchingPageCompanyState extends State<MatchingPageCompany>
     getHttp();
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   void getHttp() async {
     Dio dio = Dio(
       BaseOptions(
@@ -53,7 +43,7 @@ class _MatchingPageCompanyState extends State<MatchingPageCompany>
     try {
       int? currId = await CustomHelpers.getCurrentId();
       if(!mounted) return;
-      currId == null ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SplashPage())) : null;
+      currId == null ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignupPage())) : null;
         Response response  = await dio.get("/matching", data: {"idUser": currId});
         setState(() {
           dataList = response.data;
@@ -128,6 +118,7 @@ class _MatchingPageCompanyState extends State<MatchingPageCompany>
                         shape: BoxShape.circle,
                         color: CustomColors.palered(),
                       ),
+                      noAnimation: true,
                       child: LayoutBuilder(builder: (context, constraints) {
                         return Center(
                           child: Icon(
@@ -147,6 +138,7 @@ class _MatchingPageCompanyState extends State<MatchingPageCompany>
                         shape: BoxShape.circle,
                         color: CustomColors.green(),
                       ),
+                      noAnimation: true,
                       child: LayoutBuilder(builder: (context, constraints) {
                         return Center(
                           child: Icon(
@@ -163,101 +155,6 @@ class _MatchingPageCompanyState extends State<MatchingPageCompany>
           ),
         ],
       ) : const Center(child: CircularProgressIndicator()),
-      bottomNavigationBar: Container(
-        height: 103,
-        width: 390,
-        decoration: BoxDecoration(
-          color: CustomColors.white(),
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16.0),
-            topRight: Radius.circular(16.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, -2), // Ombre vers le haut
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16.0),
-            topRight: Radius.circular(16.0),
-          ),
-          child: BottomNavigationBar(
-            selectedFontSize: 0,
-            unselectedFontSize: 0,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: CustomColors.white(),
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            items: [
-              _buildBottomNavigationBarItem(
-                  0,
-                  CustomSvgImages.notificationsNotSelected(
-                      height: 25, width: 25),
-                  CustomSvgImages.notificationsSelected(height: 25, width: 25),
-                  "Notifications"),
-              _buildBottomNavigationBarItem(
-                  1,
-                  CustomSvgImages.msgNotSelected(height: 25, width: 25),
-                  CustomSvgImages.msgSelected(height: 25, width: 25),
-                  "Echanges"),
-              _buildBottomNavigationBarItem(
-                  2,
-                  CustomSvgImages.matchingNotSelected(height: 25, width: 25),
-                  CustomSvgImages.matchingSelected(height: 25, width: 25),
-                  "Matching"),
-              _buildBottomNavigationBarItem(
-                  3,
-                  CustomSvgImages.profilNotSelected(height: 25, width: 25),
-                  CustomSvgImages.profilSelected(height: 25, width: 25),
-                  "Profil"),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  BottomNavigationBarItem _buildBottomNavigationBarItem(
-    int index,
-    SvgPicture notSelectedIcon,
-    SvgPicture selectedIcon,
-    String label,
-  ) {
-    bool isSelected = index == _selectedIndex;
-
-    return BottomNavigationBarItem(
-      icon: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 7.5),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? CustomColors.red().withOpacity(0.05)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            isSelected ? selectedIcon : notSelectedIcon,
-            const SizedBox(height: 5), // Espace entre l'icône et le label
-            Text(
-              label,
-              style: CustomTextStyles.text(
-                size: "smalest",
-                color: CustomColors.black(),
-                bold: isSelected,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
-      label: '', // Laisser vide car le texte est dans le Column
     );
   }
 

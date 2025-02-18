@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talentz/assets/colors/colors.dart';
-import 'package:talentz/pages/Onboarding/splash.dart';
+import 'package:talentz/pages/connection/signup.dart';
 //import 'package:talentz/test.dart';
 
 class MyApp extends StatelessWidget {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const Directionality(
         textDirection: TextDirection.ltr,
-        child: SplashPage(),
+        child: SignupPage(),
         //child: TestPage(),
       ),
     );

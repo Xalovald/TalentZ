@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talentz/assets/colors/colors.dart';
+import 'package:talentz/assets/icons/icons.dart';
 import 'package:talentz/globals/routes.dart';
 import "dart:developer" as developer;
 
@@ -35,21 +36,21 @@ class MainView extends StatelessWidget {
                     automaticIndicatorColorAdjustment: false,
                     labelColor: CustomColors.white(),
                     unselectedLabelColor: CustomColors.palered(),
-                    tabs: CustomRoutes.routeIcons
-                        .map((icon) => SizedBox(
+                    tabs: CustomRoutes.routeIcons["candidat"]!
+                        .map((icon) => const SizedBox(
                               width: double.infinity,
                               child: Tab(
                                 child: Icon(
-                                  icon,
+                                  CustomIcons.cupcake,
                                   size: 20,
                                 ),
                               ),
                             ))
                         .toList()),
               )),
-          body: const TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: CustomRoutes.routes),
+          body: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
+              children: CustomRoutes.routes["candidat"]!),
         ));
   }
 }
