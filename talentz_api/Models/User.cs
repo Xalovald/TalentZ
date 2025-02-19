@@ -50,8 +50,6 @@ namespace talentz_api.Models
 
         public QuestionMystere? QuestionMystere { get; set; }
 
-        public string? Password { get; set; }
-
         public Cerise? Cerise { get; set; }
 
         public string? WhyCerise { get; set; }

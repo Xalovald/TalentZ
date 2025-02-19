@@ -28,6 +28,9 @@ namespace talentz_api.JsonData
         [JsonProperty("adresse")]
         public required string Address { get; set; }
 
+        [JsonProperty("password")]
+        public required string Password { get; set; }
+
         [JsonProperty("cerise")]
         public required string Cerise { get; set; }
 
@@ -87,6 +90,9 @@ namespace talentz_api.JsonData
 
         [JsonProperty("siret")]
         public required string Siret { get; set; }
+
+        [JsonProperty("password")]
+        public required string Password { get; set; }
 
         [JsonProperty("cerise")]
         public required string Cerise { get; set; }
