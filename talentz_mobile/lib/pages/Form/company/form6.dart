@@ -319,34 +319,40 @@ class _Form6CompanyState extends State<Form6Company> {
                       elem["type"] == title.toLowerCase().split(" ").first)
                   .first["choices"]
                   .isEmpty
-              ? ListTile(
-                  leading: Icon(
-                    trailingIcon,
-                    color: CustomColors.lightGrey2(),
-                  ),
-                  title: Text(
-                    title,
-                    style: TextStyle(
+              ? Card(
+                color: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                margin: EdgeInsets.zero,
+                child: ListTile(
+                    leading: Icon(
+                      trailingIcon,
+                      color: CustomColors.lightGrey2(),
+                    ),
+                    title: Text(
+                      title,
+                      style: TextStyle(
+                        color: CustomColors.black(),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "Montserrat",
+                      ),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
                       color: CustomColors.black(),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "Montserrat",
+                      size: 18,
+                    ),
+                    onTap: () {
+                      _showModal(context, title, controller, modalTitle,
+                          modalSubTitle, modalContent);
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: BorderSide(color: CustomColors.lightGrey2()),
                     ),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: CustomColors.black(),
-                    size: 18,
-                  ),
-                  onTap: () {
-                    _showModal(context, title, controller, modalTitle,
-                        modalSubTitle, modalContent);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: CustomColors.lightGrey2()),
-                  ),
-                )
+              )
               : ChoiceButtonColumn(
                   choiceButtonColumnTitle: _selectedChoices
                       .where((elem) =>

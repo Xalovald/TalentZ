@@ -139,7 +139,9 @@ class _SignupPageState extends State<SignupPage> with TickerProviderStateMixin {
                             imageFilter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
                             child: CustomImages.bombCherry(
                                 width: constraints.maxWidth * 0.7,
-                                height: constraints.maxWidth * 0.7),
+                                height: constraints.maxWidth * 0.7,
+                                fit: BoxFit.contain,
+                              ),
                           ),
                         ),
                       );

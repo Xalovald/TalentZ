@@ -159,8 +159,7 @@ class _ProfilPageState extends State<ProfilPage> {
       body: Padding(
         padding: const EdgeInsets.only(top: 15, left: 15.0, right: 15.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet id metus elementum malesuada.",
@@ -171,69 +170,59 @@ class _ProfilPageState extends State<ProfilPage> {
                 fontFamily: "Montserrat",
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Expanded(
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        _buildSectionButton(
-                            'Informations personnelles',
-                            Icons.person_outline,
-                            text: "Mon compte"
-                        ),
-                        _buildSectionButton(
-                          'Gérer ma recherche',
-                          CustomIcons.cupcake,
-                          text: "Mon activité"
-                        ),
-                        _buildSectionButton(
-                          'Mes badges',
-                          Icons.circle_outlined,
-                          showText: false
-                        ),
-                        _buildSectionButton(
-                          'FAQ',
-                          Icons.chat_bubble_outline,
-                          text: "Support"
-                        ),
-                        _buildSectionButton(
-                          'Nous contacter',
-                          Icons.email_outlined,
-                          showText: false
-                        ),
-                        _buildSectionButton(
-                          'Avantages',
-                          Icons.error_outline_rounded,
-                          showText: false
-                        ),
-                      ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.48,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    _buildSectionButton(
+                        'Informations personnelles',
+                        Icons.person_outline,
+                        text: "Mon compte"
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25.0),
-                      child: CustomButton(
-                        onClick: handleButtonClick,
-                        width: 150,
-                        heroTag: "profilPageLogoutBtn",
-                        decoration: BoxDecoration(
-                          color: CustomColors.black(),
-                          borderRadius: BorderRadius.circular(100)),
-                        child: Text(
-                          "Déconnexion",
-                          style: CustomTextStyles.text(
-                            color: CustomColors.white(),
-                            bold: true,
-                          ),
-                        ),
-                      ),
+                    _buildSectionButton(
+                      'Gérer ma recherche',
+                      CustomIcons.cupcake,
+                      text: "Mon activité"
                     ),
-                  ),
-                ],
+                    _buildSectionButton(
+                      'Mes badges',
+                      Icons.circle_outlined,
+                      showText: false
+                    ),
+                    _buildSectionButton(
+                      'FAQ',
+                      Icons.chat_bubble_outline,
+                      text: "Support"
+                    ),
+                    _buildSectionButton(
+                      'Nous contacter',
+                      Icons.email_outlined,
+                      showText: false
+                    ),
+                    _buildSectionButton(
+                      'Avantages',
+                      Icons.error_outline_rounded,
+                      showText: false
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            CustomButton(
+              onClick: handleButtonClick,
+              width: 150,
+              heroTag: "profilPageLogoutBtn",
+              decoration: BoxDecoration(
+                color: CustomColors.black(),
+                borderRadius: BorderRadius.circular(100)),
+              child: Text(
+                "Déconnexion",
+                style: CustomTextStyles.text(
+                  color: CustomColors.white(),
+                  bold: true,
+                ),
               ),
             ),
           ],
@@ -267,32 +256,38 @@ class _ProfilPageState extends State<ProfilPage> {
             ),
           ) : const SizedBox(),
           SizedBox(height: showText ? 8 : 0),
-          ListTile(
-            leading: Padding(
-              padding: EdgeInsets.only(bottom: trailingIcon == CustomIcons.cupcake ? 22 : 0, top: trailingIcon == CustomIcons.cupcake ? 0 : 3),
-              child: Icon(
-                trailingIcon,
-                color: CustomColors.black(),
-                size: trailingIcon == CustomIcons.cupcake? 1.4 : 24,
+          Card(
+            color: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            margin: EdgeInsets.zero,
+            child: ListTile(
+              leading: Padding(
+                padding: EdgeInsets.only(bottom: trailingIcon == CustomIcons.cupcake ? 22 : 0, top: trailingIcon == CustomIcons.cupcake ? 0 : 3),
+                child: Icon(
+                  trailingIcon,
+                  color: CustomColors.black(),
+                  size: trailingIcon == CustomIcons.cupcake? 1.4 : 24,
+                ),
               ),
-            ),
-            title: Text(
-              title,
-              style: TextStyle(
-                color: CustomColors.black(),
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                fontFamily: "Montserrat",
+              title: Text(
+                title,
+                style: TextStyle(
+                  color: CustomColors.black(),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: "Montserrat",
+                ),
               ),
-            ),
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              color: CustomColors.black(),
-              size: 18,
-            ),
-            onTap: () {},
-            shape: Border(
-              bottom: BorderSide(color: CustomColors.lightGrey2()),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: CustomColors.black(),
+                size: 18,
+              ),
+              onTap: () {},
+              shape: Border(
+                bottom: BorderSide(color: CustomColors.lightGrey2()),
+              ),
             ),
           ),
         ],

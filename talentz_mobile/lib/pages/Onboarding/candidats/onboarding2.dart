@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
-import 'package:talentz/pages/onboarding/candidats/onboarding3.dart';
+import 'package:talentz/pages/Onboarding/candidats/onboarding3.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -46,94 +46,31 @@ class Onboarding2Candidat extends StatelessWidget {
                 decoration: const BoxDecoration(),
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: CustomImages.line2(
-                    height: MediaQuery.of(context).size.height * 0.4,
+                  child: CustomImages.radarEffect(
+                    height: MediaQuery.of(context).size.height * 0.5,
                     width: MediaQuery.of(context).size.width,
                   ),
                 ),
               ),
-              CustomImages.blankIPhone14(
-                height: double.infinity,
-                width: double.infinity,
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                clipBehavior: Clip.hardEdge,
+                decoration: const BoxDecoration(),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: CustomImages.component2(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ),
               ),
               Column(
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                    color: CustomColors.lightPink(),
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 5,
-                                    ),
-                                    borderRadius: BorderRadius.circular(200)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: CustomImages.cherry(2),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 36.0),
-                                child: PillContent(
-                                  width: 68,
-                                  height: 25,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Container(
-                                        width: 9,
-                                        height: 9,
-                                        decoration: BoxDecoration(
-                                            color: CustomColors.green(),
-                                            borderRadius:
-                                                BorderRadius.circular(200)),
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          PillContent(
-                                            width: 36,
-                                            height: 3,
-                                            color: CustomColors.lightGrey2(),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 1.0),
-                                            child: PillContent(
-                                              width: 18,
-                                              height: 3,
-                                              color: CustomColors.lightGrey2(),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        CustomImages.messages(
-                          height: MediaQuery.of(context).size.height * 0.25,
-                          width: MediaQuery.of(context).size.width * 0.85,
-                        ),
-                      ],
                     ),
                   ),
                   Container(
@@ -178,14 +115,15 @@ class Onboarding2Candidat extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Échangez en toute\ntransparence.",
+                                "Choisis une entreprise\nqui te ressemble",
                                 style: CustomTextStyles.title(
                                   color: CustomColors.black(),
                                   size: "smaller",
                                 ),
                               ),
+                              const SizedBox(height: 20),
                               Text(
-                                "Écangez librement : exprimez vos attentes et\ndécouvrez le chemin de l'emploi tel qu'il est.",
+                                "Explore les valeurs et l’univers des entreprises\npour trouver celle qui partage ta vision. Ton futur\ncommence ici !",
                                 style: CustomTextStyles.text(
                                     color: CustomColors.grey()),
                               ),

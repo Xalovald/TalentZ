@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
-import 'package:talentz/pages/onboarding/candidats/onboarding2.dart';
+import 'package:talentz/pages/Onboarding/candidats/onboarding2.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -47,7 +47,7 @@ class Onboarding1Candidats extends StatelessWidget {
                 decoration: const BoxDecoration(),
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: CustomImages.line1(
+                  child: CustomImages.fondCarroussel(
                     height: MediaQuery.of(context).size.height * 0.4,
                     width: MediaQuery.of(context).size.width,
                   ),
@@ -57,7 +57,7 @@ class Onboarding1Candidats extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: CustomImages.pastillesTombantes(
+                    child: CustomImages.carroussel(
                       height: double.infinity,
                       width: double.infinity,
                     ),
@@ -104,14 +104,15 @@ class Onboarding1Candidats extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Ciblez des candidats\nqualifiés.",
+                                "Trouves le job de test\nrêves en un clic.",
                                 style: CustomTextStyles.title(
                                   color: CustomColors.black(),
                                   size: "smaller",
                                 ),
                               ),
+                              const SizedBox(height: 20),
                               Text(
-                                "Nous vous proposons le haut du panier : des\ncandidats qualifiés adaptés à vos besoins.",
+                                "Découvre les opportunités qui matchent avec tes\nambitions et postule en quelques secondes.\nSimple, rapide et efficace !",
                                 style: CustomTextStyles.text(
                                   color: CustomColors.grey(),
                                 ),

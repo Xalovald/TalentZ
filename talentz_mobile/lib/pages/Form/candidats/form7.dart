@@ -56,7 +56,6 @@ class _Form7CandidatState extends State<Form7Candidat> {
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cherry(1, scale: 1.2),
       "description": ""
     },
     "buttonFrozen": {
@@ -64,7 +63,6 @@ class _Form7CandidatState extends State<Form7Candidat> {
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cherry(3, scale: 1.2),
       "description": ""
     },
     "buttonBasket": {
@@ -72,7 +70,6 @@ class _Form7CandidatState extends State<Form7Candidat> {
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cherry(2, scale: 1.2),
       "description": ""
     },
     "buttonChewd": {
@@ -80,7 +77,6 @@ class _Form7CandidatState extends State<Form7Candidat> {
       "border": CustomColors.lightGrey2(),
       "showIcon": false,
       "showText": false,
-      "icon": CustomImages.cherry(4, scale: 1.2),
       "description": ""
     },
   };
@@ -513,7 +509,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
                                                 )
                                               : null,
                                         ),
-                                        child: buttonInfo.value["icon"],
+                                        child: CustomImages.cherry(buttonInfo.value["id"], width: constraints.maxWidth * 0.2, height: constraints.maxHeight * 0.2, scale: buttonInfo.value["id"] == 2 || buttonInfo.value["id"] == 3 ? 2.4 : 1.2),
                                       ),
                                     ),
                                     Visibility(
