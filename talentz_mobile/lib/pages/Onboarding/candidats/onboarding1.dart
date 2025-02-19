@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
-import 'package:talentz/pages/Onboarding/company/onboarding2.dart';
+import 'package:talentz/pages/onboarding/candidats/onboarding2.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -127,7 +127,7 @@ class Onboarding1Candidats extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const Onboarding2Company(),
+                                          const Onboarding2Candidat(),
                                     ),
                                   ),
                                 },

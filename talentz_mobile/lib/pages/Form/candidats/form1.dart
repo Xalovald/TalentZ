@@ -22,6 +22,7 @@ class _Form1CandidatState extends State<Form1Candidat> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _mailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool showPwd = false;
 
   late User user;
   final Logger logger = Logger();
@@ -456,6 +457,7 @@ class _Form1CandidatState extends State<Form1Candidat> {
                           ),
                           TextFormField(
                             controller: _passwordController,
+                            obscureText: showPwd ? false : true,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -481,16 +483,25 @@ class _Form1CandidatState extends State<Form1Candidat> {
                                     color: CustomColors
                                         .lightGrey2()), // Couleur de la bordure lorsque le champ est désactivé
                               ),
-                              hintText:
-                                  '**********', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
                                     .black(), // Couleur du placeholder
                                 fontSize:
                                     14, // Taille de la police du placeholder
                               ),
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    showPwd = !showPwd;
+                                  });
+                                },
+                                child: Icon(
+                                  showPwd ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                  color: CustomColors.lightGrey2(),
+                                )
+                              ),
                               prefixIcon: Icon(
-                                Icons.alternate_email, // Icône à afficher
+                                Icons.password_outlined, // Icône à afficher
                                 color: CustomColors
                                     .lightGrey2(), // Couleur de l'icône
                               ),

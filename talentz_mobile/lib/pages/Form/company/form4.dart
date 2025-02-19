@@ -58,6 +58,7 @@ class _Form4CompanyState extends State<Form4Company> {
     user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: CustomColors.white(),
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: CustomColors.white(), // Couleur de fond de l'AppBar
         elevation: 0, // Supprimer l'ombre de l'AppBar

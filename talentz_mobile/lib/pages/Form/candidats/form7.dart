@@ -7,7 +7,7 @@ import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/models/user.dart';
-import 'package:talentz/pages/main_pages/candidat/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/main_page.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -580,7 +580,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
                           // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MatchingPageCandidat(),
+                            builder: (context) => const MainPage("candidat"),
                           ),
                         );
                       },
@@ -609,7 +609,7 @@ class _Form7CandidatState extends State<Form7Candidat> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MatchingPageCandidat(),
+                            builder: (context) => const MainPage("candidat"),
                           ),
                         ),
                       },

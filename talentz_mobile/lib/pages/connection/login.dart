@@ -1,9 +1,12 @@
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
+import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/pages/connection/signup.dart';
+import 'package:talentz/pages/main_pages/main_page.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -18,10 +21,38 @@ class _LogInPageState extends State<LogInPage> {
   final Logger logger = Logger();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool showPwd = false;
+  Dio dio = Dio(
+    BaseOptions(
+      baseUrl: "http://57.129.129.23:5212/api",
+      connectTimeout: const Duration(seconds: 90000),
+    ),
+  );
 
   @override
   void initState() {
     super.initState();
+  }
+
+  void handleButtonClick() async {
+    try {
+      Map<String, String> data = {
+        "email": _emailController.text,
+        "password": _passwordController.text,
+      };
+      Response response = await dio.post("/users/login", data: data, options: Options(contentType: "application/json"));
+      if(response.statusCode == 200) {
+        await CustomHelpers.saveCurrentId(response.data["id"]);
+        Response responseUser = await dio.get("/users/${response.data["id"]}", options: Options(contentType: "application/json"));
+        if(!mounted) return;
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage(responseUser.data["role"])));
+      }
+      else {
+        logger.e(response.data);
+      }
+    } catch (e) {
+      logger.e('$e');
+    }
   }
 
   @override
@@ -251,18 +282,23 @@ class _LogInPageState extends State<LogInPage> {
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        showPwd = !showPwd;
+                                      });
+                                    },
+                                    child: Icon(
+                                      showPwd ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                      color: CustomColors.lightGrey2(),
+                                    )
+                                  ),
                                 ),
-                                obscureText: true,
+                                obscureText: showPwd ? false : true,
                               ),
                               const SizedBox(height: 16),
                               CustomButton(
-                                onClick: () {
-                                  // Ajoutez ici la logique de connexion
-                                  String email = _emailController.text;
-                                  String password = _passwordController.text;
-                                  logger
-                                      .i('Email: $email, Password: $password');
-                                },
+                                onClick: handleButtonClick,
                                 width: 150,
                                 heroTag: "loginBtn",
                                 decoration: BoxDecoration(
@@ -283,7 +319,7 @@ class _LogInPageState extends State<LogInPage> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const SignupPage(),
+                                        builder: (context) => const SignupPage(noAnim: true),
                                       ),
                                   )},
                                   child: Text(

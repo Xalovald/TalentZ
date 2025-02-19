@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
-import 'package:talentz/pages/Form/company/form2.dart';
+import 'package:talentz/pages/Form/company/form1.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -290,7 +290,7 @@ class Onboarding3Company extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                        const Form2Company(),
+                                        const Form1Company(),
                                     ),
                                   ),
                                 },

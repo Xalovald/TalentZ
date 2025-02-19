@@ -7,7 +7,7 @@ import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
 import 'package:talentz/models/user.dart';
-import 'package:talentz/pages/main_pages/company/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/main_page.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
@@ -500,7 +500,7 @@ class _Form10CompanyState extends State<Form10Company> {
                           // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MatchingPageCompany(),
+                            builder: (context) => const MainPage("entreprise"),
                           ),
                         );
                       },
@@ -525,7 +525,7 @@ class _Form10CompanyState extends State<Form10Company> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MatchingPageCompany(),
+                            builder: (context) => const MainPage("entreprise"),
                           ),
                         ),
                       },

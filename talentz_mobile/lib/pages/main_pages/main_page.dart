@@ -15,6 +15,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   @override
+  void initState() {
+    super.initState();
+    setState(() {
+      CustomRoutes.selectedRoute = CustomRoutes.routeNames.firstWhere((route) => route == "Matching").toLowerCase();
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     developer.log("Building MainPage");
     return DefaultTabController(

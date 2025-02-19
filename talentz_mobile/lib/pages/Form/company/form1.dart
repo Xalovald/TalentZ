@@ -22,6 +22,7 @@ class _Form1CompanyState extends State<Form1Company> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _mailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool showPwd = false;
 
   late User user;
   final Logger logger = Logger();
@@ -286,6 +287,80 @@ class _Form1CompanyState extends State<Form1Company> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Veuillez entrer votre âge';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mot de passe',
+                            style: TextStyle(
+                              color: CustomColors.grey(), // Couleur du label
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              fontFamily:
+                                  "Montserrat", // Taille de la police du label
+                            ),
+                          ),
+                          TextFormField(
+                            controller: _passwordController,
+                            obscureText: showPwd ? false : true,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .lightGrey2()), // Couleur de la bordure lorsque le champ est focalisé
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .grey()), // Couleur de la bordure lorsque le champ est focalisé
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .red()), // Couleur de la bordure en cas d'erreur
+                              ),
+                              disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(
+                                    color: CustomColors
+                                        .lightGrey2()), // Couleur de la bordure lorsque le champ est désactivé
+                              ),
+                              hintStyle: TextStyle(
+                                color: CustomColors
+                                    .black(), // Couleur du placeholder
+                                fontSize:
+                                    14, // Taille de la police du placeholder
+                              ),
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    showPwd = !showPwd;
+                                  });
+                                },
+                                child: Icon(
+                                  showPwd ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                  color: CustomColors.lightGrey2(),
+                                )
+                              ),
+                              prefixIcon: Icon(
+                                Icons.password_outlined, // Icône à afficher
+                                color: CustomColors
+                                    .lightGrey2(), // Couleur de l'icône
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Veuillez entrer un mot de passe';
                               }
                               return null;
                             },

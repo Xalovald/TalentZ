@@ -6,17 +6,17 @@ import 'package:logger/logger.dart';
 import 'package:talentz/assets/colors/colors.dart';
 import 'package:talentz/assets/images/images.dart';
 import 'package:talentz/helpers/helpers.dart';
-import 'package:talentz/pages/Form/candidats/form1.dart';
 import 'package:talentz/pages/Onboarding/company/onboarding1.dart';
 import 'package:talentz/pages/connection/login.dart';
-import 'package:talentz/pages/main_pages/main_view.dart';
+import 'package:talentz/pages/main_pages/main_page.dart';
 import 'package:talentz/pages/onboarding/candidats/onboarding1.dart';
 import 'package:talentz/ui/typography.dart';
 import 'package:talentz/widgets/button.dart';
 import 'package:talentz/widgets/pill_content.dart';
 
 class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+  final bool noAnim;
+  const SignupPage({super.key, this.noAnim = false});
   @override
   State<SignupPage> createState() => _SignupPageState();
 }
@@ -35,7 +35,7 @@ class _SignupPageState extends State<SignupPage> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    animation = Tween<double>(begin: screenHeight * 0.45, end: 0).animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+    animation = Tween<double>(begin: widget.noAnim ? 0 : screenHeight * 0.45, end: 0).animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
     // Pour changer le temps d'attente avant l'animation
     Timer(const Duration(milliseconds: 1500), controller.forward);
   }
@@ -56,7 +56,13 @@ class _SignupPageState extends State<SignupPage> with TickerProviderStateMixin {
     if(await CustomHelpers.getCurrentId() != null) {
       var response = await dio.get("/users/${await CustomHelpers.getCurrentId()}");
       if(!mounted) return;
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage(response.data["role"])));
+      if(response.data == "") {
+        CustomHelpers.deleteFile();
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LogInPage()));
+      }
+      else {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage(response.data["role"])));
+      }
     }
   }
   @override

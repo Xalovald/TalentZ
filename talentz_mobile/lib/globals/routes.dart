@@ -1,19 +1,21 @@
 import 'package:talentz/assets/images/svgs/svg_images.dart';
 import 'package:talentz/pages/main_pages/candidat/matching_page_1.dart';
 import 'package:talentz/pages/main_pages/company/matching_page_1.dart';
+import 'package:talentz/pages/main_pages/echanges_page.dart';
+import 'package:talentz/pages/main_pages/notifications_page.dart';
 import 'package:talentz/pages/main_pages/profil_page.dart';
 
 class CustomRoutes {
   static const routes = {
       "candidat": [
-        MatchingPageCandidat(),
-        MatchingPageCandidat(),
+        NotificationsPage(),
+        EchangesPage(),
         MatchingPageCandidat(),
         ProfilPage(),
       ],
       "entreprise": [
-        MatchingPageCompany(),
-        MatchingPageCompany(),
+        NotificationsPage(),
+        EchangesPage(),
         MatchingPageCompany(),
         ProfilPage(),
       ]
