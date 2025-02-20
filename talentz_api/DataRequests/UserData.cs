@@ -32,7 +32,7 @@ namespace talentz_api.JsonData
         public required string Password { get; set; }
 
         [JsonProperty("cerise")]
-        public required string Cerise { get; set; }
+        public required string? Cerise { get; set; }
 
         [JsonProperty("whyCerise")]
         public required string WhyCerise { get; set; }
@@ -95,7 +95,7 @@ namespace talentz_api.JsonData
         public required string Password { get; set; }
 
         [JsonProperty("cerise")]
-        public required string Cerise { get; set; }
+        public required string? Cerise { get; set; }
 
         [JsonProperty("whyCerise")]
         public required string WhyCerise { get; set; }

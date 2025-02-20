@@ -16,7 +16,7 @@ class User with ChangeNotifier {
   String? address;
   String? siret;
   String password = "";
-  String cerise = "0";
+  String cerise = "";
   String whyCerise = "";
   List<int> apprentissages = [];
   List<int> avantages = [];

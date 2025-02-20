@@ -287,7 +287,7 @@ namespace talentz_api.Controllers
                 new PreparedParameter("@city", data.City),
                 new PreparedParameter("@address", data.Address),
                 new PreparedParameter("@password", data.Password),
-                new PreparedParameter("@cerise", data.Cerise),
+                new PreparedParameter("@cerise", data.Cerise!),
                 new PreparedParameter("@whyCerise", data.WhyCerise),
                 new PreparedParameter("@typeContrat", data.TypeContrat),
             ]);
