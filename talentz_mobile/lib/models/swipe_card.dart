@@ -527,20 +527,20 @@ class _SwipeCardState extends State<SwipeCard> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [
+                  colors: widget.data["user"]["cerise"] != null ? [
                     CustomColors.lightBlue(),
                     CustomColors.lighterBlue(),
-                  ],
+                  ] : [CustomColors.white(), CustomColors.white()],
                 ),
               ),
               child: LayoutBuilder(builder: (context, constraints) {
                 return Center(
-                  child: CustomImages.cherry(
+                  child: widget.data["user"]["cerise"] != null ? CustomImages.cherry(
                     widget.data["user"]["cerise"]["id"],
                     width: constraints.maxWidth * 0.7,
                     height: constraints.maxWidth * 0.7,
                     fit: BoxFit.contain
-                  ),
+                  ) : const SizedBox(),
                 );
               }),
             ),

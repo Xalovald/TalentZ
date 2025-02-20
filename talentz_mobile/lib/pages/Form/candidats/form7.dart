@@ -36,9 +36,9 @@ class _Form7CandidatState extends State<Form7Candidat> {
     ),
   );
 
-  Future<void> handleButtonClick() async {
-    user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString());
-    user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]);
+  Future<void> handleButtonClick({bool setValues = true}) async {
+    setValues ? user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString()) : null;
+    setValues ? user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]) : null;
     user.setAddress("");
     user.setCity("");
     logger.i(user.toJson());
@@ -601,13 +601,15 @@ class _Form7CandidatState extends State<Form7Candidat> {
                         ? const EdgeInsets.only(top: 16.0, bottom: 8)
                         : const EdgeInsets.all(0),
                     child: CustomButton(
-                      onClick: () => {
+                      onClick: () async {
+                        await handleButtonClick(setValues: false);
                         Navigator.push(
+                          // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
                             builder: (context) => const MainPage("candidat"),
                           ),
-                        ),
+                        );
                       },
                       width: 150,
                       heroTag: "form7CandidatSkipBtn",

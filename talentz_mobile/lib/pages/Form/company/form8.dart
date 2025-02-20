@@ -215,7 +215,15 @@ class _Form8CompanyState
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: CustomButton(
-                      onClick: () => {},
+                      onClick: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const Form9Company(),
+                          ),
+                        ),
+                      },
                       width: 150,
                       heroTag: "form8CompanySkipBtn",
                       decoration: BoxDecoration(

@@ -210,7 +210,9 @@ class _Form9CompanyState extends State<Form9Company> {
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: CustomButton(
-                      onClick: () => {},
+                      onClick: () => {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Form10Company(),),),
+                      },
                       width: 150,
                       heroTag: "form9CompanySkipBtn",
                       decoration: BoxDecoration(

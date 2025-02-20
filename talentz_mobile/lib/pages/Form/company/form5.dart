@@ -210,7 +210,12 @@ class _Form5CompanyState extends State<Form5Company> {
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0),
                       child: CustomButton(
-                        onClick: () => {},
+                        onClick: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Form6Company()),
+                          ),
+                        },
                         width: 150,
                         heroTag: "form5CompanyPassBtn",
                         decoration: BoxDecoration(

@@ -2,6 +2,6 @@ flutter_launcher_icons:
   image_path: "lib/assets/images/juicy_cherry.png"
   android: "launcher_icon"
   min_sdk_android: 21
-  adaptive_icon_background: "#FF88001B"
+  adaptive_icon_background: "#FFFFFFFF"
   adaptive_icon_foreground: "lib/assets/images/juicy_cherry.png"
   ios: true

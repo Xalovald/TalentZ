@@ -35,9 +35,9 @@ class _Form10CompanyState extends State<Form10Company> {
     ),
   );
 
-  Future<void> handleButtonClick() async {
-    user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString());
-    user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]);
+  Future<void> handleButtonClick({bool setValues = true}) async {
+    setValues ? user.setCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["id"].toString()) : null;
+    setValues ? user.setWhyCerise(buttonInfos.values.singleWhere((e) => e["showText"] == true)["description"]) : null;
     user.setSiret("");
     logger.i(user.toJson());
     try {
@@ -521,13 +521,15 @@ class _Form10CompanyState extends State<Form10Company> {
                   Padding(
                     padding: buttonInfos.entries.map((button) => button.value["showIcon"]).contains(true) ? const EdgeInsets.only(top: 16.0, bottom: 8) : const EdgeInsets.all(0),
                     child: CustomButton(
-                      onClick: () => {
+                      onClick: () async {
+                        await handleButtonClick(setValues: false);
                         Navigator.push(
+                          // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
                             builder: (context) => const MainPage("entreprise"),
                           ),
-                        ),
+                        );
                       },
                       width: 150,
                       heroTag: "form10CompanySkipBtn",
