@@ -27,7 +27,6 @@ class _Form1CompanyState extends State<Form1Company> {
   late User user;
   final Logger logger = Logger();
 
-
   void handleButtonClick() {
     user.setPassword(_passwordController.text);
     logger.i(user.password);
@@ -74,15 +73,6 @@ class _Form1CompanyState extends State<Form1Company> {
                     color: CustomColors.black(),
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    fontFamily: "Montserrat",
-                  ),
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet',
-                  style: TextStyle(
-                    color: CustomColors.grey(),
-                    fontSize: 14, // Corrigé la taille de la police
-                    fontWeight: FontWeight.w500,
                     fontFamily: "Montserrat",
                   ),
                 ),
@@ -139,7 +129,7 @@ class _Form1CompanyState extends State<Form1Company> {
                               hintText: 'Jhon', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize:
                                     14, // Taille de la police du placeholder
                               ),
@@ -203,7 +193,7 @@ class _Form1CompanyState extends State<Form1Company> {
                               hintText: 'Doe', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -268,7 +258,7 @@ class _Form1CompanyState extends State<Form1Company> {
                               hintText: '25', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -337,21 +327,22 @@ class _Form1CompanyState extends State<Form1Company> {
                               ),
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize:
                                     14, // Taille de la police du placeholder
                               ),
                               suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    showPwd = !showPwd;
-                                  });
-                                },
-                                child: Icon(
-                                  showPwd ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                                  color: CustomColors.lightGrey2(),
-                                )
-                              ),
+                                  onTap: () {
+                                    setState(() {
+                                      showPwd = !showPwd;
+                                    });
+                                  },
+                                  child: Icon(
+                                    showPwd
+                                        ? Icons.visibility_off_outlined
+                                        : Icons.visibility_outlined,
+                                    color: CustomColors.lightGrey2(),
+                                  )),
                               prefixIcon: Icon(
                                 Icons.password_outlined, // Icône à afficher
                                 color: CustomColors
@@ -412,7 +403,7 @@ class _Form1CompanyState extends State<Form1Company> {
                                   '06.26.84.29.14', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -482,7 +473,7 @@ class _Form1CompanyState extends State<Form1Company> {
                                   'Jhondoe@gmail.com', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize:
                                     14, // Taille de la police du placeholder
                               ),

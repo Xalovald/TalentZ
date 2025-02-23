@@ -90,20 +90,11 @@ class _Form4CompanyState extends State<Form4Company> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Type de poste',
+                  'Entrez le poste que vous recherchez',
                   style: TextStyle(
                     color: CustomColors.black(),
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    fontFamily: "Montserrat",
-                  ),
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                  style: TextStyle(
-                    color: CustomColors.grey(),
-                    fontSize: 14, // Corrigé la taille de la police
-                    fontWeight: FontWeight.w500,
                     fontFamily: "Montserrat",
                   ),
                 ),
@@ -160,7 +151,7 @@ class _Form4CompanyState extends State<Form4Company> {
                               hintText: 'Couturier', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -224,7 +215,7 @@ class _Form4CompanyState extends State<Form4Company> {
                               hintText: 'CDI', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -236,10 +227,13 @@ class _Form4CompanyState extends State<Form4Company> {
                                     .lightGrey2(), // Couleur de l'icône
                               ),
                             ),
-                            value: contractList.isNotEmpty ? contractList[_selectedCountract]["nom"] : "",
+                            value: contractList.isNotEmpty
+                                ? contractList[_selectedCountract]["nom"]
+                                : "",
                             onChanged: (String? newValue) {
                               setState(() {
-                                _selectedCountract = contractList.indexWhere((e) => e["nom"] == newValue!);
+                                _selectedCountract = contractList
+                                    .indexWhere((e) => e["nom"] == newValue!);
                               });
                             },
                             items: contractList
@@ -270,8 +264,7 @@ class _Form4CompanyState extends State<Form4Company> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                        const Form5Company(),
+                      builder: (context) => const Form5Company(),
                     ),
                   ),
                 },

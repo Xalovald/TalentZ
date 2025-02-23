@@ -98,20 +98,11 @@ class _Form2CompanyState extends State<Form2Company> {
             Column(
               children: [
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur',
+                  'Avant de commencer, nous avons besoin d’informations.',
                   style: TextStyle(
                     color: CustomColors.black(),
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    fontFamily: "Montserrat",
-                  ),
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                  style: TextStyle(
-                    color: CustomColors.grey(),
-                    fontSize: 14, // Corrigé la taille de la police
-                    fontWeight: FontWeight.w500,
                     fontFamily: "Montserrat",
                   ),
                 ),
@@ -168,7 +159,7 @@ class _Form2CompanyState extends State<Form2Company> {
                               hintText: 'TalentZ', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize:
                                     14, // Taille de la police du placeholder
                               ),
@@ -232,7 +223,7 @@ class _Form2CompanyState extends State<Form2Company> {
                                   '26 avenue tourmaline...7400 Annecy', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -296,7 +287,7 @@ class _Form2CompanyState extends State<Form2Company> {
                               hintText: 'Couture', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -376,7 +367,7 @@ class _Form2CompanyState extends State<Form2Company> {
                               hintText: '2-10', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:

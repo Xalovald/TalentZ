@@ -74,33 +74,29 @@ class _Form6CompanyState extends State<Form6Company> {
 
   void _handleSubmit() {
     _selectedChoices[0]["choices"].forEach((apprentissage) => {
-      if(!user.apprentissages.contains(apprentissage["id"])) {
-        user.pushToApprentissages(apprentissage["id"])
-      } else {
-        user.removeFromApprentissages(apprentissage["id"])
-      }
-    });
+          if (!user.apprentissages.contains(apprentissage["id"]))
+            {user.pushToApprentissages(apprentissage["id"])}
+          else
+            {user.removeFromApprentissages(apprentissage["id"])}
+        });
     _selectedChoices[1]["choices"].forEach((valeurs) => {
-      if(!user.valeursEthiques.contains(valeurs["id"])) {
-        user.pushToValeursEthiques(valeurs["id"])
-      } else {
-        user.removeFromValeursEthiques(valeurs["id"])
-      }
-    });
+          if (!user.valeursEthiques.contains(valeurs["id"]))
+            {user.pushToValeursEthiques(valeurs["id"])}
+          else
+            {user.removeFromValeursEthiques(valeurs["id"])}
+        });
     _selectedChoices[2]["choices"].forEach((carriere) => {
-      if(!user.carrieres.contains(carriere["id"])) {
-        user.pushToCarrieres(carriere["id"])
-      } else {
-        user.removeFromCarrieres(carriere["id"])
-      }
-    });
+          if (!user.carrieres.contains(carriere["id"]))
+            {user.pushToCarrieres(carriere["id"])}
+          else
+            {user.removeFromCarrieres(carriere["id"])}
+        });
     _selectedChoices[3]["choices"].forEach((avantage) => {
-      if(!user.avantages.contains(avantage["id"])) {
-        user.pushToAvantages(avantage["id"])
-      } else {
-        user.removeFromAvantages(avantage["id"])
-      }
-    });
+          if (!user.avantages.contains(avantage["id"]))
+            {user.pushToAvantages(avantage["id"])}
+          else
+            {user.removeFromAvantages(avantage["id"])}
+        });
     logger.i(user.apprentissages);
     logger.i(user.valeursEthiques);
     logger.i(user.carrieres);
@@ -170,7 +166,7 @@ class _Form6CompanyState extends State<Form6Company> {
                   ),
                 ),
                 Text(
-                  "Choisissez, recherchez ou ajoutez une\ncompétences pour votre recherche.",
+                  "Expliquez ce que votre entreprise offre aux futurs talents.",
                   style: TextStyle(
                     color: CustomColors.grey(),
                     fontSize: 14,
@@ -231,8 +227,7 @@ class _Form6CompanyState extends State<Form6Company> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                            const Form8Company(),
+                          builder: (context) => const Form8Company(),
                         ),
                       ),
                     },
@@ -256,8 +251,7 @@ class _Form6CompanyState extends State<Form6Company> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                              const Form8Company(),
+                            builder: (context) => const Form8Company(),
                           ),
                         ),
                       },
@@ -320,11 +314,11 @@ class _Form6CompanyState extends State<Form6Company> {
                   .first["choices"]
                   .isEmpty
               ? Card(
-                color: Colors.transparent,
-                surfaceTintColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                margin: EdgeInsets.zero,
-                child: ListTile(
+                  color: Colors.transparent,
+                  surfaceTintColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  margin: EdgeInsets.zero,
+                  child: ListTile(
                     leading: Icon(
                       trailingIcon,
                       color: CustomColors.lightGrey2(),
@@ -332,7 +326,7 @@ class _Form6CompanyState extends State<Form6Company> {
                     title: Text(
                       title,
                       style: TextStyle(
-                        color: CustomColors.black(),
+                        color: CustomColors.grey(),
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: "Montserrat",
@@ -352,7 +346,7 @@ class _Form6CompanyState extends State<Form6Company> {
                       side: BorderSide(color: CustomColors.lightGrey2()),
                     ),
                   ),
-              )
+                )
               : ChoiceButtonColumn(
                   choiceButtonColumnTitle: _selectedChoices
                       .where((elem) =>
@@ -419,7 +413,7 @@ class _Form6CompanyState extends State<Form6Company> {
                     Text(
                       modalTitle,
                       style: TextStyle(
-                        color: CustomColors.black(),
+                        color: CustomColors.grey(),
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                         fontFamily: "Montserrat",

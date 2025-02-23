@@ -31,7 +31,7 @@ class _Form5CompanyState extends State<Form5Company> {
   }
 
   void handleButtonClick(dynamic id) {
-    if(!user.missions.contains(id)) {
+    if (!user.missions.contains(id)) {
       user.pushToMissions(id);
     } else {
       user.removeFromMissions(id);
@@ -118,12 +118,6 @@ class _Form5CompanyState extends State<Form5Company> {
                               size: "smaller",
                             ),
                           ),
-                          Text(
-                            "Choisissez, recherchez ou ajoutez une\ncompétences pour votre recherche.",
-                            style: CustomTextStyles.text(
-                              color: CustomColors.grey(),
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -134,7 +128,7 @@ class _Form5CompanyState extends State<Form5Company> {
                         onChanged: changeIcon,
                         cursorColor: CustomColors.black(),
                         decoration: InputDecoration(
-                          hintText: "Conception vêtement",
+                          hintText: "Rechercher",
                           hintStyle:
                               TextStyle(color: CustomColors.lightGrey5()),
                           prefixIcon: showIcon
@@ -213,7 +207,8 @@ class _Form5CompanyState extends State<Form5Company> {
                         onClick: () => {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Form6Company()),
+                            MaterialPageRoute(
+                                builder: (context) => const Form6Company()),
                           ),
                         },
                         width: 150,

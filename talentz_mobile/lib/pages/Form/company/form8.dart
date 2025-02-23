@@ -14,12 +14,10 @@ class Form8Company extends StatefulWidget {
   const Form8Company({super.key});
 
   @override
-  State<Form8Company> createState() =>
-      _Form8CompanyState();
+  State<Form8Company> createState() => _Form8CompanyState();
 }
 
-class _Form8CompanyState
-    extends State<Form8Company> {
+class _Form8CompanyState extends State<Form8Company> {
   late bool showIcon;
   late List<dynamic> newList;
   final Logger logger = Logger();
@@ -36,7 +34,7 @@ class _Form8CompanyState
   }
 
   void handleButtonClick(dynamic id) {
-    if(!user.competences.contains(id)) {
+    if (!user.competences.contains(id)) {
       user.pushToCompetences(id);
     } else {
       user.removeFromCompetences(id);
@@ -52,9 +50,8 @@ class _Form8CompanyState
       } else {
         showIcon = true;
       }
-      newList = dataList
-          .where((dynamic e) => e["text"].contains(content))
-          .toList();
+      newList =
+          dataList.where((dynamic e) => e["text"].contains(content)).toList();
     });
   }
 
@@ -106,26 +103,27 @@ class _Form8CompanyState
               height: MediaQuery.of(context).size.height * 0.65,
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Sélectionnez les compétences\ndont vous avez besoin",
-                        style: CustomTextStyles.title(
-                          color: CustomColors.black(),
-                          size: "smaller",
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 15.0, left: 15.0, right: 15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Sélectionnez les compétences dont vous avez besoin.",
+                          style: CustomTextStyles.title(
+                            color: CustomColors.black(),
+                            size: "smaller",
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Choisissez, recherchez ou ajoutez une\ncompétences pour votre recherche.",
-                        style: CustomTextStyles.text(
-                          color: CustomColors.grey(),
+                        Text(
+                          "Choisissez, recherchez ou ajoutez une compétences pour votre recherche.",
+                          style: CustomTextStyles.text(
+                            color: CustomColors.grey(),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -137,7 +135,7 @@ class _Form8CompanyState
                       onChanged: onTextChange,
                       cursorColor: CustomColors.black(),
                       decoration: InputDecoration(
-                        hintText: "Conception vêtement",
+                        hintText: "Rechercher",
                         hintStyle: TextStyle(color: CustomColors.lightGrey5()),
                         prefixIcon: showIcon
                             ? Icon(
@@ -161,7 +159,8 @@ class _Form8CompanyState
                     height: 200,
                     child: SingleChildScrollView(
                       child: Wrap(
-                        children: (newList.isNotEmpty || textController.text.isNotEmpty
+                        children: (newList.isNotEmpty ||
+                                    textController.text.isNotEmpty
                                 ? newList
                                 : dataList)
                             .map(
@@ -171,9 +170,8 @@ class _Form8CompanyState
                                 child: Text(
                                   item["text"],
                                   style: CustomTextStyles.text(
-                                    color: CustomColors.black(),
-                                    size: "larger"
-                                  ),
+                                      color: CustomColors.black(),
+                                      size: "larger"),
                                 ),
                               ),
                             )
@@ -194,8 +192,7 @@ class _Form8CompanyState
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              const Form9Company(),
+                          builder: (context) => const Form9Company(),
                         ),
                       ),
                     },
@@ -219,8 +216,7 @@ class _Form8CompanyState
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const Form9Company(),
+                            builder: (context) => const Form9Company(),
                           ),
                         ),
                       },

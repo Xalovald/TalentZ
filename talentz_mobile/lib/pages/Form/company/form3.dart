@@ -41,7 +41,8 @@ class _Form3CompanyState extends State<Form3Company> {
         automaticallyImplyLeading:
             false, // Supprimer le bouton de retour par défaut
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(10.0), // Hauteur de la barre de progression
+          preferredSize:
+              const Size.fromHeight(10.0), // Hauteur de la barre de progression
           child: CustomProgressBar(
             width: MediaQuery.of(context).size.width,
             height: 7,
@@ -63,20 +64,11 @@ class _Form3CompanyState extends State<Form3Company> {
             Column(
               children: [
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur',
+                  'Avant de commencer, nous avons besoin d’informations.',
                   style: TextStyle(
                     color: CustomColors.black(),
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    fontFamily: "Montserrat",
-                  ),
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
-                  style: TextStyle(
-                    color: CustomColors.grey(),
-                    fontSize: 14, // Corrigé la taille de la police
-                    fontWeight: FontWeight.w500,
                     fontFamily: "Montserrat",
                   ),
                 ),
@@ -133,7 +125,7 @@ class _Form3CompanyState extends State<Form3Company> {
                                   'CEO/Fondateur', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -217,7 +209,7 @@ class _Form3CompanyState extends State<Form3Company> {
                                   '06.26.84.29.14', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily:
@@ -287,7 +279,7 @@ class _Form3CompanyState extends State<Form3Company> {
                                   'Jhondoe@gmail.com', // Ajoute un placeholder
                               hintStyle: TextStyle(
                                 color: CustomColors
-                                    .black(), // Couleur du placeholder
+                                    .grey(), // Couleur du placeholder
                                 fontSize:
                                     14, // Taille de la police du placeholder
                               ),
