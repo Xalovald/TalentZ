@@ -75,33 +75,29 @@ class _Form6CandidatState extends State<Form6Candidat> {
 
   void _handleSubmit() {
     _selectedChoices[0]["choices"].forEach((apprentissage) => {
-      if(!user.apprentissages.contains(apprentissage["id"])) {
-        user.pushToApprentissages(apprentissage["id"])
-      } else {
-        user.removeFromApprentissages(apprentissage["id"])
-      }
-    });
+          if (!user.apprentissages.contains(apprentissage["id"]))
+            {user.pushToApprentissages(apprentissage["id"])}
+          else
+            {user.removeFromApprentissages(apprentissage["id"])}
+        });
     _selectedChoices[1]["choices"].forEach((valeurs) => {
-      if(!user.valeursEthiques.contains(valeurs["id"])) {
-        user.pushToValeursEthiques(valeurs["id"])
-      } else {
-        user.removeFromValeursEthiques(valeurs["id"])
-      }
-    });
+          if (!user.valeursEthiques.contains(valeurs["id"]))
+            {user.pushToValeursEthiques(valeurs["id"])}
+          else
+            {user.removeFromValeursEthiques(valeurs["id"])}
+        });
     _selectedChoices[2]["choices"].forEach((carriere) => {
-      if(!user.carrieres.contains(carriere["id"])) {
-        user.pushToCarrieres(carriere["id"])
-      } else {
-        user.removeFromCarrieres(carriere["id"])
-      }
-    });
+          if (!user.carrieres.contains(carriere["id"]))
+            {user.pushToCarrieres(carriere["id"])}
+          else
+            {user.removeFromCarrieres(carriere["id"])}
+        });
     _selectedChoices[3]["choices"].forEach((avantage) => {
-      if(!user.avantages.contains(avantage["id"])) {
-        user.pushToAvantages(avantage["id"])
-      } else {
-        user.removeFromAvantages(avantage["id"])
-      }
-    });
+          if (!user.avantages.contains(avantage["id"]))
+            {user.pushToAvantages(avantage["id"])}
+          else
+            {user.removeFromAvantages(avantage["id"])}
+        });
     logger.i(user.apprentissages);
     logger.i(user.valeursEthiques);
     logger.i(user.carrieres);
@@ -169,7 +165,7 @@ class _Form6CandidatState extends State<Form6Candidat> {
                 ),
               ),
               Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.",
+                "Tes attentes compte, ajoutes celles qui sont importantes pour toi.",
                 style: TextStyle(
                   color: CustomColors.grey(),
                   fontSize: 14,
@@ -184,7 +180,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
                   'Que souhaites-tu apprendres ?',
                   Icons.lightbulb_outline,
                   'Qu’allez-vous pouvoir apprendre ou consolider ?',
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
                   dataListApprentissages),
               _buildSectionButton(
                   'Valeurs & éthique',
@@ -192,7 +187,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
                   'Quelles valeurs ou étique comptent ?',
                   Icons.favorite_border_outlined,
                   'Quelles sont vos valeurs et votre éthique ?',
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
                   dataListValeursEthiques),
               _buildSectionButton(
                   'Carrière',
@@ -200,7 +194,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
                   'Quelles sont tes perspectives de carrière ?',
                   Icons.work_outline,
                   'Quelle perspective de carrière espérez-vous ?',
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
                   dataListCarrieres),
               _buildSectionButton(
                   'Avantages',
@@ -208,7 +201,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
                   'Quels avantages salariaux ?',
                   Icons.percent,
                   'Quels avantages voulez-vous ?',
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.',
                   dataListAvantages),
               const SizedBox(height: 32),
               Center(
@@ -278,7 +270,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
       String text,
       IconData trailingIcon,
       String modalTitle,
-      String modalSubTitle,
       List<dynamic> modalContent) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -327,8 +318,8 @@ class _Form6CandidatState extends State<Form6Candidat> {
                     size: 18,
                   ),
                   onTap: () {
-                    _showModal(context, title, controller, modalTitle,
-                        modalSubTitle, modalContent);
+                    _showModal(
+                        context, title, controller, modalTitle, modalContent);
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -344,8 +335,8 @@ class _Form6CandidatState extends State<Form6Candidat> {
                       .where((elem) =>
                           elem["type"] == title.toLowerCase().split(" ").first)
                       .first["choices"],
-                  onEditClick: () => _showModal(context, title, controller,
-                      modalTitle, modalSubTitle, modalContent),
+                  onEditClick: () => _showModal(
+                      context, title, controller, modalTitle, modalContent),
                 ),
         ],
       ),
@@ -357,7 +348,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
       String title,
       TextEditingController controller,
       String modalTitle,
-      String modalSubTitle,
       List<dynamic> modalContent) {
     TextEditingController searchController = TextEditingController();
     List<dynamic> filteredContent = modalContent;
@@ -404,15 +394,6 @@ class _Form6CandidatState extends State<Form6Candidat> {
                         color: CustomColors.black(),
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
-                        fontFamily: "Montserrat",
-                      ),
-                    ),
-                    Text(
-                      modalSubTitle,
-                      style: TextStyle(
-                        color: CustomColors.lightGrey2(),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
                         fontFamily: "Montserrat",
                       ),
                     ),

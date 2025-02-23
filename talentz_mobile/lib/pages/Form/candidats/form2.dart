@@ -55,7 +55,8 @@ class _Form2CandidatState extends State<Form2Candidat> {
         automaticallyImplyLeading:
             false, // Supprimer le bouton de retour par défaut
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(8.0), // Hauteur de la barre de progression
+          preferredSize:
+              const Size.fromHeight(8.0), // Hauteur de la barre de progression
           child: CustomProgressBar(
             width: MediaQuery.of(context).size.width,
             height: 7,
@@ -71,7 +72,7 @@ class _Form2CandidatState extends State<Form2Candidat> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.65,
+              height: MediaQuery.of(context).size.height * 0.85,
               child: Column(
                 children: [
                   Padding(
@@ -92,15 +93,10 @@ class _Form2CandidatState extends State<Form2Candidat> {
                             size: "smaller",
                           ),
                         ),
-                        Text(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet.",
-                          style: CustomTextStyles.text(
-                            color: CustomColors.grey(),
-                          ),
-                        ),
                       ],
                     ),
                   ),
+                  const SizedBox(height: 150),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Center(
@@ -138,7 +134,9 @@ class _Form2CandidatState extends State<Form2Candidat> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 10), // Ajouter un espace entre les boutons
+                              const SizedBox(
+                                  height:
+                                      10), // Ajouter un espace entre les boutons
                               CustomButtonPost(
                                 onClick: () {
                                   handleButtonClick(2);
@@ -168,7 +166,9 @@ class _Form2CandidatState extends State<Form2Candidat> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 10), // Ajouter un espace entre les boutons
+                              const SizedBox(
+                                  height:
+                                      10), // Ajouter un espace entre les boutons
                               CustomButtonPost(
                                 onClick: () {
                                   handleButtonClick(3);

@@ -22,7 +22,7 @@ class _Form3CandidatState extends State<Form3Candidat> {
   late User user;
   final Logger logger = Logger();
 
- @override
+  @override
   void initState() {
     super.initState();
     showIcon = true;
@@ -30,7 +30,7 @@ class _Form3CandidatState extends State<Form3Candidat> {
   }
 
   void handleButtonClick(dynamic id) {
-    if(!user.competences.contains(id)) {
+    if (!user.competences.contains(id)) {
       user.pushToCompetences(id);
     } else {
       user.removeFromCompetences(id);
@@ -78,7 +78,8 @@ class _Form3CandidatState extends State<Form3Candidat> {
         automaticallyImplyLeading:
             false, // Supprimer le bouton de retour par défaut
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(8.0), // Hauteur de la barre de progression
+          preferredSize:
+              const Size.fromHeight(8.0), // Hauteur de la barre de progression
           child: CustomProgressBar(
             width: MediaQuery.of(context).size.width,
             height: 7,
@@ -132,7 +133,7 @@ class _Form3CandidatState extends State<Form3Candidat> {
                         onChanged: changeIcon,
                         cursorColor: CustomColors.black(),
                         decoration: InputDecoration(
-                          hintText: "Conception vêtement",
+                          hintText: "Rechercher...",
                           hintStyle:
                               TextStyle(color: CustomColors.lightGrey5()),
                           prefixIcon: showIcon

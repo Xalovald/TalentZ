@@ -104,7 +104,7 @@ class Onboarding1Candidats extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Trouves le job de test\nrêves en un clic.",
+                                "Trouves le job de tes\nrêves en un clic.",
                                 style: CustomTextStyles.title(
                                   color: CustomColors.black(),
                                   size: "smaller",

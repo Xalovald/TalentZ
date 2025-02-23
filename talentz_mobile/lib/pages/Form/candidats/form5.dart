@@ -28,7 +28,7 @@ class _Form5CandidatState extends State<Form5Candidat> {
   }
 
   void handleButtonClick() {
-    if(_textController.text != "") {
+    if (_textController.text != "") {
       user.setQuestionMystere({
         "id": dataList["id"],
         "reponse": _textController.text,
@@ -99,9 +99,11 @@ class _Form5CandidatState extends State<Form5Candidat> {
                     fontFamily: "Montserrat",
                   ),
                 ),
-                const SizedBox(height: 8), // Ajoutez un espace entre le titre et le sous-titre
+                const SizedBox(
+                    height:
+                        8), // Ajoutez un espace entre le titre et le sous-titre
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet',
+                  'Partage avec nous un accomplissement qui te rend particulièrement fier(e) !',
                   style: TextStyle(
                     color: CustomColors.grey(),
                     fontSize: 14, // Corrigé la taille de la police
@@ -109,7 +111,9 @@ class _Form5CandidatState extends State<Form5Candidat> {
                     fontFamily: "Montserrat",
                   ),
                 ),
-                const SizedBox(height: 60), // Ajoutez un espace entre le sous-titre et le TextField
+                const SizedBox(
+                    height:
+                        60), // Ajoutez un espace entre le sous-titre et le TextField
                 Container(
                   height: 219,
                   width: 338, // Hauteur fixe du TextField
@@ -132,9 +136,9 @@ class _Form5CandidatState extends State<Form5Candidat> {
                       fillColor: CustomColors.white(),
                       border:
                           InputBorder.none, // Supprime la bordure par défaut
-                      contentPadding: const EdgeInsets.all(10.0), // Padding interne
-                      hintText:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                      contentPadding:
+                          const EdgeInsets.all(10.0), // Padding interne
+                      hintText: 'J’ai déjà réussi à faire pousser un avocat !',
                       hintStyle: TextStyle(
                         color: CustomColors.grey(),
                         fontSize: 14,

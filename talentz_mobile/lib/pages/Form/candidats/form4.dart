@@ -30,7 +30,7 @@ class _Form4CandidatState extends State<Form4Candidat> {
   }
 
   void handleButtonClick(dynamic id) {
-    if(!user.personnalites.contains(id)) {
+    if (!user.personnalites.contains(id)) {
       user.pushToPersonnalites(id);
     } else {
       user.removeFromPersonnalites(id);
@@ -78,7 +78,8 @@ class _Form4CandidatState extends State<Form4Candidat> {
         automaticallyImplyLeading:
             false, // Supprimer le bouton de retour par défaut
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(8.0), // Hauteur de la barre de progression
+          preferredSize:
+              const Size.fromHeight(8.0), // Hauteur de la barre de progression
           child: CustomProgressBar(
             width: MediaQuery.of(context).size.width,
             height: 7,
@@ -132,7 +133,7 @@ class _Form4CandidatState extends State<Form4Candidat> {
                         onChanged: changeIcon,
                         cursorColor: CustomColors.black(),
                         decoration: InputDecoration(
-                          hintText: "Conception vêtement",
+                          hintText: "Rechercher",
                           hintStyle:
                               TextStyle(color: CustomColors.lightGrey5()),
                           prefixIcon: showIcon
