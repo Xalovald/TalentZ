@@ -1,0 +1,76 @@
+version: "3"
+
+volumes:
+  talentz:
+
+networks:
+  talentz:
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysqlService
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - talentz:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: D3nDr0Cu!U$
+      MYSQL_DATABASE: talentz_bdd
+      MYSQL_USER: talentz_user
+      MYSQL_PASSWORD: R3cRu73M3n!7
+    networks:
+      - talentz
+  
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpMyAdmin
+    restart: always
+    depends_on:
+      - mysql
+      - php
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+    ports:
+      - "8081:80"
+    networks:
+      - talentz
+  
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phpService
+    volumes:
+      - talentz:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - talentz
+  
+  talentz_api:
+    build: ./talentz_api
+    depends_on:
+      - mysql
+    environment:
+      - DATABASE=talentz_bdd
+      - MYSQL_PORT=3306
+      - USER=talentz_user
+      - PASSWORD=R3cRu73M3n!7
+      - SERVER=mysql
+    ports:
+      - "5212:5212"
+    networks:
+      - talentz
+
+
+  talentz_mobile:
+    build: ./talentz_mobile
+    depends_on:
+      - mysql
+      - talentz_api
+    networks:
+      - talentz

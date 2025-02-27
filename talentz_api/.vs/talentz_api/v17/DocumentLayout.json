@@ -1,0 +1,263 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\models\\questionmystere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:models\\questionmystere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\datarequests\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\datarequests\\matchingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:datarequests\\matchingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\questionsmysterescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\questionsmysterescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\controllers\\usercontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:controllers\\usercontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\sql\\statements\\insertcomma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\statements\\insertcomma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\sql\\statements\\valuesstatement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:sql\\statements\\valuesstatement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\helpers\\comparator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:helpers\\comparator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\models\\cerise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:models\\cerise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|c:\\users\\crunc\\documents\\talentz\\talentz_api\\models\\matching.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD931AAC-140E-41CA-A64D-BB2EC9BFFF7C}|talentz_api.csproj|solutionrelative:models\\matching.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Cerise.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\Cerise.cs",
+              "RelativeDocumentMoniker": "Models\\Cerise.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\Cerise.cs",
+              "RelativeToolTip": "Models\\Cerise.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T13:09:08.564Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginData.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\LoginData.cs",
+              "RelativeDocumentMoniker": "DataRequests\\LoginData.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\LoginData.cs",
+              "RelativeToolTip": "DataRequests\\LoginData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T20:14:42.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "QuestionsMysteresController.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\QuestionsMysteresController.cs",
+              "RelativeDocumentMoniker": "Controllers\\QuestionsMysteresController.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\QuestionsMysteresController.cs",
+              "RelativeToolTip": "Controllers\\QuestionsMysteresController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAA/wB4AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T20:01:43.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InsertComma.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Sql\\Statements\\InsertComma.cs",
+              "RelativeDocumentMoniker": "Sql\\Statements\\InsertComma.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Sql\\Statements\\InsertComma.cs",
+              "RelativeToolTip": "Sql\\Statements\\InsertComma.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T16:05:08.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ValuesStatement.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Sql\\Statements\\ValuesStatement.cs",
+              "RelativeDocumentMoniker": "Sql\\Statements\\ValuesStatement.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Sql\\Statements\\ValuesStatement.cs",
+              "RelativeToolTip": "Sql\\Statements\\ValuesStatement.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T15:56:57.042Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserData.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\UserData.cs",
+              "RelativeDocumentMoniker": "DataRequests\\UserData.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\UserData.cs",
+              "RelativeToolTip": "DataRequests\\UserData.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAkwBAAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T13:44:37.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuestionMystere.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\QuestionMystere.cs",
+              "RelativeDocumentMoniker": "Models\\QuestionMystere.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\QuestionMystere.cs",
+              "RelativeToolTip": "Models\\QuestionMystere.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T13:10:48.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAgwDIAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T21:13:20.142Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAAH4BAAAAAAAAAAAgwIcBAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T14:05:40.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Comparator.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Helpers\\Comparator.cs",
+              "RelativeDocumentMoniker": "Helpers\\Comparator.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Helpers\\Comparator.cs",
+              "RelativeToolTip": "Helpers\\Comparator.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T20:40:35.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MatchingData.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\MatchingData.cs",
+              "RelativeDocumentMoniker": "DataRequests\\MatchingData.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\DataRequests\\MatchingData.cs",
+              "RelativeToolTip": "DataRequests\\MatchingData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T01:31:29.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserControllerBase.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserControllerBase.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserControllerBase.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\UserControllerBase.cs",
+              "RelativeToolTip": "Controllers\\UserControllerBase.cs",
+              "ViewState": "AQIAALoAAAAAAAAAAAAuwL4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T00:03:41.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MatchingController.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\MatchingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MatchingController.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Controllers\\MatchingController.cs",
+              "RelativeToolTip": "Controllers\\MatchingController.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAAAGcAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:57:16.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Matching.cs",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\Matching.cs",
+              "RelativeDocumentMoniker": "Models\\Matching.cs",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\Models\\Matching.cs",
+              "RelativeToolTip": "Models\\Matching.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:58:08.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\.env",
+              "RelativeDocumentMoniker": ".env",
+              "ToolTip": "C:\\Users\\crunc\\Documents\\TalentZ\\talentz_api\\.env",
+              "RelativeToolTip": ".env",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-08T16:52:28.396Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

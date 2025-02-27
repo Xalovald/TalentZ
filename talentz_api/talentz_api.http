@@ -1,0 +1,12 @@
+@talentz_api_HostAddress = http://localhost:5212/api
+
+GET {{talentz_api_HostAddress}}/candidats/
+Accept: application/json
+
+GET {{talentz_api_HostAddress}}/candidats/{candidat_id}
+Accept: application/json
+
+GET {{talentz_api_HostAddress}}/entreprises/
+Accept: application/json
+
+###

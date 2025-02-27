@@ -1,0 +1,17 @@
+SingleChildBox(
+    width: MediaQuery.of(context).size.width * 0.9,
+    decoration: BoxDecoration(
+        color: CustomColors.lightGrey4(),
+        borderRadius: BorderRadius.circular(100),
+    ),
+    height: 7,
+    child: LayoutBuilder(
+        builder: (context, constraints) {
+            return PillContent(
+                width: (constraints.maxWidth / 14) * 11,
+                color: CustomColors.black(),
+                height: 7,
+            );
+        },
+    ),
+),

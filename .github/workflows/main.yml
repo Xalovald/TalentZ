@@ -1,0 +1,115 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Test, Build and Release apk
+jobs:
+
+  pull:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses : actions/checkout@v2
+    
+    - name: Pull repository to server
+      run: |
+        git pull origin main
+  
+  build:
+    name: Build apk
+    runs-on: ubuntu-latest
+    needs: pull
+    defaults:
+      run:
+        working-directory: talentz_mobile
+    steps:
+    - name: Chechout repository
+      uses: actions/checkout@v2
+    - name: Java setup
+      uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+    - name: Set up flutter
+      uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '3.19.6'
+    - name: Install dependencies
+      run: flutter pub get
+    - name: Build Flutter project
+      run: flutter build apk --debug --split-per-abi
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: talentz_mobile/build/app/outputs/flutter-apk/
+  
+  retrieve:
+    runs-on: self-hosted
+    needs: build
+
+    steps:
+    - name: Checkout repository
+      uses : actions/checkout@v2
+    
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build
+        path: /tmp/artifacts
+  
+  copy:
+    runs-on: self-hosted
+    needs: retrieve
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    
+    - name: Move artifacts to correct directory
+      run: |
+        mkdir -p talentz_mobile/build/app/outputs/flutter-apk
+        mv /tmp/artifacts/* talentz_mobile/build/app/outputs/flutter-apk
+    
+    - name: Copy files to distant server
+      run: |
+        expect -d  << EOD
+        set timeout 420
+        spawn rsync -av --delete --exclude=./build/ -e "ssh -i ~/.ssh/id_rsa" . root@31.207.38.42:~/TalentZ
+        expect {
+          "root@31.207.38.42's password:" {
+            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
+          }
+          eof
+        }
+        expect eof
+        EOD
+    - name: Docker compose down
+      run: |
+        expect -d  << EOD
+        set timeout 420
+        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && docker compose down"
+        expect {
+          "root@31.207.38.42's password:" {
+            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
+          }
+          eof
+        }
+        expect eof
+        EOD
+    - name: Docker compose up --build
+      run: |
+        expect -d  << EOD
+        set timeout 420
+        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && docker compose up --detach --build"
+        expect {
+          "root@213.156.132.78's password:" {
+            send "${{secrets.ROOT_PRIVATE_KEY}}\r"
+          }
+          eof
+        }
+        expect eof
+        EOD
