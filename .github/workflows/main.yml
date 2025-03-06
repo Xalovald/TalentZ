@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - prod
 
 name: Test, Build and Release apk
 jobs:
