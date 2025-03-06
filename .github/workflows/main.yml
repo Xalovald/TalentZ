@@ -78,9 +78,9 @@ jobs:
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn rsync -av --delete --exclude=./build/ -e "ssh -i ~/.ssh/id_rsa" . root@31.207.38.42:~/TalentZ
+        spawn rsync -av --delete --exclude=./build/ -e "ssh -i ~/.ssh/id_rsa" . root@57.129.129.23:~/TalentZ
         expect {
-          "root@31.207.38.42's password:" {
+          "root@57.129.129.23's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
           }
           eof
@@ -91,9 +91,9 @@ jobs:
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && docker compose down"
+        spawn ssh -i ~/.ssh/id_rsa root@57.129.129.23 "cd /root/TalentZ && docker compose down"
         expect {
-          "root@31.207.38.42's password:" {
+          "root@57.129.129.23's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
           }
           eof
@@ -104,9 +104,9 @@ jobs:
       run: |
         expect -d  << EOD
         set timeout 420
-        spawn ssh -i ~/.ssh/id_rsa root@31.207.38.42 "cd /root/TalentZ && docker compose up --detach --build"
+        spawn ssh -i ~/.ssh/id_rsa root@57.129.129.23 "cd /root/TalentZ && docker compose up --detach --build"
         expect {
-          "root@213.156.132.78's password:" {
+          "root@57.129.129.23's password:" {
             send "${{secrets.ROOT_PRIVATE_KEY}}\r"
           }
           eof
